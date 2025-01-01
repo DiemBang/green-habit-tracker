@@ -1,12 +1,11 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import { Footer } from "./components/shared/Footer";
-import { Header } from "./components/shared/Header";
+import { router } from "./Router";
 
 function App() {
   return (
     <>
-      <Header></Header>
-      <Footer></Footer>
+      <RouterProvider router={router}></RouterProvider>
     </>
   );
 }
