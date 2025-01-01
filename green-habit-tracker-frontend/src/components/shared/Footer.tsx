@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Footer = () => {
   return (
     <>
@@ -9,21 +11,27 @@ export const Footer = () => {
           className="flex justify-around w-full"
           aria-label="Footer navigation"
         >
-          <div role="button" aria-label="Go to Home">
-            <span className="material-symbols-outlined" aria-hidden="true">
-              home
-            </span>
-          </div>
-          <div role="button" aria-label="Go to Browse">
-            <span className="material-symbols-outlined" aria-hidden="true">
-              description
-            </span>
-          </div>
-          <div role="button" aria-label="Go to Profile">
-            <span className="material-symbols-outlined" aria-hidden="true">
-              account_circle
-            </span>
-          </div>
+          <Link to="/home">
+            <div role="button" aria-label="Go to Home">
+              <span className="material-symbols-outlined" aria-hidden="true">
+                home
+              </span>
+            </div>
+          </Link>
+          <Link to="/browse">
+            <div role="button" aria-label="Go to Browse">
+              <span className="material-symbols-outlined" aria-hidden="true">
+                description
+              </span>
+            </div>
+          </Link>
+          <Link to="/profile">
+            <div role="button" aria-label="Go to Profile">
+              <span className="material-symbols-outlined" aria-hidden="true">
+                account_circle
+              </span>
+            </div>
+          </Link>
         </section>
       </footer>
     </>
