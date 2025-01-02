@@ -1,15 +1,17 @@
-import { useState } from "react";
 import { ICategory } from "../models/ICategory";
+interface CategoryButtonProps {
+  category: ICategory;
+}
 
-export const CategoryButton = () => {
-  const [category, setCategory] = useState<ICategory>({
-    iconUrl: "",
-    name: "Default Category",
-  });
+export const CategoryButton = ({ category }: CategoryButtonProps) => {
   return (
     <>
       <section className="flex flex-col items-center justify-center bg-gray-100 rounded-lg p-4 border-2 border-green-500">
-        <slot className="mb-2">{category.iconUrl}</slot>
+        <img
+          className="mb-2"
+          src={category.iconUrl}
+          alt={"Icon for " + category.name}
+        />
         <h3 className="text-lg font-medium">{category.name}</h3>
       </section>
     </>
