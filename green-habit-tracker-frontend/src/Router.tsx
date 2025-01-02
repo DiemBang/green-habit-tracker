@@ -5,6 +5,8 @@ import { NotFound } from "./pages/NotFound";
 import { Browse } from "./pages/Browse";
 import { Profile } from "./pages/Profile";
 import { Layout } from "./pages/Layout";
+import { Categories } from "./pages/Categories";
+import { HabitsPerCategory } from "./pages/HabitsPerCategory";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
         // http://localhost:5173/profile
         path: "/profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "/categories",
+        element: <Categories></Categories>,
+      },
+      {
+        path: "/habitsPerCategory",
+        element: <HabitsPerCategory></HabitsPerCategory>,
       },
     ],
   },

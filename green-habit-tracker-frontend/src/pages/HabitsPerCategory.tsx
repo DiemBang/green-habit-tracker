@@ -1,3 +1,7 @@
 export const HabitsPerCategory = () => {
-  return <></>;
+  return (
+    <>
+      <h2>Habits per Category</h2>
+    </>
+  );
 };
