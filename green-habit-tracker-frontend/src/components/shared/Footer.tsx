@@ -12,15 +12,23 @@ export const Footer = () => {
           aria-label="Footer navigation"
         >
           <Link to="/home">
-            <div role="button" aria-label="Go to Home">
+            <div
+              role="button"
+              aria-label="Go to Home"
+              className="flex flex-col items-center"
+            >
               <span className="material-symbols-outlined" aria-hidden="true">
                 home
               </span>
-              <p>Home</p>
+              <p className="mt-0">Home</p>
             </div>
           </Link>
           <Link to="/browse">
-            <div role="button" aria-label="Go to Browse">
+            <div
+              role="button"
+              aria-label="Go to Browse"
+              className="flex flex-col items-center"
+            >
               <span className="material-symbols-outlined" aria-hidden="true">
                 description
               </span>
@@ -28,7 +36,11 @@ export const Footer = () => {
             </div>
           </Link>
           <Link to="/profile">
-            <div role="button" aria-label="Go to Profile">
+            <div
+              role="button"
+              aria-label="Go to Profile"
+              className="flex flex-col items-center"
+            >
               <span className="material-symbols-outlined" aria-hidden="true">
                 account_circle
               </span>
