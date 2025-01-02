@@ -16,6 +16,7 @@ export const Footer = () => {
               <span className="material-symbols-outlined" aria-hidden="true">
                 home
               </span>
+              <p>Home</p>
             </div>
           </Link>
           <Link to="/browse">
@@ -23,6 +24,7 @@ export const Footer = () => {
               <span className="material-symbols-outlined" aria-hidden="true">
                 description
               </span>
+              <p>Browse</p>
             </div>
           </Link>
           <Link to="/profile">
@@ -30,6 +32,7 @@ export const Footer = () => {
               <span className="material-symbols-outlined" aria-hidden="true">
                 account_circle
               </span>
+              <p>Profile</p>
             </div>
           </Link>
         </section>
