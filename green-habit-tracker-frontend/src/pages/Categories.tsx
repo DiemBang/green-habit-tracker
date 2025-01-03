@@ -6,23 +6,33 @@ export const Categories = () => {
   return (
     <>
       <h2>Categories</h2>
-      <Link to="/habitsPerCategory">
-        <CategoryButton
-          category={{ iconUrl: homeCategoryIcon, name: "Home" }}
-        ></CategoryButton>
-        <CategoryButton
-          category={{ iconUrl: "", name: "Food" }}
-        ></CategoryButton>
-        <CategoryButton
-          category={{ iconUrl: "", name: "On-the-go" }}
-        ></CategoryButton>
-        <CategoryButton
-          category={{ iconUrl: "", name: "Work" }}
-        ></CategoryButton>
-        <CategoryButton
-          category={{ iconUrl: "", name: "All" }}
-        ></CategoryButton>
-      </Link>
+      <section className="grid grid-cols-2 gap-4">
+        <Link to="/habitsPerCategory">
+          <CategoryButton
+            category={{ iconUrl: homeCategoryIcon, name: "Home" }}
+          ></CategoryButton>
+        </Link>
+        <Link to="/habitsPerCategory">
+          <CategoryButton
+            category={{ iconUrl: "", name: "Food" }}
+          ></CategoryButton>
+        </Link>
+        <Link to="/habitsPerCategory">
+          <CategoryButton
+            category={{ iconUrl: "", name: "On-the-go" }}
+          ></CategoryButton>
+        </Link>
+        <Link to="/habitsPerCategory">
+          <CategoryButton
+            category={{ iconUrl: "", name: "Work" }}
+          ></CategoryButton>
+        </Link>
+        <Link to="/habitsPerCategory">
+          <CategoryButton
+            category={{ iconUrl: "", name: "All" }}
+          ></CategoryButton>
+        </Link>
+      </section>
     </>
   );
 };
