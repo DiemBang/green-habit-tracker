@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import { CategoryButton } from "../components/CategoryButton";
 import homeCategoryIcon from "../assets/home-category.svg";
+import foodCategoryIcon from "../assets/food-category.png";
+import onthegoCategoryIcon from "../assets/onthego-category.png";
+import workCategoryIcon from "../assets/work-category.png";
+import allCategoryIcon from "../assets/all-category.png";
 
 export const Categories = () => {
   return (
@@ -14,22 +18,22 @@ export const Categories = () => {
         </Link>
         <Link to="/habitsPerCategory">
           <CategoryButton
-            category={{ iconUrl: "", name: "Food" }}
+            category={{ iconUrl: foodCategoryIcon, name: "Food" }}
           ></CategoryButton>
         </Link>
         <Link to="/habitsPerCategory">
           <CategoryButton
-            category={{ iconUrl: "", name: "On-the-go" }}
+            category={{ iconUrl: onthegoCategoryIcon, name: "On-the-go" }}
           ></CategoryButton>
         </Link>
         <Link to="/habitsPerCategory">
           <CategoryButton
-            category={{ iconUrl: "", name: "Work" }}
+            category={{ iconUrl: workCategoryIcon, name: "Work" }}
           ></CategoryButton>
         </Link>
         <Link to="/habitsPerCategory">
           <CategoryButton
-            category={{ iconUrl: "", name: "All" }}
+            category={{ iconUrl: allCategoryIcon, name: "All" }}
           ></CategoryButton>
         </Link>
       </section>
