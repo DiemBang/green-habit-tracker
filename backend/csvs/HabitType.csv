@@ -1,29 +1,29 @@
-Name;Description;CO2/action
-Bring your own utensils;;1
-Lights off (for 1 hour);;2
-Farm-to-table living;;4
-Eat a delicious meat-free meal;;3
-Use a water flask;;2
-Alternative transportation;;3
-Reduce shower time (by 1 min);;5
-Shop with eco-friendly bags;;3
-Replace paper napkins with cloth ones;;1
-Reuse water for plants;;4
-Reuse coffe grounds as fertilizer;;3
-Resuse printed paper;;2
-BYO containers to the bulk store;;4
-Turn kitchen scraps into compost;;3
-Recycle old appliances;;2
-Donate unneeded clothing;;3
-Recycle outdated electronics;;4
-Recycle unused furniture;;3
-Donate old books;;2
-Save water in the laundry room;;3
-Unplug electronic devices;;2
-Cycling or walking to errands;;1
-Ditch the tea bags;Switch to loose leaf instead of tea bags to reduce waste;2
-Take a shower instead;Staying out of the bathtub wastes less energy and water;3
-Go dairy-free;;4
-Reduce your video streaming time (by 1 hour);;3
-Using links rather than email attachments;;2
-Turning off lights when leaving a room;;3
+Name;Description;CO2/action;Category;
+Bring your own utensils;Use your own utensils when ordering take-out or when on the go;;On-the-go;
+Lights off (for 1 hour);Switch off your lights, unwind and relax;;Home,Work;
+Farm-to-table living;Eat locally sourced food and support local farmers and businesses;;Food;
+Eat a delicious meat-free meal;Go on a flexitarian diet;;Food;
+Use a water flask;;;On-the-go;
+Alternative transportation;;;On-the-go;
+Reduce shower time (by 1 min);;;Home;
+Shop with eco-friendly bags;;;On-the-go;
+Replace paper napkins with cloth ones;;;Home;
+Reuse water for plants;;;Home,Work;
+Reuse coffee grounds as fertilizer;;;Home,Work;
+Resuse printed paper;;;Home,Work;
+BYO containers to the bulk store;;;On-the-go;
+Turn kitchen scraps into compost;;;Home,Work;
+Recycle old appliances;;;Home,Work;
+Donate unneeded clothing;;;Home;
+Recycle outdated electronics;;;Home,Work;
+Recycle unused furniture;;;Home,Work;
+Donate old books;;;Home;
+Save water in the laundry room;;;Home;
+Unplug electronic devices;;;Home,Work;
+Cycling or walking to errands;;;Home;
+Ditch the tea bags;Switch to loose leaf instead of tea bags to reduce waste;;Food;
+Take a shower instead;Staying out of the bathtub wastes less energy and water;;Home;
+Go dairy-free;;;Food;
+Reduce your video streaming time (by 1 hour);;;Home;
+Using links rather than email attachments;;;Home,Work;
+Turning off lights when leaving a room;;;Home,Work;
