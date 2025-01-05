@@ -1,4 +1,4 @@
-import logotype from "../../assets/all-category.png";
+import logotype from "../../assets/category-icons/all-category.png";
 
 export const Header = () => {
   return (

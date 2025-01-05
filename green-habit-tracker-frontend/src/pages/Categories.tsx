@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { CategoryButton } from "../components/CategoryButton";
-import homeCategoryIcon from "../assets/home-category.svg";
-import foodCategoryIcon from "../assets/food-category.png";
-import onthegoCategoryIcon from "../assets/onthego-category.png";
-import workCategoryIcon from "../assets/work-category.png";
-import allCategoryIcon from "../assets/all-category.png";
+import homeCategoryIcon from "../assets/category-icons/home-category.svg";
+import foodCategoryIcon from "../assets/category-icons/food-category.png";
+import onthegoCategoryIcon from "../assets/category-icons/onthego-category.png";
+import workCategoryIcon from "../assets/category-icons/work-category.png";
+import allCategoryIcon from "../assets/category-icons/all-category.png";
 
 export const Categories = () => {
   return (
