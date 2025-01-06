@@ -1,29 +1,29 @@
-Name;Description;CO2/action;Category;
-Bring your own utensils;Use your own utensils when ordering take-out or when on the go;;On-the-go;
-Lights off (for 1 hour);Switch off your lights, unwind and relax;;Home,Work;
-Farm-to-table living;Eat locally sourced food and support local farmers and businesses;;Food;
-Eat a delicious meat-free meal;Go on a flexitarian diet;;Food;
-Use a water flask;;;On-the-go;
-Alternative transportation;;;On-the-go;
-Reduce shower time (by 1 min);;;Home;
-Shop with eco-friendly bags;;;On-the-go;
-Replace paper napkins with cloth ones;;;Home;
-Reuse water for plants;;;Home,Work;
-Reuse coffee grounds as fertilizer;;;Home,Work;
-Resuse printed paper;;;Home,Work;
-BYO containers to the bulk store;;;On-the-go;
-Turn kitchen scraps into compost;;;Home,Work;
-Recycle old appliances;;;Home,Work;
-Donate unneeded clothing;;;Home;
-Recycle outdated electronics;;;Home,Work;
-Recycle unused furniture;;;Home,Work;
-Donate old books;;;Home;
-Save water in the laundry room;;;Home;
-Unplug electronic devices;;;Home,Work;
-Cycling or walking to errands;;;Home;
-Ditch the tea bags;Switch to loose leaf instead of tea bags to reduce waste;;Food;
-Take a shower instead;Staying out of the bathtub wastes less energy and water;;Home;
-Go dairy-free;;;Food;
-Reduce your video streaming time (by 1 hour);;;Home;
-Using links rather than email attachments;;;Home,Work;
-Turning off lights when leaving a room;;;Home,Work;
+Name;Description;Good to know;CO2 emission (kg/action);Points;Category
+Bring your own utensils;Avoid using disposable cutlery by carrying your own reusable utensils when eating on the go, helping to reduce single-use plastic waste.;By eliminating the need for disposable plastic or wooden utensils, you reduce plastic waste and the emissions associated with producing and disposing of them.;0.020;100;On-the-go
+Lights off (for 1 hour);Turn off all unnecessary lights for one hour each day to save electricity and reduce your carbon footprint. This small action adds up over time!;Turning off lights for one hour reduces electricity consumption, which in turn lowers carbon emissions, especially if your electricity comes from fossil fuels (though Sweden's energy mix is relatively clean).;0.250;100;Home,Work
+Farm-to-table living;Choose locally grown, seasonal produce to reduce the carbon footprint of transportation, support local farmers, and enjoy fresh, sustainable food.;By choosing locally grown, seasonal produce, you reduce the emissions from food transportation, packaging, and industrial farming, all of which contribute to a smaller carbon footprint.;0.137;100;Food
+Eat a delicious meat-free meal;Try plant-based meals to reduce the environmental impact of animal farming, which is a major contributor to greenhouse gas emissions.;Livestock farming generates significant emissions due to methane production and the energy required for feed and transportation. A plant-based meal has a much lower environmental impact.;0.760;100;Food
+Use a water flask;Carry a reusable water flask instead of buying bottled water, cutting down on plastic waste and reducing the energy required for plastic production and transportation.;By using a reusable water bottle instead of purchasing bottled water, you help reduce plastic production and the carbon emissions associated with manufacturing, transporting, and disposing of plastic bottles.;0.040;100;On-the-go
+Alternative transportation;Opt for public transit, cycling, or walking instead of driving to reduce carbon emissions, decrease air pollution, and promote healthier transportation habits.;Using public transportation, cycling, or walking reduces the need for car travel, which has a large carbon footprint due to fuel consumption. Switching to these alternatives helps lower emissions from personal vehicles.;0.133;100;On-the-go
+Reduce shower time (by 1 min);Shortening your shower by just one minute can save both water and energy, reducing your utility bills and your overall environmental impact.;Shortening your shower by just one minute saves both water and the energy used to heat the water. In Sweden, this can be significant, as energy for water heating often involves electricity or district heating.;0.001;100;Home
+Shop with eco-friendly bags;Use reusable cloth or canvas bags when shopping to avoid single-use plastic bags, reducing plastic waste and conserving resources.;By using reusable bags, you reduce demand for single-use plastic bags, cutting down on plastic waste and the emissions involved in producing, transporting, and disposing of plastic.;0.057;100;On-the-go
+Replace paper napkins with cloth ones;Opt for reusable cloth napkins instead of single-use paper ones to reduce waste and save resources.;Paper production is resource-intensive, and using cloth napkins eliminates the need for disposable paper.;0.003;100;Home
+Reuse water for plants;Why not use otherwise wasted water to nurture your houseplants?;Reusing water reduces the energy used in water treatment, although the savings are relatively small.;;;Home,Work
+Reuse coffee grounds as fertilizer;Instead of throwing away used coffee grounds, spread them in your garden to enrich soil and help plants thrive.;Coffee grounds are typically discarded, contributing to landfill waste. Reusing them reduces waste and the need for synthetic fertilizers, which have a high carbon footprint.;0.001;100;Home,Work
+Resuse printed paper;Repurpose paper that has been printed on one side for notes, sketches, or printing again to cut down on waste.;Recycling and reusing paper saves energy used in producing new paper and reduces deforestation.;0.007;100;Home,Work
+BYO containers to the bulk store;Bring your own reusable containers to bulk stores to minimize packaging waste and reduce your environmental footprint.;By avoiding packaged goods, you cut down on plastic production and reduce packaging waste, leading to significant energy savings.;0.182;100;On-the-go
+Turn kitchen scraps into compost;Instead of tossing food scraps, compost them to create nutrient-rich soil for gardens and reduce landfill waste.;Composting prevents food waste from entering landfills, where it would release methane, a potent greenhouse gas.;0.927;100;Home,Work
+Recycle old appliances;Dispose of outdated or broken appliances responsibly by recycling them to recover valuable materials and reduce e-waste.;Recycling appliances recovers valuable materials (like metals) and reduces the need for new raw materials, thus saving emissions associated with production.;1.440;150;Home,Work
+Donate unneeded clothing;Instead of discarding old clothes, donate them to charities or second-hand stores to extend their life and help others.;Donating clothes extends their life cycle, reducing the need for new garments and the energy spent on manufacturing, transportation, and disposal.;4.200;150;Home
+Recycle outdated electronics;Recycle electronics that no longer work or are outdated to keep harmful materials out of landfills and recover precious metals.;Electronics recycling recovers rare materials and reduces energy consumption in new production processes, leading to significant emissions savings.;14.000;200;Home,Work
+Recycle unused furniture;Donate or recycle furniture that you no longer use, giving it a second life and preventing unnecessary waste.;Similar to electronics, recycling or donating furniture reduces waste and conserves energy used in the manufacturing of new furniture.;47.000;200;Home,Work
+Donate old books;Pass along your old books to libraries, schools, or charities to promote reading and avoid the waste of paper.;Donating books extends their life and reduces the need for new printing, saving both paper and energy.;2.700;100;Home
+Save water in the laundry room;Run full loads, use cold water, and consider energy-efficient washers to reduce both water and energy consumption during laundry.;Using less water and energy-efficient washing reduces the overall energy consumption and CO2 emissions linked to water heating and detergent production.;0.002;100;Home
+Unplug electronic devices;Unplug devices when not in use to save electricity, reduce energy consumption, and lower your carbon footprint.;Unplugging devices prevents phantom power consumption, which reduces electricity use and the emissions from power generation.;0.002;100;Home,Work
+Cycling or walking to errands;Choose to walk or cycle rather than drive for short trips to reduce emissions, save money, and stay healthy.;Walking or cycling instead of driving avoids emissions from vehicle fuel consumption.;0.270;100;Home
+Ditch the tea bags;Use loose-leaf tea instead of tea bags to cut down on packaging waste and enjoy a more natural, flavorful brew.;Loose-leaf tea generally has less packaging, and avoiding tea bags reduces the production of materials like nylon or paper.;0.189;100;Food
+Take a shower instead;Opt for shorter showers instead of baths to save both water and energy while maintaining personal hygiene.;Shorter showers use less hot water, reducing energy consumption and emissions from water heating.;0.008;100;Home
+Go dairy-free;Reducing or eliminating dairy consumption can lower your carbon footprint and promote better health.;The dairy industry has a significant carbon footprint due to methane emissions from cows, energy used in processing, and transportation.;1.176;120;Food
+Reduce your video streaming time (by 1 hour);Cut back on screen time to save energy, reduce data usage, and give your mind a break from constant digital consumption.;Streaming video requires significant data transfer and energy use from servers, which contributes to carbon emissions.;0.036;100;Home
+Using links rather than email attachments;Share documents and files via links instead of sending large attachments, reducing data storage use and email clutter.;Reducing email attachment sizes helps save data storage and energy used in the transmission and storage of large files.;0.046;100;Home,Work
+Turning off lights when leaving a room;Save energy and reduce your electricity bill by simply turning off lights when you leave a room.;Turning off lights when not in use conserves electricity, leading to lower carbon emissions associated with power generation.;;100;Home,Work
