@@ -1,4 +1,5 @@
 import { Router, Request, Response } from "express";
+import { IHabitType } from "../models/IHabitType";
 
 var express = require("express");
 const router = Router();
@@ -10,8 +11,7 @@ router.get("/", function (req: Request, res: Response) {
     .collection("HabitType")
     .find()
     .toArray()
-    .then((results: Array<any>) => {
-      // To-do: create Interface and add type to results
+    .then((results: Array<IHabitType>) => {
       console.log(results);
       res.json(results);
     });
