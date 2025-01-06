@@ -7,6 +7,7 @@ import { Profile } from "./pages/Profile";
 import { Layout } from "./pages/Layout";
 import { Categories } from "./pages/Categories";
 import { HabitsPerCategory } from "./pages/HabitsPerCategory";
+import { habitsPerCategoryPageLoader } from "./loaders/habitsPerCategoryLoader";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ export const router = createBrowserRouter([
       {
         path: "/habitsPerCategory",
         element: <HabitsPerCategory></HabitsPerCategory>,
+        loader: habitsPerCategoryPageLoader,
       },
     ],
   },
