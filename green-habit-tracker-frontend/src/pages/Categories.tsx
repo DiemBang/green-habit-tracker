@@ -11,27 +11,27 @@ export const Categories = () => {
     <>
       <h2>Categories</h2>
       <section className="grid grid-cols-2 gap-4">
-        <Link to="/habitsPerCategory">
+        <Link to="/habitsPerCategory/Home">
           <CategoryButton
             category={{ iconUrl: homeCategoryIcon, name: "Home" }}
           ></CategoryButton>
         </Link>
-        <Link to="/habitsPerCategory">
+        <Link to="/habitsPerCategory/Food">
           <CategoryButton
             category={{ iconUrl: foodCategoryIcon, name: "Food" }}
           ></CategoryButton>
         </Link>
-        <Link to="/habitsPerCategory">
+        <Link to="/habitsPerCategory/On-the-go">
           <CategoryButton
             category={{ iconUrl: onthegoCategoryIcon, name: "On-the-go" }}
           ></CategoryButton>
         </Link>
-        <Link to="/habitsPerCategory">
+        <Link to="/habitsPerCategory/Work">
           <CategoryButton
             category={{ iconUrl: workCategoryIcon, name: "Work" }}
           ></CategoryButton>
         </Link>
-        <Link to="/habitsPerCategory">
+        <Link to="/habitsPerCategory/All">
           <CategoryButton
             category={{ iconUrl: allCategoryIcon, name: "All" }}
           ></CategoryButton>

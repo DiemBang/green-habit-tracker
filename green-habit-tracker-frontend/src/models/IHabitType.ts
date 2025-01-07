@@ -1,5 +1,5 @@
 export interface IHabitType {
-  Id: number;
+  _id: number;
   Name: string;
   Description: string;
   GoodToKnow: string;

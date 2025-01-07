@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
         element: <Categories></Categories>,
       },
       {
-        path: "/habitsPerCategory",
+        path: "/habitsPerCategory/:category",
         element: <HabitsPerCategory></HabitsPerCategory>,
         loader: habitsPerCategoryPageLoader,
       },
