@@ -6,9 +6,13 @@ import {
 } from "../services/habitTypeService";
 
 export const habitsPerCategoryPageLoader = async ({ params }: ILoader) => {
-  const category = params.category ? params.category : "";
-
-  const habitTypes: Array<IHabitType> = await getHabitTypesFiltered(category);
+  let category = params.category ? params.category : "";
+  let habitTypes: Array<IHabitType> = [];
+  if (category === "All") {
+    habitTypes = await getHabitTypes();
+  } else {
+    habitTypes = await getHabitTypesFiltered(category);
+  }
 
   return habitTypes;
 };

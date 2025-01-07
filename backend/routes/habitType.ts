@@ -6,13 +6,17 @@ const router = Router();
 
 /* GET habitTypes */
 router.get("/", function (req: Request, res: Response) {
+  let category = req.query.category;
+  console.log("category", category);
+
+  let query = category ? { Category: category } : {};
   // HÄMTA (anropa databas connection som skapades i app.js )
   req.app.locals.db
     .collection("HabitType")
-    .find()
+    .find(query)
     .toArray()
     .then((results: Array<IHabitType>) => {
-      console.log(results);
+      console.log("results", results);
       res.json(results);
     });
 });
