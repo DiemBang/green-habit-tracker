@@ -9,6 +9,8 @@ import ecotipRouter from "./routes/ecotips";
 import challengeRouter from "./routes/challenges";
 import sustainabilityFactRouter from "./routes/sustainabilityFacts";
 import userHabitCompletedRouter from "./routes/userHabitsCompleted";
+import userChallengeCompletedRouter from "./routes/userChallengesCompleted";
+import userChallengeRouter from "./routes/userChallenges";
 
 dotenv.config();
 
@@ -22,6 +24,8 @@ app.use("/api/users", userRouter);
 app.use("/api/userHabits", userHabitRouter);
 app.use("/api/userHabitsCompleted", userHabitCompletedRouter);
 app.use("/api/challenges", challengeRouter);
+app.use("/api/userChallenges", userChallengeRouter);
+app.use("/api/userChallengesCompleted", userChallengeCompletedRouter);
 app.use("/api/ecotips", ecotipRouter);
 app.use("/api/sustainabilityFacts", sustainabilityFactRouter);
 
