@@ -7,6 +7,7 @@ import userRouter from "./routes/users";
 import userHabitRouter from "./routes/userHabit";
 import ecotipsRouter from "./routes/ecotips";
 import sustainabilityFactsRouter from "./routes/sustainabilityFacts";
+import userHabitCompletedRouter from "./routes/userHabitCompleted";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(cors());
 app.use("/api/habits", habitRouter);
 app.use("/api/users", userRouter);
 app.use("/api/userHabit", userHabitRouter);
+app.use("/api/userHabitCompleted", userHabitCompletedRouter);
 app.use("/api/ecotips", ecotipsRouter);
 app.use("/api/sustainabilityFacts", sustainabilityFactsRouter);
 

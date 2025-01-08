@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { IEcotips } from "../models/IEcotips";
+import { IUserHabitCompleted } from "../models/IUserHabitCompleted";
 
 var express = require("express");
 const router = Router();
@@ -8,10 +8,10 @@ const router = Router();
 router.get("/", function (req: Request, res: Response) {
   // HÄMTA (anropa databas connection som skapades i app.js )
   req.app.locals.db
-    .collection("Ecotip")
+    .collection("UserHabitCompleted")
     .find()
     .toArray()
-    .then((results: Array<IEcotips>) => {
+    .then((results: Array<IUserHabitCompleted>) => {
       console.log("results", results);
       res.json(results);
     });
