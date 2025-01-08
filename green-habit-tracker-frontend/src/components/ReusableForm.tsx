@@ -1,0 +1,101 @@
+import { useState } from "react";
+
+interface ReusableFormProps {
+  title: string;
+  buttonText: string;
+  onSubmit: (email: string, password: string) => void;
+  linkText: string;
+  linkHref: string;
+  linkDescription: string;
+}
+
+export const ReusableForm: React.FC<ReusableFormProps> = ({
+  title,
+  buttonText,
+  onSubmit,
+  linkText,
+  linkHref,
+  linkDescription,
+}) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(email, password);
+  };
+
+  return (
+    <>
+      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+        {/* Title */}
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-green-600">
+            Green Habit Tracker
+          </h1>
+          <p className="text-gray-500">{title}</p>
+        </div>
+
+        {/* Form */}
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full p-3 mt-1 border rounded-lg focus:ring-green-500 focus:border-green-500"
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full p-3 mt-1 border rounded-lg focus:ring-green-500 focus:border-green-500"
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="w-full px-4 py-3 font-bold text-white bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              {buttonText}
+            </button>
+          </div>
+        </form>
+
+        {/* Extra Options */}
+        <div className="text-center">
+          <p className="text-sm text-gray-500">
+            {linkDescription}{" "}
+            <a href={linkHref} className="text-green-500 hover:underline">
+              {linkText}
+            </a>
+          </p>
+        </div>
+      </div>
+    </>
+  );
+};
