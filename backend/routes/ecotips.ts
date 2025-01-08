@@ -1,17 +1,18 @@
 import { Router, Request, Response } from "express";
-import { IUserHabit } from "../models/IUserHabit";
+import { IUser } from "../models/IUser";
+import { IEcotips } from "../models/IEcotips";
 
 var express = require("express");
 const router = Router();
 
-/* GET userHabits */
+/* GET habitTypes */
 router.get("/", function (req: Request, res: Response) {
   // HÄMTA (anropa databas connection som skapades i app.js )
   req.app.locals.db
-    .collection("UserHabit")
+    .collection("Ecotips")
     .find()
     .toArray()
-    .then((results: Array<IUserHabit>) => {
+    .then((results: Array<IEcotips>) => {
       console.log("results", results);
       res.json(results);
     });

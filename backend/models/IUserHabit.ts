@@ -5,3 +5,10 @@ export interface IUserHabit {
   status: string;
   dateStarted: Date;
 }
+export interface IUser {
+  _id: number;
+  UserId: number;
+  HabitTypeIdentifier: string;
+  Status: string;
+  DateStarted: Date;
+}
