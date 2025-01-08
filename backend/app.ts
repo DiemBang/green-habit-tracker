@@ -6,6 +6,7 @@ import habitTypeRouter from "./routes/habitType";
 import userRouter from "./routes/users";
 import userHabitRouter from "./routes/userHabit";
 import ecotipsRouter from "./routes/ecotips";
+import sustainabilityFactsRouter from "./routes/sustainabilityFacts";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use("/api/habitTypes", habitTypeRouter);
 app.use("/api/users", userRouter);
 app.use("/api/userHabit", userHabitRouter);
 app.use("/api/ecotips", ecotipsRouter);
+app.use("/api/sustainabilityFacts", sustainabilityFactsRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
