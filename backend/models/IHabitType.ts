@@ -1,6 +1,6 @@
 export interface IHabitType {
-  id: number;
-  name: string;
-  description: string;
-  category: Array<string>;
+  _id: number;
+  Name: string;
+  Description: string;
+  Category: Array<string>;
 }

@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import habitTypeRouter from "./routes/habitType";
+import userRouter from "./routes/users";
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 
 app.use("/api/habitTypes", habitTypeRouter);
+app.use("/api/users", userRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
