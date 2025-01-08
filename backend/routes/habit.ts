@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { IHabitType } from "../models/IHabitType";
+import { IHabit } from "../models/IHabit";
 
 var express = require("express");
 const router = Router();
@@ -12,10 +12,10 @@ router.get("/", function (req: Request, res: Response) {
   let query = category ? { Category: category } : {};
   // HÄMTA (anropa databas connection som skapades i app.js )
   req.app.locals.db
-    .collection("HabitType")
+    .collection("Habit")
     .find(query)
     .toArray()
-    .then((results: Array<IHabitType>) => {
+    .then((results: Array<IHabit>) => {
       console.log("results", results);
       res.json(results);
     });

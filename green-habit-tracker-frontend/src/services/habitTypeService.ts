@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/api/habitTypes";
+const BASE_URL = "http://localhost:3000/api/habits";
 
-export const getHabitTypes = async () => {
+export const getHabits = async () => {
   let response = await axios.get(BASE_URL);
 
   console.log(response.data);
   return response.data;
 };
 
-export const getHabitTypesFiltered = async (category: string) => {
+export const getHabitsFiltered = async (category: string) => {
   let response = await axios.get(BASE_URL, { params: { category: category } });
 
   console.log(response.data);

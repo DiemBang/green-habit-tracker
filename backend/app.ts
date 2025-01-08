@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import habitTypeRouter from "./routes/habitType";
+import habitRouter from "./routes/habit";
 import userRouter from "./routes/users";
 import userHabitRouter from "./routes/userHabit";
 import ecotipsRouter from "./routes/ecotips";
@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-app.use("/api/habitTypes", habitTypeRouter);
+app.use("/api/habits", habitRouter);
 app.use("/api/users", userRouter);
 app.use("/api/userHabit", userHabitRouter);
 app.use("/api/ecotips", ecotipsRouter);

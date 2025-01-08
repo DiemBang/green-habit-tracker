@@ -9,7 +9,7 @@ const router = Router();
 router.get("/", function (req: Request, res: Response) {
   // HÄMTA (anropa databas connection som skapades i app.js )
   req.app.locals.db
-    .collection("Ecotips")
+    .collection("Ecotip")
     .find()
     .toArray()
     .then((results: Array<IEcotips>) => {
