@@ -1,17 +1,17 @@
 import { Router, Request, Response } from "express";
-import { ISustainabilityFact } from "../models/ISustainabilityFact";
+import { IChallenge } from "../models/IChallenge";
 
 var express = require("express");
 const router = Router();
 
-/* GET sustainability facts */
+/* GET ecotips */
 router.get("/", function (req: Request, res: Response) {
   // HÄMTA (anropa databas connection som skapades i app.js )
   req.app.locals.db
-    .collection("SustainabilityFact")
+    .collection("Challenge")
     .find()
     .toArray()
-    .then((results: Array<ISustainabilityFact>) => {
+    .then((results: Array<IChallenge>) => {
       console.log("results", results);
       res.json(results);
     });

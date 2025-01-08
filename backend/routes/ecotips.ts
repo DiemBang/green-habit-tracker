@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { IEcotips } from "../models/IEcotips";
+import { IEcotip } from "../models/IEcotip";
 
 var express = require("express");
 const router = Router();
@@ -11,7 +11,7 @@ router.get("/", function (req: Request, res: Response) {
     .collection("Ecotip")
     .find()
     .toArray()
-    .then((results: Array<IEcotips>) => {
+    .then((results: Array<IEcotip>) => {
       console.log("results", results);
       res.json(results);
     });

@@ -2,12 +2,13 @@ import { MongoClient } from "mongodb";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import habitRouter from "./routes/habit";
+import habitRouter from "./routes/habits";
 import userRouter from "./routes/users";
-import userHabitRouter from "./routes/userHabit";
-import ecotipsRouter from "./routes/ecotips";
-import sustainabilityFactsRouter from "./routes/sustainabilityFacts";
-import userHabitCompletedRouter from "./routes/userHabitCompleted";
+import userHabitRouter from "./routes/userHabits";
+import ecotipRouter from "./routes/ecotips";
+import challengeRouter from "./routes/challenges";
+import sustainabilityFactRouter from "./routes/sustainabilityFacts";
+import userHabitCompletedRouter from "./routes/userHabitsCompleted";
 
 dotenv.config();
 
@@ -18,10 +19,11 @@ app.use(cors());
 
 app.use("/api/habits", habitRouter);
 app.use("/api/users", userRouter);
-app.use("/api/userHabit", userHabitRouter);
-app.use("/api/userHabitCompleted", userHabitCompletedRouter);
-app.use("/api/ecotips", ecotipsRouter);
-app.use("/api/sustainabilityFacts", sustainabilityFactsRouter);
+app.use("/api/userHabits", userHabitRouter);
+app.use("/api/userHabitsCompleted", userHabitCompletedRouter);
+app.use("/api/challenges", challengeRouter);
+app.use("/api/ecotips", ecotipRouter);
+app.use("/api/sustainabilityFacts", sustainabilityFactRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
