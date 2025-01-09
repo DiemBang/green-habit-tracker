@@ -10,12 +10,28 @@ router.get("/", function (req: Request, res: Response) {
   console.log("category", category);
 
   let query = category ? { Category: category } : {};
-  // HÄMTA (anropa databas connection som skapades i app.js )
+
   req.app.locals.db
     .collection("Habit")
     .find(query)
     .toArray()
     .then((results: Array<IHabit>) => {
+      console.log("results", results);
+      res.json(results);
+    });
+});
+
+/* GET specific habitTypes */
+router.post("/", function (req: Request, res: Response) {
+  let identifier = req.body.identifier;
+  console.log("identifier", identifier);
+
+  let query = identifier ? { Identifier: identifier } : {};
+
+  req.app.locals.db
+    .collection("Habit")
+    .findOne(query)
+    .then((results: IHabit) => {
       console.log("results", results);
       res.json(results);
     });
