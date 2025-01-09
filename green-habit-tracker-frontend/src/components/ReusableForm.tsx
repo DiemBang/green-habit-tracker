@@ -3,10 +3,16 @@ import { useState } from "react";
 interface ReusableFormProps {
   title: string;
   buttonText: string;
-  onSubmit: (email: string, password: string) => void;
+  onSubmit: (email: string, password: string, extraFieldValue?: string) => void;
   linkText: string;
   linkHref: string;
   linkDescription: string;
+  extraField?: {
+    label: string;
+    placeholder: string;
+    value: string;
+    onChange: (value: string) => void;
+  };
 }
 
 export const ReusableForm: React.FC<ReusableFormProps> = ({
@@ -16,18 +22,19 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
   linkText,
   linkHref,
   linkDescription,
+  extraField,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(email, password);
+    onSubmit(email, password, extraField?.value);
   };
 
   return (
     <>
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+      <div className="w-full max-w-xs md:max-w-md p-6 sm:p-8 space-y-8 bg-white rounded-lg shadow-md">
         {/* Title */}
         <div className="text-center">
           <h1 className="text-2xl font-bold text-green-600">
@@ -38,6 +45,28 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
 
         {/* Form */}
         <form className="space-y-6" onSubmit={handleSubmit}>
+          {/* Optional Extra Field */}
+          {extraField && (
+            <div>
+              <label
+                htmlFor="extra"
+                className="block text-sm font-medium text-gray-700"
+              >
+                {extraField.label}
+              </label>
+              <input
+                id="extra"
+                name="extra"
+                type="text"
+                value={extraField.value}
+                onChange={(e) => extraField.onChange(e.target.value)}
+                required
+                className="w-full p-3 mt-1 border rounded-lg focus:ring-green-500 focus:border-green-500"
+                placeholder={extraField.placeholder}
+              />
+            </div>
+          )}
+          {/* Email Input */}
           <div>
             <label
               htmlFor="email"
@@ -57,6 +86,7 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
             />
           </div>
 
+          {/* Password Input */}
           <div>
             <label
               htmlFor="password"
