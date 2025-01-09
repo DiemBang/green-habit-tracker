@@ -48,6 +48,27 @@ router.post("/add", async (req: Request, res: Response) => {
   }
 });
 
-// ToDo: GET userhabit for specific user
+// GET userhabit for specific user
+router.post("/", async (req: Request, res: Response): Promise<any> => {
+  req.app.locals.db
+    .collection("UserHabit") // Specify the type for the collection
+    .find({ UserID: req.body.userID })
+    .toArray()
+    .then((results: IUserHabit[]) => {
+      if (results.length === 0) {
+        // Handle case where no user is found
+        return res.status(404).json({ error: "User not found." });
+      }
+      console.log("results", results);
+      res.json(results);
+    })
+    .catch((dbError: unknown) => {
+      // Handle database errors
+      console.error("Database error:", dbError);
+      res
+        .status(500)
+        .json({ error: "Internal Server Error. Please try again later." });
+    });
+});
 
 export default router;
