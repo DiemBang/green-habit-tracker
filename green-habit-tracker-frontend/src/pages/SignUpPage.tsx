@@ -1,15 +1,36 @@
 import { useState } from "react";
 import { ReusableForm } from "../components/ReusableForm";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const SignUpPage: React.FC = () => {
   const [name, setName] = useState("");
-  const handleSignUp = (email: string, password: string, name?: string) => {
-    console.log("Signing up with:", email, password, name);
-    // Add sign-up logic here
-    // TODO:
-    // 1. Send a POST request to the server with the user's email, password, and name
-    // 1. Save User _id and userToken in local storage
-    // 2. Redirect to the home page
+  let navigate = useNavigate();
+
+  const handleSignUp = async (
+    email: string,
+    password: string,
+    name?: string
+  ) => {
+    // e.preventDefault();
+
+    const userData = { email, password, name };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/users/add",
+        userData
+      );
+      console.log("User added:", response.data);
+
+      // Set UserID and UserToken in local storage
+      localStorage.setItem("UserID", response.data.userID);
+      localStorage.setItem("UserToken", response.data.userToken);
+      // Redirect to the home page in React
+      navigate("/home", { replace: true });
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
   };
 
   return (

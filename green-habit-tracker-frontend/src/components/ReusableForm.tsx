@@ -3,7 +3,11 @@ import { useState } from "react";
 interface ReusableFormProps {
   title: string;
   buttonText: string;
-  onSubmit: (email: string, password: string, extraFieldValue?: string) => void;
+  onSubmit: (
+    email: string,
+    password: string,
+    extraFieldValue?: string
+  ) => Promise<any>;
   linkText: string;
   linkHref: string;
   linkDescription: string;

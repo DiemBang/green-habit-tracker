@@ -57,13 +57,15 @@ router.post("/add", async (req: Request, res: Response) => {
   console.log("Incoming request body:", req.body);
   try {
     // Encrypt Password
-    const userPw: string = req.body.Password;
+    const userPw: string = req.body.password;
+    console.log("User Password:", userPw);
+    console.log("User Password:", saltRounds);
     const hashedPW = await bcrypt.hash(userPw, saltRounds);
 
     // Create New User Object
     const newUser = {
-      Name: req.body.Name,
-      Email: req.body.Email,
+      Name: req.body.name,
+      Email: req.body.email,
       Password: hashedPW,
     };
 
@@ -72,8 +74,13 @@ router.post("/add", async (req: Request, res: Response) => {
       .collection("User")
       .insertOne(newUser);
     console.log("Insert Result:", result);
+    let userToken = await setUserToken(req, result.insertedId);
 
-    res.json({ message: `New user created with ID ${result.insertedId}` });
+    res.json({
+      message: `New user created with ID ${result.insertedId}`,
+      userToken: userToken,
+      userID: result.insertedId,
+    });
   } catch (error) {
     console.error("Error creating user:", error);
     res.status(500).json({ error: "Internal Server Error" });
