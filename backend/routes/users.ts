@@ -23,7 +23,7 @@ router.get("/", (req: Request, res: Response) => {
     });
 });
 
-/* GET specific users */
+/* GET specific user */
 router.post("/", async (req: Request, res: Response): Promise<any> => {
   let findUser;
   try {
@@ -115,8 +115,9 @@ async function setUserToken(req: Request, userId: number): Promise<string> {
 
 /* Log in User */
 router.post("/login", async (req, res): Promise<any> => {
-  let checkEmail = req.body.Email;
-  let checkPassword = req.body.Password;
+  let checkEmail = req.body.email;
+  let checkPassword = req.body.password;
+  console.log("Incoming request body:", req.body);
 
   req.app.locals.db
     .collection("User")
@@ -130,7 +131,7 @@ router.post("/login", async (req, res): Promise<any> => {
             return res.json({
               email: checkEmail,
               userToken: userToken,
-              user: user._id,
+              userID: user._id,
             });
           } else {
             return res.status(401).json({ message: "Incorrect login details" });
