@@ -1,9 +1,28 @@
+import axios from "axios";
 import { ReusableForm } from "../components/ReusableForm";
+import { useNavigate } from "react-router-dom";
 
 export const LoginPage: React.FC = () => {
-  const handleLogin = (email: string, password: string) => {
-    console.log("Logging in with:", email, password);
-    // Add login logic here
+  let navigate = useNavigate();
+
+  const handleLogin = async (email: string, password: string): Promise<any> => {
+    const userData = { email, password };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/users/login",
+        userData
+      );
+      console.log("User logged in:", response.data);
+
+      // Set UserID and UserToken in local storage
+      localStorage.setItem("UserID", response.data.userID);
+      localStorage.setItem("UserToken", response.data.userToken);
+      // Redirect to the home page in React
+      navigate("/home", { replace: true });
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
   };
 
   return (
