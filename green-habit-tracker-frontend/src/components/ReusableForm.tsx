@@ -26,10 +26,25 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(email, password, extraField?.value);
+
+    // Validate email
+    const isValidEmail = email.includes("@") && email.includes(".");
+    setEmailError(!isValidEmail);
+
+    // Only submit if the email is valid
+    if (isValidEmail) {
+      onSubmit(email, password, extraField?.value);
+    }
+  };
+
+  const handleEmailBlur = () => {
+    // Validate email on blur
+    const isValidEmail = email.includes("@") && email.includes(".");
+    setEmailError(!isValidEmail);
   };
 
   return (
@@ -44,19 +59,19 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
         </div>
 
         {/* Form */}
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-6" role="form" onSubmit={handleSubmit}>
           {/* Optional Extra Field */}
           {extraField && (
             <div>
               <label
-                htmlFor="extra"
+                htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
               >
                 {extraField.label}
               </label>
               <input
-                id="extra"
-                name="extra"
+                id="name"
+                name="name"
                 type="text"
                 value={extraField.value}
                 onChange={(e) => extraField.onChange(e.target.value)}
@@ -74,16 +89,29 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
             >
               Email
             </label>
+
             <input
               id="email"
               name="email"
               type="email"
+              aria-required="true"
+              aria-describedby="emailError"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onBlur={handleEmailBlur} // Validate on blur
               required
               className="w-full p-3 mt-1 border rounded-lg focus:ring-green-500 focus:border-green-500"
               placeholder="Enter your email"
             />
+            {emailError && (
+              <div
+                id="emailError"
+                className="text-red-500 text-sm mt-2"
+                aria-live="assertive"
+              >
+                Please enter a valid email.
+              </div>
+            )}
           </div>
 
           {/* Password Input */}
@@ -98,6 +126,7 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
               id="password"
               name="password"
               type="password"
+              aria-required="true"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -109,7 +138,7 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
           <div>
             <button
               type="submit"
-              className="w-full px-4 py-3 font-bold text-white bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-3 font-bold text-white bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
               {buttonText}
             </button>
