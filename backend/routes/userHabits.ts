@@ -17,4 +17,6 @@ router.get("/", function (req: Request, res: Response) {
     });
 });
 
+// ToDo: GET userhabit for specific user
+
 export default router;
