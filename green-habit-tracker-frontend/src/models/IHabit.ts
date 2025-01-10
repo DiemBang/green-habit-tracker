@@ -1,5 +1,6 @@
-export interface IHabitType {
+export interface IHabit {
   _id: number;
+  Identifier: string;
   Name: string;
   Description: string;
   GoodToKnow: string;

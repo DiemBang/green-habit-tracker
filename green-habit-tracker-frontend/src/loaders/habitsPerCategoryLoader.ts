@@ -1,10 +1,10 @@
-import { IHabitType } from "../models/IHabitType";
+import { IHabit } from "../models/IHabit";
 import { ILoader } from "../models/ILoader";
-import { getHabits, getHabitsFiltered } from "../services/habitTypeService";
+import { getHabits, getHabitsFiltered } from "../services/habitService";
 
 export const habitsPerCategoryPageLoader = async ({ params }: ILoader) => {
   let category = params.category ? params.category : "";
-  let habitTypes: Array<IHabitType> = [];
+  let habitTypes: Array<IHabit> = [];
   if (category === "All") {
     habitTypes = await getHabits();
   } else {
