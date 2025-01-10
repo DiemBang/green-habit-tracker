@@ -11,6 +11,8 @@ import { habitsPerCategoryPageLoader } from "./loaders/habitsPerCategoryLoader";
 import { LoginPage } from "./pages/LoginPage";
 import { AuthLayout } from "./components/shared/AuthLayout";
 import { SignUpPage } from "./pages/SignUpPage";
+import { HabitPage } from "./pages/HabitPage";
+import { habitLoader } from "./loaders/habitLoader";
 
 export const router = createBrowserRouter([
   // Auth Layout (no header/footer)
@@ -65,6 +67,11 @@ export const router = createBrowserRouter([
         path: "/habitsPerCategory/:category",
         element: <HabitsPerCategory></HabitsPerCategory>,
         loader: habitsPerCategoryPageLoader,
+      },
+      {
+        path: "/habit/:identifier",
+        element: <HabitPage></HabitPage>,
+        loader: habitLoader,
       },
     ],
   },

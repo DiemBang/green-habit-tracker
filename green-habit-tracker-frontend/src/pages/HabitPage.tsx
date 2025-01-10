@@ -1,30 +1,28 @@
-import { IHabitType } from "../models/IHabitType";
+import { useLoaderData } from "react-router-dom";
+import { IHabit } from "../models/IHabit";
 
-interface HabitProps {
-  habitType: IHabitType;
-}
+export const HabitPage = () => {
+  const habit = useLoaderData() as IHabit;
 
-export const Habit = ({ habitType }: HabitProps) => {
   return (
     <>
       <section className="mb-4 p-4 border rounded-lg shadow-md">
-        <h3 className="text-xl font-semibold">{habitType.Name}</h3>
+        <h3 className="text-xl font-semibold">{habit.Name}</h3>
         <button>
           <span className="material-symbols-outlined">add</span>
           Add
         </button>
-        <p>{habitType.Co2EmissionKgPerAction}</p>
-        <p>{habitType.Points}</p>
-        <p className="text-gray-600">{habitType.Description}</p>
+        <p>{habit.Co2EmissionKgPerAction}</p>
+        <p>{habit.Points}</p>
+        <p className="text-gray-600">{habit.Description}</p>
         <article>
           <h4>Good to know</h4>
-          <p>{habitType.GoodToKnow}</p>
+          <p>{habit.GoodToKnow}</p>
         </article>
       </section>
       <section>
-        <p>Frequency</p>
-        <p>Reminder time</p>
-        <p>Start and end dates</p>
+        <h4>Frequency</h4>
+        <h4>Reminder time</h4>
       </section>
     </>
   );
