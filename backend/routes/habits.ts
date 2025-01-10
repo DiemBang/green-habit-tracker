@@ -9,7 +9,7 @@ router.get("/", function (req: Request, res: Response) {
   let category = req.query.category;
   console.log("category", category);
 
-  let query = category ? { Category: category } : {};
+  let query = category ? { category: category } : {};
 
   req.app.locals.db
     .collection("Habit")
@@ -21,12 +21,12 @@ router.get("/", function (req: Request, res: Response) {
     });
 });
 
-/* GET specific habitTypes */
+/* GET specific habitType */
 router.post("/", function (req: Request, res: Response) {
   let identifier = req.body.identifier;
   console.log("identifier", identifier);
 
-  let query = identifier ? { Identifier: identifier } : {};
+  let query = identifier ? { identifier: identifier } : {};
 
   req.app.locals.db
     .collection("Habit")

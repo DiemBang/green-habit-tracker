@@ -7,17 +7,17 @@ export const HabitPage = () => {
   return (
     <>
       <section className="mb-4 p-4 border rounded-lg shadow-md">
-        <h3 className="text-xl font-semibold">{habit.Name}</h3>
+        <h3 className="text-xl font-semibold">{habit.name}</h3>
         <button>
           <span className="material-symbols-outlined">add</span>
           Add
         </button>
-        <p>{habit.Co2EmissionKgPerAction}</p>
-        <p>{habit.Points}</p>
-        <p className="text-gray-600">{habit.Description}</p>
+        <p>{habit.co2EmissionKgPerAction}</p>
+        <p>{habit.points}</p>
+        <p className="text-gray-600">{habit.description}</p>
         <article>
           <h4>Good to know</h4>
-          <p>{habit.GoodToKnow}</p>
+          <p>{habit.goodToKnow}</p>
         </article>
       </section>
       <section>

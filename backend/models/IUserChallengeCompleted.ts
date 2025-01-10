@@ -1,7 +1,7 @@
 export interface IUserChallengeCompleted {
   _id: number;
-  UserID: number;
-  ChallengeID: number;
-  ChallengeName: string;
-  DateCompleted: Date;
+  userID: number;
+  challengeID: number;
+  challengeName: string;
+  dateCompleted: Date;
 }

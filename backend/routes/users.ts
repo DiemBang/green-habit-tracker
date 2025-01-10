@@ -64,9 +64,9 @@ router.post("/add", async (req: Request, res: Response) => {
 
     // Create New User Object
     const newUser = {
-      Name: req.body.name,
-      Email: req.body.email,
-      Password: hashedPW,
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPW,
     };
 
     // Insert User into Database
@@ -121,10 +121,10 @@ router.post("/login", async (req, res): Promise<any> => {
 
   req.app.locals.db
     .collection("User")
-    .findOne({ Email: checkEmail })
+    .findOne({ email: checkEmail })
     .then(async (user: IUser) => {
       bcrypt
-        .compare(checkPassword, user.Password)
+        .compare(checkPassword, user.password)
         .then(async function (result: boolean) {
           if (result === true) {
             let userToken = await setUserToken(req, user._id);

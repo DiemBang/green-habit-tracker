@@ -1,7 +1,7 @@
 export interface IUserHabitCompleted {
   _id: number;
-  UserHabitID: number;
-  DateCompleted: Date;
-  HabitIdentifier: string;
-  UserId: number;
+  userHabitID: number;
+  dateCompleted: Date;
+  habitIdentifier: string;
+  userId: number;
 }

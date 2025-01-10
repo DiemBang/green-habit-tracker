@@ -1,7 +1,7 @@
 export interface IChallenge {
   _id: number;
-  Name: string;
-  Description: string;
+  name: string;
+  description: string;
   HabitIdentifier: string;
   MonthAvailableToJoin: number;
   NoOfActionsCompletedNeeded: number;

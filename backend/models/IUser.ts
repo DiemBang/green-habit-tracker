@@ -1,7 +1,7 @@
 export interface IUser {
   _id: number;
-  Name: string;
-  Email: string;
-  Password: string;
+  name: string;
+  email: string;
+  password: string;
   NewUser: boolean;
 }

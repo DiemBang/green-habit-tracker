@@ -24,8 +24,8 @@ export const SignUpPage: React.FC = () => {
       console.log("User added:", response.data);
 
       // Set UserID and UserToken in local storage
-      localStorage.setItem("UserID", response.data.userID);
-      localStorage.setItem("UserToken", response.data.userToken);
+      localStorage.setItem("userID", response.data.userID);
+      localStorage.setItem("userToken", response.data.userToken);
       // Redirect to the home page in React
       navigate("/home", { replace: true });
     } catch (error) {

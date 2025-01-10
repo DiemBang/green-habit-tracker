@@ -25,11 +25,11 @@ router.post("/add", async (req: Request, res: Response) => {
 
     // Create New User Object
     const userHabit = {
-      UserID: req.body.userID,
-      HabitIdentifier: req.body.habitIdentifier,
-      DateStarted: dateStarted,
-      ReminderTime: req.body.reminderTime,
-      Frequency: req.body.frequency,
+      userID: req.body.userID,
+      habitIdentifier: req.body.habitIdentifier,
+      dateStarted: dateStarted,
+      reminderTime: req.body.reminderTime,
+      frequency: req.body.frequency,
     };
 
     // Insert userHabit into Database
@@ -52,7 +52,7 @@ router.post("/add", async (req: Request, res: Response) => {
 router.post("/", async (req: Request, res: Response): Promise<any> => {
   req.app.locals.db
     .collection("UserHabit") // Specify the type for the collection
-    .find({ UserID: req.body.userID })
+    .find({ userID: req.body.userID })
     .toArray()
     .then((results: IUserHabit[]) => {
       if (results.length === 0) {
