@@ -2,22 +2,36 @@ import { useLoaderData } from "react-router-dom";
 import { IHabit } from "../models/IHabit";
 import { Button } from "../components/ButtonWithIcon";
 import { useState } from "react";
+import axios from "axios";
 
 export const HabitPage = () => {
   const habit = useLoaderData() as IHabit;
-  const handleAdd = () => {
-    console.log("Habit added!");
-    // Add habit logic here
-  };
-
   const [frequency, setFrequency] = useState<string>("daily");
   const [reminderTime, setReminderTime] = useState<string>("");
+
+  const handleAdd = async () => {
+    const userHabit = {
+      userID: localStorage.getItem("userID"),
+      habitIdentifier: habit.identifier,
+      reminderTime: reminderTime,
+      frequency: frequency,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/userHabits/add",
+        userHabit
+      );
+      console.log("Habit added to user:", response.data);
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
+  };
 
   return (
     <>
       <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
         {/* Habit Title */}
-        <h3 className="text-2xl font-bold text-green-600 mb-4">{habit.name}</h3>
+        <h3 className="text-green-600">{habit.name}</h3>
 
         {/* Add Button */}
         <div className="mb-6">
@@ -46,7 +60,7 @@ export const HabitPage = () => {
         {/* Good to Know */}
         <article className="mb-6">
           <h4 className="text-lg font-semibold text-gray-800 mb-2">
-            Good to Know
+            Did you know?
           </h4>
           <p className="text-gray-600">{habit.goodToKnow}</p>
         </article>
