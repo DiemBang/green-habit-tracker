@@ -13,6 +13,7 @@ import { AuthLayout } from "./components/shared/AuthLayout";
 import { SignUpPage } from "./pages/SignUpPage";
 import { HabitPage } from "./pages/HabitPage";
 import { habitLoader } from "./loaders/habitLoader";
+import { sustainabiltyFactLoader } from "./loaders/sustainabiltyFactLoader";
 
 export const router = createBrowserRouter([
   // Auth Layout (no header/footer)
@@ -43,6 +44,7 @@ export const router = createBrowserRouter([
         // http://localhost:5173/
         path: "/home",
         element: <Home></Home>,
+        loader: sustainabiltyFactLoader,
       },
       {
         // http://localhost:5173/browse
