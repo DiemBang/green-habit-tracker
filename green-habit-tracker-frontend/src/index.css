@@ -42,6 +42,18 @@ h2 {
   font-size: 1.125rem;
 }
 
+h3 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700; /* Bold */
+  margin-bottom: 1rem; /* 16px */
+}
+
+h4 {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600; /* Semibold */
+  color: #1f2937; /* Equivalent to Tailwind's text-gray-800 */
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

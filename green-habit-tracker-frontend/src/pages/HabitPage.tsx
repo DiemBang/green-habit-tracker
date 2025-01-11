@@ -41,13 +41,13 @@ export const HabitPage = () => {
         {/* CO2 and Points */}
         <div className="grid grid-cols-2 gap-4 mb-6">
           <div>
-            <h4 className="text-lg font-semibold text-gray-800">CO₂ Saved</h4>
+            <h4>CO₂ Saved</h4>
             <p className="text-gray-600">
               {habit.co2EmissionKgPerAction} kg/action
             </p>
           </div>
           <div>
-            <h4 className="text-lg font-semibold text-gray-800">Points</h4>
+            <h4>Points</h4>
             <p className="text-gray-600">{habit.points}</p>
           </div>
         </div>
@@ -59,9 +59,7 @@ export const HabitPage = () => {
 
         {/* Good to Know */}
         <article className="mb-6">
-          <h4 className="text-lg font-semibold text-gray-800 mb-2">
-            Did you know?
-          </h4>
+          <h4>Did you know?</h4>
           <p className="text-gray-600">{habit.goodToKnow}</p>
         </article>
 
@@ -69,7 +67,7 @@ export const HabitPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Frequency Section */}
           <div>
-            <h4 className="text-lg font-semibold text-gray-800">Frequency</h4>
+            <h4>Frequency</h4>
             <select
               id="frequency"
               className="w-full px-4 py-3 border rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -84,9 +82,7 @@ export const HabitPage = () => {
 
           {/* Reminder Time Section */}
           <div>
-            <h4 className="text-lg font-semibold text-gray-800">
-              Set Reminder Time
-            </h4>
+            <h4>Set Reminder Time</h4>
             <input
               type="time"
               className="w-full h-[2.875rem] px-4 py-3 border rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-green-500"
