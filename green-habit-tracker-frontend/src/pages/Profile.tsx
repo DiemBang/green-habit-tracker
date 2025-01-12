@@ -3,7 +3,7 @@ import avatar from "../assets/avatar.svg";
 export const Profile = () => {
   return (
     <>
-      <p>This is Profile</p>
+      <h2>This is Profile</h2>
       <section>
         <img
           src={avatar}

@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Suspense } from "react";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
-import { Browse } from "./pages/Browse";
+import { Explore } from "./pages/Explore";
 import { Profile } from "./pages/Profile";
 import { Layout } from "./components/shared/Layout";
 import { Categories } from "./pages/Categories";
@@ -48,11 +48,11 @@ export const router = createBrowserRouter([
       },
       {
         // http://localhost:5173/browse
-        path: "/browse",
+        path: "/explore",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             {" "}
-            <Browse></Browse>
+            <Explore></Explore>
           </Suspense>
         ),
       },

@@ -23,16 +23,16 @@ export const Footer = () => {
               <p className="mt-0">Home</p>
             </div>
           </Link>
-          <Link to="/browse">
+          <Link to="/explore">
             <div
               role="button"
-              aria-label="Go to Browse"
+              aria-label="Go to Explore"
               className="flex flex-col items-center"
             >
               <span className="material-symbols-outlined" aria-hidden="true">
                 description
               </span>
-              <p>Browse</p>
+              <p>Explore</p>
             </div>
           </Link>
           <Link to="/profile">
