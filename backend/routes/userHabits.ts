@@ -23,6 +23,13 @@ router.post("/add", async (req: Request, res: Response) => {
   try {
     const dateStarted: Date = new Date();
 
+    // Get Habit object so we can get the name
+    const habit = await req.app.locals.db
+      .collection("Habit")
+      .findOne({ identifier: req.body.habitIdentifier });
+
+    const habitName = habit.name;
+
     // Create New User Object
     const userHabit = {
       userID: req.body.userID,
@@ -30,6 +37,7 @@ router.post("/add", async (req: Request, res: Response) => {
       dateStarted: dateStarted,
       reminderTime: req.body.reminderTime,
       frequency: req.body.frequency,
+      name: habitName,
     };
 
     // Insert userHabit into Database

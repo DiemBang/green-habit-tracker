@@ -1,8 +1,9 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { ISustainabilityFact } from "../models/ISustainabilityFact";
+import { IUserHabit } from "../models/IUserHabit";
 
 export const Home = () => {
-  const sustainabilityFacts = useLoaderData() as ISustainabilityFact[];
+  const { sustainabilityFacts, userHabits } = useLoaderData();
 
   // Calculate the index for today's fact
   const today = new Date();
@@ -17,7 +18,11 @@ export const Home = () => {
       </section>
       <h3>Today's habits</h3>
       <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
-        <p></p>
+        <ul>
+          {userHabits.map((habit: IUserHabit) => (
+            <li key={habit._id}>{habit.name}</li>
+          ))}
+        </ul>
       </section>
       <h3>Completed habits</h3>
       <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
