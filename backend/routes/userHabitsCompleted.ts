@@ -46,4 +46,41 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     });
 });
 
+/* Add completed habit for User */
+router.post("/add", async (req: Request, res: Response) => {
+  console.log("Incoming request body:", req.body);
+  try {
+    const dateCompleted: Date = new Date();
+
+    // Get Habit object so we can get the name
+    const habit = await req.app.locals.db
+      .collection("Habit")
+      .findOne({ identifier: req.body.habitIdentifier });
+
+    const habitName = habit.name;
+
+    // Create New User Object
+    const userHabitCompleted = {
+      userID: req.body.userID,
+      habitIdentifier: req.body.habitIdentifier,
+      dateCompleted: dateCompleted,
+      name: habitName,
+    };
+
+    // Insert userHabit into Database
+    const result = await req.app.locals.db
+      .collection("UserHabitCompleted")
+      .insertOne(userHabitCompleted);
+    console.log("Insert Result:", result);
+
+    res.json({
+      message: `New userHabitCompleted added with ID ${result.insertedId}`,
+      userHabitCompletedID: result.insertedId,
+    });
+  } catch (error) {
+    console.error("Error creating user:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 export default router;
