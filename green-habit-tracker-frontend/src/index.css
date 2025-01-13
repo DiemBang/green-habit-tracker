@@ -40,6 +40,7 @@ h1 {
 
 h2 {
   font-size: 2rem;
+  color: rgb(22 163 74 / var(--tw-text-opacity, 1)) /* #16a34a */;
 }
 
 h3 {

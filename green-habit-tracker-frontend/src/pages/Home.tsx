@@ -21,7 +21,7 @@ export const Home = () => {
   // ToDo: add habit.completed in database backend query
   return (
     <>
-      <h2 className="text-green-600">What's on?</h2>
+      <h2>Hip hop, hippy to the hip hop habit</h2>
       <h3>Did you know?</h3>
       <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
         <p>{sustainabilityFacts[factIndex].description}</p>
