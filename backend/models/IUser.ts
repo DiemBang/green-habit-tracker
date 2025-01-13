@@ -3,5 +3,5 @@ export interface IUser {
   name: string;
   email: string;
   password: string;
-  NewUser: boolean;
+  newUser: boolean;
 }
