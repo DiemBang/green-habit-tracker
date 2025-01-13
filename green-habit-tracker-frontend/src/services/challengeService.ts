@@ -9,3 +9,10 @@ export const getChallenges = async (): Promise<IChallenge[]> => {
   console.log(response.data);
   return response.data;
 };
+
+export const getCurrentChallenges = async (): Promise<IChallenge[]> => {
+  let response = await axios.get(BASE_URL + "/current");
+
+  console.log(response.data);
+  return response.data;
+};

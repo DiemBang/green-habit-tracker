@@ -1,8 +1,8 @@
-import { getChallenges } from "../services/challengeService";
+import { getCurrentChallenges } from "../services/challengeService";
 
 export const explorePageLoader = async () => {
   try {
-    const challenges = await getChallenges();
+    const challenges = await getCurrentChallenges();
 
     console.log("Challenges loaded:", challenges);
 
