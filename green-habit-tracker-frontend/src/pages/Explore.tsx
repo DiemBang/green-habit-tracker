@@ -6,20 +6,6 @@ import clothChampionIcon from "../assets/challenge-icons/cloth-champion.png";
 import { IChallenge } from "../models/IChallenge";
 
 export const Explore = () => {
-  // TODO:
-  // 1. Add endpoint to get this months challenges
-  // 2. Import the icons to this Explore file
-  //     import utensilHeroIcon from "../assets/challenge-icons/utensilHeroIcon.png";
-  // 3. Make an object/dictionary of the icons for each challenge
-
-  // challengeIcons = {
-  //   "Utensil Hero": utensilHeroIcon,
-  //   ...
-  // }
-
-  // 4. Use the icons in the challenges section below
-  // <img src={challengeIcons[challenges[0].name]} alt={challenges[0].name} />
-
   type StringDictionary = { [key: string]: string };
 
   const challengeIcons: StringDictionary = {
@@ -29,7 +15,7 @@ export const Explore = () => {
     "Cloth Champion": clothChampionIcon,
   };
 
-  const { challenges } = useLoaderData();
+  const { challenges, ecotip } = useLoaderData();
 
   return (
     <>
@@ -50,7 +36,8 @@ export const Explore = () => {
       </section>
       <h3>Eco-tip of the day</h3>
       <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
-        <p></p>
+        <h4>{ecotip.name}</h4>
+        <p>{ecotip.description}</p>
       </section>
     </>
   );
