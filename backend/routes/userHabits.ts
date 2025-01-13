@@ -79,4 +79,83 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     });
 });
 
+// GET userhabit with completedToday status for specific user
+router.post(
+  "/withCompletedTodayStatus",
+  async (req: Request, res: Response): Promise<any> => {
+    const today = new Date();
+    const startOfToday = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
+    const endOfToday = new Date(startOfToday);
+    endOfToday.setDate(startOfToday.getDate() + 1);
+
+    let userID = req.body.userID;
+    req.app.locals.db
+      .collection("UserHabit") // Specify the type for the collection
+      .aggregate([
+        // Step 1: Match UserHabit documents for the specified userId
+        { $match: { userID: userID } },
+
+        // Step 2: Perform a lookup to join with UserHabitCompleted
+        {
+          $lookup: {
+            from: "UserHabitCompleted",
+            let: {
+              habitIdentifier: "$habitIdentifier",
+              habitUserID: "$userID",
+            },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $eq: ["$habitIdentifier", "$$habitIdentifier"] },
+                      { $eq: ["$userID", "$$habitUserID"] },
+                      { $gte: ["$dateCompleted", startOfToday] },
+                      { $lt: ["$dateCompleted", endOfToday] },
+                    ],
+                  },
+                },
+              },
+            ],
+            as: "completedTodayEntries",
+          },
+        },
+
+        // Step 3: Add the completedToday field
+        {
+          $addFields: {
+            completedToday: { $gt: [{ $size: "$completedTodayEntries" }, 0] },
+          },
+        },
+
+        // Step 4: Clean up unnecessary fields
+        {
+          $project: {
+            completedTodayEntries: 0, // Remove the temporary join array
+          },
+        },
+      ])
+      .toArray()
+      .then((results: IUserHabit[]) => {
+        if (results.length === 0) {
+          // Handle case where no user is found
+          return res.status(404).json({ error: "User not found." });
+        }
+        console.log("results", results);
+        res.json(results);
+      })
+      .catch((dbError: unknown) => {
+        // Handle database errors
+        console.error("Database error:", dbError);
+        res
+          .status(500)
+          .json({ error: "Internal Server Error. Please try again later." });
+      });
+  }
+);
+
 export default router;
