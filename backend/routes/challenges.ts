@@ -35,4 +35,20 @@ router.get("/current", async (req: Request, res: Response): Promise<any> => {
     });
 });
 
+/* GET specific challenge */
+router.post("/", function (req: Request, res: Response) {
+  let habitIdentifier = req.body.habitIdentifier;
+  console.log("identifier", habitIdentifier);
+
+  let query = habitIdentifier ? { habitIdentifier: habitIdentifier } : {};
+
+  req.app.locals.db
+    .collection("Challenge")
+    .findOne(query)
+    .then((results: IChallenge) => {
+      console.log("results", results);
+      res.json(results);
+    });
+});
+
 export default router;

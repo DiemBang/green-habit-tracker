@@ -16,3 +16,9 @@ export const getCurrentChallenges = async (): Promise<IChallenge[]> => {
   console.log(response.data);
   return response.data;
 };
+
+export const getChallenge = async (identifier: string): Promise<IChallenge> => {
+  let query = { habitIdentifier: identifier };
+  let response = await axios.post(BASE_URL, query);
+  return response.data;
+};

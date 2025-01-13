@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import utensilHero from "../assets/challenge-icons/utensil-hero.png";
 import noMorePlasticBagsIcon from "../assets/challenge-icons/no-plasticbags.png";
@@ -25,11 +26,13 @@ export const Explore = () => {
         <div className="flex flex-wrap gap-6 justify-start">
           {challenges.map((challenge: IChallenge, index: number) => (
             <div key={index} className="flex items-center justify-center">
-              <img
-                src={challengeIcons[challenge.name]}
-                alt={challenge.description}
-                className="w-32 h-32 object-contain rounded-md"
-              />
+              <Link to={`/challenge/${challenge.habitIdentifier}`}>
+                <img
+                  src={challengeIcons[challenge.name]}
+                  alt={challenge.description}
+                  className="w-32 h-32 object-contain rounded-md"
+                />
+              </Link>
             </div>
           ))}
         </div>

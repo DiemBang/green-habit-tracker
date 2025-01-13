@@ -15,6 +15,8 @@ import { HabitPage } from "./pages/HabitPage";
 import { habitLoader } from "./loaders/habitLoader";
 import { homePageLoader } from "./loaders/homePageLoader";
 import { explorePageLoader } from "./loaders/explorePageLoader";
+import { ChallengePage } from "./pages/ChallengePage";
+import { challengeLoader } from "./loaders/challengeLoader";
 
 export const router = createBrowserRouter([
   // Auth Layout (no header/footer)
@@ -76,6 +78,11 @@ export const router = createBrowserRouter([
         path: "/habit/:identifier",
         element: <HabitPage></HabitPage>,
         loader: habitLoader,
+      },
+      {
+        path: "/challenge/:identifier",
+        element: <ChallengePage></ChallengePage>,
+        loader: challengeLoader,
       },
     ],
   },

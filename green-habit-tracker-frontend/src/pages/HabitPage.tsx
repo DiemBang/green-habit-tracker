@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { IHabit } from "../models/IHabit";
-import { Button } from "../components/ButtonWithIcon";
+import { ButtonWithIcon } from "../components/ButtonWithIcon";
 import { useState } from "react";
 import axios from "axios";
 
@@ -35,7 +35,7 @@ export const HabitPage = () => {
 
         {/* Add Button */}
         <div className="mb-6">
-          <Button text="Add" onClick={handleAdd} />
+          <ButtonWithIcon text="Add" onClick={handleAdd} />
         </div>
 
         {/* CO2 and Points */}

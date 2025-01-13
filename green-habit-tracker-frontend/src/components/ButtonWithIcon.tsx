@@ -4,7 +4,11 @@ interface ButtonProps {
   className?: string; // Optional additional styles
 }
 
-export const Button: React.FC<ButtonProps> = ({ text, onClick, className }) => {
+export const ButtonWithIcon: React.FC<ButtonProps> = ({
+  text,
+  onClick,
+  className,
+}) => {
   return (
     <button
       onClick={onClick}
