@@ -8,3 +8,14 @@ export const getUserHabits = async (userID: string): Promise<IUserHabit> => {
   let response = await axios.post(BASE_URL, query);
   return response.data;
 };
+
+export const getUserHabitsWithCompletedTodayStatus = async (
+  userID: string
+): Promise<IUserHabit> => {
+  let query = { userID: userID };
+  let response = await axios.post(
+    BASE_URL + "/withCompletedTodayStatus",
+    query
+  );
+  return response.data;
+};

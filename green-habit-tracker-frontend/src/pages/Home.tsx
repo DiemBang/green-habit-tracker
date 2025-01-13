@@ -12,8 +12,11 @@ export const Home = () => {
 
   // WIP: Toggle habit completion
   const toggleCompletion = (id: string) => {
+    console.log("Toggling habit completion for habit with ID:", id);
     const updatedHabits = habits.map((habit: IUserHabit) =>
-      habit._id === id ? { ...habit, completed: !habit.completed } : habit
+      habit._id === id
+        ? { ...habit, completedToday: !habit.completedToday }
+        : habit
     );
     setHabits(updatedHabits);
   };
@@ -29,19 +32,23 @@ export const Home = () => {
       <h3>Today's habits</h3>
       <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
         <ul>
-          {userHabits.map((habit: IUserHabit) => (
+          {habits.map((habit: IUserHabit) => (
             <li key={habit._id}>
               {habit.name}
               <span
                 onClick={() => toggleCompletion(habit._id)}
                 className={`material-symbols-outlined cursor-pointer text-2xl ${
-                  habit.completed ? "text-green-500" : "text-gray-500"
+                  habit.completedToday ? "text-green-500" : "text-gray-500"
                 }`}
                 title={
-                  habit.completed ? "Mark as incomplete" : "Mark as complete"
+                  habit.completedToday
+                    ? "Mark as incomplete"
+                    : "Mark as complete"
                 }
               >
-                {habit.completed ? "check_circle" : "radio_button_unchecked"}
+                {habit.completedToday
+                  ? "check_circle"
+                  : "radio_button_unchecked"}
               </span>
             </li>
           ))}
