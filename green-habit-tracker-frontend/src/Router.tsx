@@ -14,6 +14,7 @@ import { SignUpPage } from "./pages/SignUpPage";
 import { HabitPage } from "./pages/HabitPage";
 import { habitLoader } from "./loaders/habitLoader";
 import { homePageLoader } from "./loaders/homePageLoader";
+import { explorePageLoader } from "./loaders/explorePageLoader";
 
 export const router = createBrowserRouter([
   // Auth Layout (no header/footer)
@@ -55,6 +56,7 @@ export const router = createBrowserRouter([
             <Explore></Explore>
           </Suspense>
         ),
+        loader: explorePageLoader,
       },
       {
         // http://localhost:5173/profile
