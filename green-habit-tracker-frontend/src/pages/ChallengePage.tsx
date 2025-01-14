@@ -1,10 +1,25 @@
 import { useLoaderData } from "react-router-dom";
 import { IChallenge } from "../models/IChallenge";
 import { ButtonWithIcon } from "../components/ButtonWithIcon";
+import axios from "axios";
 export const ChallengePage = () => {
   const challenge = useLoaderData() as IChallenge;
-  const handleJoin = () => {
-    console.log("Joining challenge", challenge.name);
+  const handleJoin = async () => {
+    const userChallenge = {
+      challengeID: challenge._id,
+      challengeName: challenge.name,
+      userID: localStorage.getItem("userID"),
+      lengthOfChallengeInDays: challenge.lengthOfChallengeInDays,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/userChallenges/add",
+        userChallenge
+      );
+      console.log("Joining challenge:", response.data);
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
   };
   return (
     <>
