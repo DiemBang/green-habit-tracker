@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { IUserHabit } from "../models/IUserHabit";
 import { useState } from "react";
+import { addUserHabitCompletedForUser } from "../services/userHabitCompletedService";
 
 export const Home = () => {
   const { sustainabilityFacts, userHabits } = useLoaderData();
@@ -11,13 +12,31 @@ export const Home = () => {
   const factIndex = today.getDate() % sustainabilityFacts.length; // Ensures index wraps around
 
   // WIP: Toggle habit completion
-  const toggleCompletion = (id: string) => {
+  const toggleCompletion = async (id: string) => {
     console.log("Toggling habit completion for habit with ID:", id);
-    const updatedHabits = habits.map((habit: IUserHabit) =>
-      habit._id === id
-        ? { ...habit, completedToday: !habit.completedToday }
-        : habit
-    );
+    const updatedHabits: IUserHabit[] = [];
+
+    for (const habit of habits) {
+      if (habit._id === id) {
+        // Toggle the `completedToday` value for the matching habit
+        const updatedHabit = {
+          ...habit,
+          completedToday: !habit.completedToday,
+        };
+
+        updatedHabits.push(updatedHabit);
+        // TODO: Make backend call to add or remove CompletedUserHabit here
+        addUserHabitCompletedForUser(
+          habit.userID,
+          habit.habitIdentifier,
+          habit.name
+        );
+      } else {
+        updatedHabits.push(habit);
+      }
+    }
+
+    // Update the state with the new habits array
     setHabits(updatedHabits);
   };
 
