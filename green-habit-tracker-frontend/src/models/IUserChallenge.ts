@@ -1,5 +1,5 @@
 export interface IUserChallenge {
-  _id: number;
+  _id: string;
   challengeID: string;
   challengeName: string;
   dateEnded: Date;

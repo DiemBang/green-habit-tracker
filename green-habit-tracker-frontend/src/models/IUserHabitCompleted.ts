@@ -1,5 +1,5 @@
 export interface IUserHabitCompleted {
-  _id: number;
+  _id: string;
   dateCompleted: Date;
   habitIdentifier: string;
   userHabitID: string;

@@ -1,5 +1,5 @@
 export interface IEcotip {
-  _id: number;
+  _id: string;
   description: string;
   name: string;
 }

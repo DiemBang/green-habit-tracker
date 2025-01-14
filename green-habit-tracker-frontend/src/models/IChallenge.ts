@@ -1,5 +1,5 @@
 export interface IChallenge {
-  _id: number;
+  _id: string;
   description: string;
   name: string;
   habitIdentifier: string;
