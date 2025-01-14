@@ -3,6 +3,7 @@ import { IHabit } from "../models/IHabit";
 import { ButtonWithIcon } from "../components/ButtonWithIcon";
 import { useState } from "react";
 import axios from "axios";
+import { CardSection } from "../components/CardSection";
 
 export const HabitPage = () => {
   const habit = useLoaderData() as IHabit;
@@ -29,7 +30,7 @@ export const HabitPage = () => {
 
   return (
     <>
-      <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
+      <CardSection>
         {/* Habit Title */}
         <h3 className="text-green-600">{habit.name}</h3>
 
@@ -91,7 +92,7 @@ export const HabitPage = () => {
             />
           </div>
         </div>
-      </section>
+      </CardSection>
     </>
   );
 };

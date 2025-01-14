@@ -2,6 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { IUserHabit } from "../models/IUserHabit";
 import { useState } from "react";
 import { addUserHabitCompletedForUser } from "../services/userHabitCompletedService";
+import { CardSection } from "../components/CardSection";
 
 export const Home = () => {
   const { sustainabilityFacts, userHabits } = useLoaderData();
@@ -45,11 +46,11 @@ export const Home = () => {
     <>
       <h2>Hip hop, hippy to the hip hop habit</h2>
       <h3>Did you know?</h3>
-      <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
+      <CardSection>
         <p>{sustainabilityFacts[factIndex].description}</p>
-      </section>
+      </CardSection>
       <h3>Today's habits</h3>
-      <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
+      <CardSection>
         <ul>
           {habits.map((habit: IUserHabit) => (
             <li key={habit._id}>
@@ -72,7 +73,7 @@ export const Home = () => {
             </li>
           ))}
         </ul>
-      </section>
+      </CardSection>
 
       <Link to="/categories">
         <button

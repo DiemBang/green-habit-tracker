@@ -5,6 +5,7 @@ import noMorePlasticBagsIcon from "../assets/challenge-icons/no-plasticbags.png"
 import paperSaverIcon from "../assets/challenge-icons/paper-saver.png";
 import clothChampionIcon from "../assets/challenge-icons/cloth-champion.png";
 import { IChallenge } from "../models/IChallenge";
+import { CardSection } from "../components/CardSection";
 
 export const Explore = () => {
   type StringDictionary = { [key: string]: string };
@@ -22,7 +23,7 @@ export const Explore = () => {
     <>
       <h2>What's on?</h2>
       <h3>Challenges</h3>
-      <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
+      <CardSection>
         <div className="flex flex-wrap gap-6 justify-start">
           {challenges.map((challenge: IChallenge, index: number) => (
             <div key={index} className="flex items-center justify-center">
@@ -36,12 +37,12 @@ export const Explore = () => {
             </div>
           ))}
         </div>
-      </section>
+      </CardSection>
       <h3>Eco-tip of the day</h3>
-      <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
+      <CardSection>
         <h4>{ecotip.name}</h4>
         <p>{ecotip.description}</p>
-      </section>
+      </CardSection>
     </>
   );
 };

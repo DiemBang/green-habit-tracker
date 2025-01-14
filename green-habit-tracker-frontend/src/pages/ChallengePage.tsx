@@ -2,6 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import { IChallenge } from "../models/IChallenge";
 import { ButtonWithIcon } from "../components/ButtonWithIcon";
 import axios from "axios";
+import { CardSection } from "../components/CardSection";
+
 export const ChallengePage = () => {
   const challenge = useLoaderData() as IChallenge;
   const handleJoin = async () => {
@@ -26,7 +28,7 @@ export const ChallengePage = () => {
       <h2>Challenge: {challenge.name}</h2>
 
       <h3>What heading works here?</h3>
-      <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
+      <CardSection>
         <ul>
           <li key={challenge._id}>
             <h4>{challenge.name}</h4>
@@ -35,7 +37,7 @@ export const ChallengePage = () => {
           </li>
         </ul>
         <ButtonWithIcon text="Join" onClick={handleJoin} />
-      </section>
+      </CardSection>
     </>
   );
 };
