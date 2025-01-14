@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import homeIcon from "/src/assets/header-footer-icons/home.svg";
+import exploreIcon from "/src/assets/header-footer-icons/idea.svg";
+import profileIcon from "/src/assets/header-footer-icons/profile-user.svg";
 
 export const Footer = () => {
   return (
@@ -18,9 +21,9 @@ export const Footer = () => {
               className="flex flex-col items-center"
             >
               <img
-                src="src/assets/header-footer-icons/home.svg"
+                src={homeIcon}
                 alt="home icon"
-                className="w-6 h-6"
+                className="w-6 h-6 svg"
                 aria-hidden="true"
               />
               <p className="mt-0">Home</p>
@@ -33,9 +36,9 @@ export const Footer = () => {
               className="flex flex-col items-center"
             >
               <img
-                src="src/assets/header-footer-icons/idea.svg"
+                src={exploreIcon}
                 alt="explore icon"
-                className="w-6 h-6"
+                className="w-6 h-6 svg"
                 aria-hidden="true"
               />
               <p>Explore</p>
@@ -48,9 +51,9 @@ export const Footer = () => {
               className="flex flex-col items-center"
             >
               <img
-                src="src/assets/header-footer-icons/profile-user.svg"
+                src={profileIcon}
                 alt=""
-                className="w-6 h-6"
+                className="w-6 h-6 svg"
                 aria-hidden="true"
               />
               <p>Profile</p>

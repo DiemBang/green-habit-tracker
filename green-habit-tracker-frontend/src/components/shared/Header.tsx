@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
 import logotype from "../../assets/category-icons/all-category.png";
+import notificationIcon from "/src/assets/header-footer-icons/notification.svg";
+import calendarIcon from "/src/assets/header-footer-icons/calendar-silhouette.svg";
 
 export const Header = () => {
   const location = useLocation();
@@ -21,15 +23,15 @@ export const Header = () => {
         {isHomePage && (
           <div className="absolute right-4 flex items-center space-x-2">
             <img
-              src="src/assets/header-footer-icons/notification.svg"
+              src={notificationIcon}
               alt="notifications icon"
-              className="w-6 h-6"
+              className="w-6 h-6 svg"
               aria-hidden="true"
             />
             <img
-              src="src/assets/header-footer-icons/calendar-silhouette.svg"
+              src={calendarIcon}
               alt="calendar icon"
-              className="w-6 h-6"
+              className="w-6 h-6 svg"
               aria-hidden="true"
             />
           </div>

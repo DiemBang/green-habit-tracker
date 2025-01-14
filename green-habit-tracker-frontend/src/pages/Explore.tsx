@@ -6,6 +6,7 @@ import paperSaverIcon from "../assets/challenge-icons/paper-saver.png";
 import clothChampionIcon from "../assets/challenge-icons/cloth-champion.png";
 import { IChallenge } from "../models/IChallenge";
 import { CardSection } from "../components/CardSection";
+import ecoIcon from "/src/assets/ecotip-icon.svg";
 
 export const Explore = () => {
   type StringDictionary = { [key: string]: string };
@@ -38,7 +39,15 @@ export const Explore = () => {
           ))}
         </div>
       </CardSection>
-      <h3>Eco-tip of the day</h3>
+      <h3 className="flex items-center">
+        <img
+          src={ecoIcon}
+          alt="Eco Icon"
+          className="w-5 h-5 mr-2 inline-block"
+        />
+        Eco-tip of the day
+      </h3>
+
       <CardSection>
         <h4>{ecotip.name}</h4>
         <p>{ecotip.description}</p>
