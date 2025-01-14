@@ -6,7 +6,7 @@ interface CardSectionProps {
 
 export const CardSection: React.FC<CardSectionProps> = ({ children }) => {
   return (
-    <section className="w-[95%] mx-auto mb-6 p-6 bg-white border rounded-lg shadow-md">
+    <section className="w-[95%] mx-auto mb-6 p-6 bg-cloudWhite border rounded-lg shadow-md">
       {children}
     </section>
   );

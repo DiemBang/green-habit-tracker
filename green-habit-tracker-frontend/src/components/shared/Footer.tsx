@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <>
       <footer
-        className="w-screen h-16 bg-green-100 fixed bottom-0 flex items-center justify-around rounded-t-lg"
+        className="w-screen h-16 fixed bottom-0 flex items-center justify-around rounded-t-lg"
         role="contentinfo"
       >
         <section
@@ -17,9 +17,12 @@ export const Footer = () => {
               aria-label="Go to Home"
               className="flex flex-col items-center"
             >
-              <span className="material-symbols-outlined" aria-hidden="true">
-                home
-              </span>
+              <img
+                src="src/assets/header-footer-icons/home.svg"
+                alt="home icon"
+                className="w-6 h-6"
+                aria-hidden="true"
+              />
               <p className="mt-0">Home</p>
             </div>
           </Link>
@@ -29,9 +32,12 @@ export const Footer = () => {
               aria-label="Go to Explore"
               className="flex flex-col items-center"
             >
-              <span className="material-symbols-outlined" aria-hidden="true">
-                description
-              </span>
+              <img
+                src="src/assets/header-footer-icons/idea.svg"
+                alt="explore icon"
+                className="w-6 h-6"
+                aria-hidden="true"
+              />
               <p>Explore</p>
             </div>
           </Link>
@@ -41,9 +47,12 @@ export const Footer = () => {
               aria-label="Go to Profile"
               className="flex flex-col items-center"
             >
-              <span className="material-symbols-outlined" aria-hidden="true">
-                account_circle
-              </span>
+              <img
+                src="src/assets/header-footer-icons/profile-user.svg"
+                alt=""
+                className="w-6 h-6"
+                aria-hidden="true"
+              />
               <p>Profile</p>
             </div>
           </Link>

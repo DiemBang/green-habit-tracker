@@ -4,6 +4,7 @@ import { ButtonWithIcon } from "../components/ButtonWithIcon";
 import { useState } from "react";
 import axios from "axios";
 import { CardSection } from "../components/CardSection";
+import { PointsBadge } from "../components/PointsBadge";
 
 export const HabitPage = () => {
   const habit = useLoaderData() as IHabit;
@@ -32,7 +33,7 @@ export const HabitPage = () => {
     <>
       <CardSection>
         {/* Habit Title */}
-        <h3 className="text-green-600">{habit.name}</h3>
+        <h3>{habit.name}</h3>
 
         {/* Add Button */}
         <div className="mb-6">
@@ -49,7 +50,7 @@ export const HabitPage = () => {
           </div>
           <div>
             <h4>Points</h4>
-            <p className="text-gray-600">{habit.points}</p>
+            <PointsBadge>{habit.points}</PointsBadge>
           </div>
         </div>
 

@@ -12,7 +12,7 @@ export const ButtonWithIcon: React.FC<ButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center justify-center gap-1 px-2 py-1 font-bold text-white bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 ${className}`}
+      className={`flex items-center justify-center gap-1 px-2 py-1 font-bold text-white bg-calmBlue rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 ${className}`}
     >
       <span className="material-symbols-outlined">add</span>
       {text}

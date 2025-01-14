@@ -31,6 +31,18 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  @apply font-body text-gray-800; /* Use Roboto for body */
+  background-color: #f3f3f3;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-heading; /* Use Quicksand for headings */
+  color: #495057;
 }
 
 h1 {
@@ -40,7 +52,6 @@ h1 {
 
 h2 {
   font-size: 2rem;
-  color: rgb(22 163 74 / var(--tw-text-opacity, 1)) /* #16a34a */;
 }
 
 h3 {
@@ -55,6 +66,12 @@ h4 {
   color: #1f2937; /* Equivalent to Tailwind's text-gray-800 */
 }
 
+footer,
+header {
+  background-color: #bcceda;
+  color: #495057;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -63,6 +80,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  background-color: #a4e699;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -80,9 +98,6 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #10a605;
-  }
-  button {
-    background-color: #f9f9f9;
+    color: #8ec140;
   }
 }

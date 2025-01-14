@@ -9,7 +9,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className="w-screen h-16 bg-green-100 fixed top-0 rounded-b-lg flex items-center justify-center">
+      <header className="w-screen h-16 fixed top-0 rounded-b-lg flex items-center justify-center">
         <span>
           <img
             src={logotype}
@@ -20,12 +20,18 @@ export const Header = () => {
         {/* Conditionally Render Icons */}
         {isHomePage && (
           <div className="absolute right-4 flex items-center space-x-2">
-            <span className="material-symbols-outlined cursor-pointer hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-green-500">
-              notifications
-            </span>
-            <span className="material-symbols-outlined cursor-pointer hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-green-500">
-              calendar_today
-            </span>
+            <img
+              src="src/assets/header-footer-icons/notification.svg"
+              alt="notifications icon"
+              className="w-6 h-6"
+              aria-hidden="true"
+            />
+            <img
+              src="src/assets/header-footer-icons/calendar-silhouette.svg"
+              alt="calendar icon"
+              className="w-6 h-6"
+              aria-hidden="true"
+            />
           </div>
         )}
       </header>

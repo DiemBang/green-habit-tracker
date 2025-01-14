@@ -3,6 +3,7 @@ import { IChallenge } from "../models/IChallenge";
 import { ButtonWithIcon } from "../components/ButtonWithIcon";
 import axios from "axios";
 import { CardSection } from "../components/CardSection";
+import { PointsBadge } from "../components/PointsBadge";
 
 export const ChallengePage = () => {
   const challenge = useLoaderData() as IChallenge;
@@ -33,7 +34,9 @@ export const ChallengePage = () => {
           <li key={challenge._id}>
             <h4>{challenge.name}</h4>
             <p>{challenge.description}</p>
-            <p>{challenge.points}</p>
+            <PointsBadge>
+              <p>{challenge.points}</p>
+            </PointsBadge>
           </li>
         </ul>
         <ButtonWithIcon text="Join" onClick={handleJoin} />
