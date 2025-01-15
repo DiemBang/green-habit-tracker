@@ -1,6 +1,6 @@
 export interface IUserHabit {
   _id: string;
-  dateStarted: Date;
+  dateStarted: string;
   frequency: string;
   habitIdentifier: string;
   reminderTime: string;

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { addUserHabitCompletedForUser } from "../services/userHabitCompletedService";
 import { CardSection } from "../components/CardSection";
 import { useCalendar } from "../contexts/CalendarContext";
+import { HabitTodo } from "../components/HabitTodo";
 
 export const Home = () => {
   const { sustainabilityFacts, userHabits } = useLoaderData();
@@ -58,31 +59,19 @@ export const Home = () => {
       <CardSection>
         <p>{sustainabilityFacts[factIndex].description}</p>
       </CardSection>
-      <h3>My habits</h3>
+      <h3>Habits to complete</h3>
       <CardSection>
         <ul>
           {habits.map((habit: IUserHabit) => (
-            <li key={habit._id}>
-              {habit.name}
-              <span
-                onClick={() => toggleCompletion(habit._id)}
-                className={`material-symbols-outlined cursor-pointer text-2xl ${
-                  habit.completedToday ? "text-green-500" : "text-gray-500"
-                }`}
-                title={
-                  habit.completedToday
-                    ? "Mark as incomplete"
-                    : "Mark as complete"
-                }
-              >
-                {habit.completedToday
-                  ? "check_circle"
-                  : "radio_button_unchecked"}
-              </span>
-            </li>
+            <HabitTodo
+              habit={habit}
+              toggleCompletion={toggleCompletion}
+              key={habit._id}
+            ></HabitTodo>
           ))}
         </ul>
       </CardSection>
+
       <Link to="/categories">
         <button
           className="fixed bottom-20 right-4 text-fontPrimary rounded-lg px-2 py-2 flex items-center"
