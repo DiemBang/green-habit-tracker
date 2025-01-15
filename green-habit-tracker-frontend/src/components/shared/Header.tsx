@@ -2,18 +2,45 @@ import { useLocation } from "react-router-dom";
 import logotype from "../../assets/category-icons/all-category.png";
 import notificationIcon from "/src/assets/header-footer-icons/notification.svg";
 import calendarIcon from "/src/assets/header-footer-icons/calendar-silhouette.svg";
-import { useState } from "react";
-import Calendar from "react-calendar";
+import { useState, useEffect, useRef } from "react";
+import Calendar, { CalendarProps } from "react-calendar";
 
 export const Header = () => {
   const location = useLocation();
-
-  // Check if the current path is '/home'
   const isHomePage = location.pathname === "/home";
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const toggleCalendar = () => setShowCalendar(!showCalendar);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const calendarRef = useRef<HTMLDivElement | null>(null);
+
+  const toggleCalendar = () => setShowCalendar((prev) => !prev);
+
+  // Type-safe onChange handler
+  const handleDateChange: CalendarProps["onChange"] = (value) => {
+    if (value instanceof Date) {
+      setSelectedDate(value); // Update state if the value is a single Date
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        calendarRef.current &&
+        !calendarRef.current.contains(event.target as Node)
+      ) {
+        setShowCalendar(false); // Close the calendar
+      }
+    };
+
+    if (showCalendar) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    // Cleanup event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showCalendar]);
 
   return (
     <>
@@ -50,10 +77,13 @@ export const Header = () => {
         )}
         {/* Calendar Pop-up */}
         {showCalendar && (
-          <div className="absolute top-16 right-4 bg-cloudWhite p-4 shadow-lg rounded-lg z-50">
+          <div
+            ref={calendarRef}
+            className="absolute top-16 right-4 bg-cloudWhite p-4 shadow-lg rounded-lg z-50"
+          >
             <Calendar
               value={selectedDate}
-              onChange={setSelectedDate}
+              onChange={handleDateChange}
               className="react-calendar"
             />
           </div>
