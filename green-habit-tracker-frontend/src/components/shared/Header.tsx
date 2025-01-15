@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import logotype from "../../assets/category-icons/all-category.png";
 import notificationIcon from "/src/assets/header-footer-icons/notification.svg";
 import calendarIcon from "/src/assets/header-footer-icons/calendar-silhouette.svg";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Calendar, { CalendarProps } from "react-calendar";
 import { useCalendar } from "../../contexts/CalendarContext";
 
