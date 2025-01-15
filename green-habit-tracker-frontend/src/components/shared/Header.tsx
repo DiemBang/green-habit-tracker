@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import logotype from "../../assets/category-icons/all-category.png";
 import notificationIcon from "/src/assets/header-footer-icons/notification.svg";
 import calendarIcon from "/src/assets/header-footer-icons/calendar-silhouette.svg";
+import settingsIcon from "/src/assets/header-footer-icons/gear.svg";
 import { useEffect, useRef } from "react";
 import Calendar, { CalendarProps } from "react-calendar";
 import { useCalendar } from "../../contexts/CalendarContext";
@@ -9,6 +10,7 @@ import { useCalendar } from "../../contexts/CalendarContext";
 export const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
+  const isProfilePage = location.pathname === "/profile";
 
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const {
@@ -77,6 +79,16 @@ export const Header = () => {
                 aria-hidden="true"
               />
             </button>
+          </div>
+        )}
+        {isProfilePage && (
+          <div className="absolute right-4 flex items-center space-x-2">
+            <img
+              src={settingsIcon}
+              alt="settings icon"
+              className="w-6 h-6 svg"
+              aria-hidden="true"
+            />
           </div>
         )}
         {/* Calendar Pop-up */}
