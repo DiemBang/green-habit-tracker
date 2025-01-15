@@ -3,10 +3,19 @@ import { IUserHabit } from "../models/IUserHabit";
 import { useState } from "react";
 import { addUserHabitCompletedForUser } from "../services/userHabitCompletedService";
 import { CardSection } from "../components/CardSection";
+import { useCalendar } from "../contexts/CalendarContext";
 
 export const Home = () => {
   const { sustainabilityFacts, userHabits } = useLoaderData();
   const [habits, setHabits] = useState(userHabits);
+  const { selectedDate } = useCalendar();
+
+  const formattedDate = selectedDate.toLocaleDateString("en-GB", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   // Calculate the index for today's fact
   const today = new Date();
@@ -44,12 +53,12 @@ export const Home = () => {
   // ToDo: add habit.completed in database backend query
   return (
     <>
-      <h2>Hip hop, hippy to the hip hop habit</h2>
+      <h3>{formattedDate}</h3>
       <h3>Did you know?</h3>
       <CardSection>
         <p>{sustainabilityFacts[factIndex].description}</p>
       </CardSection>
-      <h3>Today's habits</h3>
+      <h3>My habits</h3>
       <CardSection>
         <ul>
           {habits.map((habit: IUserHabit) => (
@@ -74,7 +83,6 @@ export const Home = () => {
           ))}
         </ul>
       </CardSection>
-
       <Link to="/categories">
         <button
           className="fixed bottom-20 right-4 text-fontPrimary rounded-lg px-2 py-2 flex items-center"

@@ -4,16 +4,20 @@ import notificationIcon from "/src/assets/header-footer-icons/notification.svg";
 import calendarIcon from "/src/assets/header-footer-icons/calendar-silhouette.svg";
 import { useState, useEffect, useRef } from "react";
 import Calendar, { CalendarProps } from "react-calendar";
+import { useCalendar } from "../../contexts/CalendarContext";
 
 export const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
 
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const calendarRef = useRef<HTMLDivElement | null>(null);
-
-  const toggleCalendar = () => setShowCalendar((prev) => !prev);
+  const {
+    toggleCalendar,
+    showCalendar,
+    selectedDate,
+    setSelectedDate,
+    setShowCalendar,
+  } = useCalendar();
 
   // Type-safe onChange handler
   const handleDateChange: CalendarProps["onChange"] = (value) => {
