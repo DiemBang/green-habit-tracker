@@ -12,13 +12,35 @@ export const HabitPage = () => {
   const [reminderTime, setReminderTime] = useState<string>("");
 
   const handleAdd = async () => {
-    const userHabit = {
-      userID: localStorage.getItem("userID"),
-      habitIdentifier: habit.identifier,
-      reminderTime: reminderTime,
-      frequency: frequency,
-    };
     try {
+      const userID = localStorage.getItem("userID");
+
+      // Fetch the current user's habits
+      const existingHabitsResponse = await axios.get(
+        `http://localhost:3000/api/userHabits?userID=${userID}`
+      );
+
+      const existingHabits = existingHabitsResponse.data;
+
+      // Check if the habit already exists
+      const isHabitAlreadyAdded = existingHabits.some(
+        (h: { habitIdentifier: string }) =>
+          h.habitIdentifier === habit.identifier
+      );
+
+      if (isHabitAlreadyAdded) {
+        console.log("Habit already exists in the list.");
+        alert("This habit is already in your list.");
+        return; // Prevent duplicate addition
+      }
+      // If the habit is not a duplicate, add it
+      const userHabit = {
+        userID: userID,
+        habitIdentifier: habit.identifier,
+        reminderTime: reminderTime,
+        frequency: frequency,
+      };
+
       const response = await axios.post(
         "http://localhost:3000/api/userHabits/add",
         userHabit
