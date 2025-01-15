@@ -28,7 +28,7 @@ export const Categories = () => {
         </Link>
         <Link to="/habitsPerCategory/Work">
           <CategoryButton
-            category={{ iconUrl: workCategoryIcon, name: "Work" }}
+            category={{ iconUrl: workCategoryIcon, name: "Workplace" }}
           ></CategoryButton>
         </Link>
         <Link to="/habitsPerCategory/All">

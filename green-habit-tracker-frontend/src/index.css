@@ -52,12 +52,14 @@ h1 {
 
 h2 {
   font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 h3 {
   font-size: 1.5rem; /* 24px */
   font-weight: 700; /* Bold */
-  margin-bottom: 1rem; /* 16px */
+  margin-bottom: 0.75rem;
+  margin-top: 2rem;
 }
 
 h4 {

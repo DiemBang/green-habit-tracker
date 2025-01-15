@@ -32,7 +32,7 @@ export const Explore = () => {
                 <img
                   src={challengeIcons[challenge.name]}
                   alt={challenge.description}
-                  className="w-32 h-32 object-contain rounded-md"
+                  className="w-32 h-32 object-contain rounded-full"
                 />
               </Link>
             </div>
@@ -49,8 +49,10 @@ export const Explore = () => {
       </h3>
 
       <CardSection>
-        <h4>{ecotip.name}</h4>
-        <p>{ecotip.description}</p>
+        <div className="p-4">
+          <h4>{ecotip.name}</h4>
+          <p className="mt-2">{ecotip.description}</p>
+        </div>
       </CardSection>
     </>
   );
