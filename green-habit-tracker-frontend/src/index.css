@@ -120,10 +120,16 @@ button:focus-visible {
   color: #ffffff;
 }
 
+.react-calendar__navigation {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  align-items: center; /* Center the buttons vertically */
+  gap: 0.5rem; /* Add spacing between the buttons if needed */
+}
 .react-calendar__navigation button {
   color: #495057; /* Charcoal Gray for navigation arrows */
   background-color: #bcceda; /* Calm Blue */
-  padding: 1rem;
+  padding: 0.75rem;
   font-weight: bold;
 }
 
