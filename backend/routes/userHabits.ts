@@ -18,15 +18,34 @@ router.get("/", function (req: Request, res: Response) {
 });
 
 /* Add habit for User */
-router.post("/add", async (req: Request, res: Response) => {
+router.post("/add", async (req: Request, res: Response): Promise<void> => {
   console.log("Incoming request body:", req.body);
   try {
     const dateStarted: Date = new Date();
+
+    // Check if the habit already exists for the user
+    const existingHabit = await req.app.locals.db
+      .collection("UserHabit")
+      .findOne({
+        userID: req.body.userID,
+        habitIdentifier: req.body.habitIdentifier,
+      });
+
+    if (existingHabit) {
+      console.log("Habit already exists for this user.");
+      res.status(400).json({ error: "Habit already exists." });
+      return;
+    }
 
     // Get Habit object so we can get the name
     const habit = await req.app.locals.db
       .collection("Habit")
       .findOne({ identifier: req.body.habitIdentifier });
+
+    if (!habit) {
+      res.status(404).json({ error: "Habit not found." });
+      return;
+    }
 
     const habitName = habit.name;
 
