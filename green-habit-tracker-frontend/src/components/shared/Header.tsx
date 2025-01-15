@@ -2,12 +2,18 @@ import { useLocation } from "react-router-dom";
 import logotype from "../../assets/category-icons/all-category.png";
 import notificationIcon from "/src/assets/header-footer-icons/notification.svg";
 import calendarIcon from "/src/assets/header-footer-icons/calendar-silhouette.svg";
+import { useState } from "react";
+import Calendar from "react-calendar";
 
 export const Header = () => {
   const location = useLocation();
 
   // Check if the current path is '/home'
   const isHomePage = location.pathname === "/home";
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const toggleCalendar = () => setShowCalendar(!showCalendar);
 
   return (
     <>
@@ -28,11 +34,27 @@ export const Header = () => {
               className="w-6 h-6 svg"
               aria-hidden="true"
             />
-            <img
-              src={calendarIcon}
-              alt="calendar icon"
-              className="w-6 h-6 svg"
-              aria-hidden="true"
+            <button
+              onClick={toggleCalendar}
+              aria-label="Toggle Calendar"
+              className="p-1 rounded bg-calmBlue"
+            >
+              <img
+                src={calendarIcon}
+                alt="calendar icon"
+                className="w-6 h-6 svg"
+                aria-hidden="true"
+              />
+            </button>
+          </div>
+        )}
+        {/* Calendar Pop-up */}
+        {showCalendar && (
+          <div className="absolute top-16 right-4 bg-cloudWhite p-4 shadow-lg rounded-lg z-50">
+            <Calendar
+              value={selectedDate}
+              onChange={setSelectedDate}
+              className="react-calendar"
             />
           </div>
         )}

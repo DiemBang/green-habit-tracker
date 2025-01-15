@@ -94,6 +94,47 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.react-calendar {
+  background-color: #bcceda; /* Calm Blue */
+  color: #495057; /* Charcoal Gray for text */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.react-calendar__tile {
+  background-color: transparent;
+  color: #495057; /* Charcoal Gray */
+  border-radius: 0.25rem; /* Rounded day tiles */
+  transition: background-color 0.3s ease;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #4784aa;
+  color: #ffffff; /* White text on hover */
+}
+
+.react-calendar__tile--active {
+  background-color: #4784aa;
+  color: #ffffff;
+}
+
+.react-calendar__navigation button {
+  color: #495057; /* Charcoal Gray for navigation arrows */
+  background-color: #bcceda; /* Calm Blue */
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+}
+
+abbr:where([title]) {
+  text-decoration: none;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
