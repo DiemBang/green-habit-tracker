@@ -131,6 +131,9 @@ button:focus-visible {
   text-align: center;
 }
 
+.react-calendar__tile--now {
+  color: #f8f9fa;
+}
 abbr:where([title]) {
   text-decoration: none;
 }
