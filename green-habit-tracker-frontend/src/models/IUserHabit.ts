@@ -7,4 +7,5 @@ export interface IUserHabit {
   userID: string;
   name: string;
   completedToday: boolean;
+  lastCompletedDate: string;
 }

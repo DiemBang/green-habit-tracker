@@ -111,14 +111,15 @@ router.post(
     const endOfToday = new Date(startOfToday);
     endOfToday.setDate(startOfToday.getDate() + 1);
 
-    let userID = req.body.userID;
+    const userID = req.body.userID;
+
     req.app.locals.db
-      .collection("UserHabit") // Specify the type for the collection
+      .collection("UserHabit")
       .aggregate([
         // Step 1: Match UserHabit documents for the specified userId
         { $match: { userID: userID } },
 
-        // Step 2: Perform a lookup to join with UserHabitCompleted
+        // Step 2: Perform a lookup to join with UserHabitCompleted for today's entries
         {
           $lookup: {
             from: "UserHabitCompleted",
@@ -144,17 +145,47 @@ router.post(
           },
         },
 
-        // Step 3: Add the completedToday field
+        // Step 3: Perform a lookup to fetch the most recent completion date
         {
-          $addFields: {
-            completedToday: { $gt: [{ $size: "$completedTodayEntries" }, 0] },
+          $lookup: {
+            from: "UserHabitCompleted",
+            let: {
+              habitIdentifier: "$habitIdentifier",
+              habitUserID: "$userID",
+            },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $eq: ["$habitIdentifier", "$$habitIdentifier"] },
+                      { $eq: ["$userID", "$$habitUserID"] },
+                    ],
+                  },
+                },
+              },
+              { $sort: { dateCompleted: -1 } }, // Sort by dateCompleted in descending order
+              { $limit: 1 }, // Get the most recent entry
+            ],
+            as: "lastCompletedEntry",
           },
         },
 
-        // Step 4: Clean up unnecessary fields
+        // Step 4: Add the completedToday and lastCompletedDate fields
+        {
+          $addFields: {
+            completedToday: { $gt: [{ $size: "$completedTodayEntries" }, 0] },
+            lastCompletedDate: {
+              $arrayElemAt: ["$lastCompletedEntry.dateCompleted", 0], // Extract the dateCompleted from the most recent entry
+            },
+          },
+        },
+
+        // Step 5: Clean up unnecessary fields
         {
           $project: {
-            completedTodayEntries: 0, // Remove the temporary join array
+            completedTodayEntries: 0, // Remove the temporary join array for today's entries
+            lastCompletedEntry: 0, // Remove the temporary join array for the last completed date
           },
         },
       ])
