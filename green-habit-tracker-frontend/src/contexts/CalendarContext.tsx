@@ -5,7 +5,7 @@ interface CalendarContextType {
   setSelectedDate: (date: Date) => void;
   toggleCalendar: () => void;
   showCalendar: boolean;
-  setShowCalendar: (value: boolean) => void;
+  setShowCalendar: (value: boolean | ((prev: boolean) => boolean)) => void;
 }
 
 const CalendarContext = createContext<CalendarContextType | undefined>(
@@ -14,7 +14,7 @@ const CalendarContext = createContext<CalendarContextType | undefined>(
 
 export const CalendarProvider = ({ children }: { children: ReactNode }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [showCalendar, setShowCalendar] = useState(false);
+  const [showCalendar, setShowCalendar] = useState<boolean>(false);
 
   const toggleCalendar = () => setShowCalendar((prev) => !prev);
 

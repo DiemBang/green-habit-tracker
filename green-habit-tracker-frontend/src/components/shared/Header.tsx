@@ -13,6 +13,8 @@ export const Header = () => {
   const isProfilePage = location.pathname === "/profile";
 
   const calendarRef = useRef<HTMLDivElement | null>(null);
+  const iconRef = useRef<HTMLButtonElement | null>(null);
+
   const {
     toggleCalendar,
     showCalendar,
@@ -32,7 +34,9 @@ export const Header = () => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         calendarRef.current &&
-        !calendarRef.current.contains(event.target as Node)
+        !calendarRef.current.contains(event.target as Node) &&
+        iconRef.current &&
+        !iconRef.current.contains(event.target as Node)
       ) {
         setShowCalendar(false); // Close the calendar
       }
@@ -46,7 +50,11 @@ export const Header = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showCalendar]);
+  }, [showCalendar, setShowCalendar]);
+
+  const handleCalendarIconClick = () => {
+    toggleCalendar();
+  };
 
   return (
     <>
@@ -68,7 +76,8 @@ export const Header = () => {
               aria-hidden="true"
             />
             <button
-              onClick={toggleCalendar}
+              ref={iconRef}
+              onClick={handleCalendarIconClick}
               aria-label="Toggle Calendar"
               className="p-1 rounded bg-calmBlue"
             >
