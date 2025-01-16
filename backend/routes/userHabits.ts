@@ -176,7 +176,10 @@ router.post(
           $addFields: {
             completedToday: { $gt: [{ $size: "$completedTodayEntries" }, 0] },
             lastCompletedDate: {
-              $arrayElemAt: ["$lastCompletedEntry.dateCompleted", 0], // Extract the dateCompleted from the most recent entry
+              $ifNull: [
+                { $arrayElemAt: ["$lastCompletedEntry.dateCompleted", 0] }, // Extract the dateCompleted
+                null, // Fallback to null if no lastCompletedEntry exists
+              ],
             },
           },
         },
