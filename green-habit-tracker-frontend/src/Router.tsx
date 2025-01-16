@@ -17,6 +17,7 @@ import { homePageLoader } from "./loaders/homePageLoader";
 import { explorePageLoader } from "./loaders/explorePageLoader";
 import { ChallengePage } from "./pages/ChallengePage";
 import { challengeLoader } from "./loaders/challengeLoader";
+import { userLoader } from "./loaders/userLoader";
 
 export const router = createBrowserRouter([
   // Auth Layout (no header/footer)
@@ -64,6 +65,7 @@ export const router = createBrowserRouter([
         // http://localhost:5173/profile
         path: "/profile",
         element: <Profile></Profile>,
+        loader: userLoader,
       },
       {
         path: "/categories",

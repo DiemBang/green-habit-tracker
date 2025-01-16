@@ -33,8 +33,7 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
   }
   req.app.locals.db
     .collection("User") // Specify the type for the collection
-    .find({ _id: findUser })
-    .toArray()
+    .findOne({ _id: findUser })
     .then((results: IUser[]) => {
       if (results.length === 0) {
         // Handle case where no user is found

@@ -1,12 +1,16 @@
+import { useLoaderData } from "react-router-dom";
 import avatar from "../assets/rabbit.svg";
 import { CardSection } from "../components/CardSection";
 import { PointsBadge } from "../components/PointsBadge";
+import { IUser } from "../models/IUser";
 
 export const Profile = () => {
+  const user = useLoaderData() as IUser;
   return (
     <>
       <h2>Profile</h2>
       <section>
+        <p>{user.name}</p>
         <img
           src={avatar}
           alt="avatar profile"
