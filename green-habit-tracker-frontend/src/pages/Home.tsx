@@ -1,15 +1,40 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { IUserHabit } from "../models/IUserHabit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addUserHabitCompletedForUser } from "../services/userHabitCompletedService";
 import { CardSection } from "../components/CardSection";
 import { useCalendar } from "../contexts/CalendarContext";
 import { HabitTodo } from "../components/HabitTodo";
+import { getUserHabitsWithCompletedStatusByDay } from "../services/userHabitService";
 
 export const Home = () => {
   const { sustainabilityFacts, userHabits } = useLoaderData();
   const [habits, setHabits] = useState(userHabits);
   const { selectedDate } = useCalendar();
+
+  // 1. Add a useEffect function to listen for when selected date changes
+  // 2. In the useEffect, call the getUserHabitsWithCompletedStatusByDay
+  //  function with the new selected date to get the correct statuses in
+  //  a userHabits list
+  // 3. call setHabits with the new userHabits
+
+  let userID = localStorage.getItem("userID") || "";
+
+  useEffect(() => {
+    const getUserHabitsForNewSelectedDay = async () => {
+      let day = selectedDate.toISOString();
+      if (selectedDate) {
+        console.log("Selected date changed:", selectedDate);
+        const userHabits = await getUserHabitsWithCompletedStatusByDay(
+          userID,
+          day
+        );
+        console.log("userHabits", userHabits);
+        setHabits(userHabits);
+      }
+    };
+    getUserHabitsForNewSelectedDay();
+  }, [selectedDate]); // Only runs when selectedDate changes
 
   const formattedDate = selectedDate.toLocaleDateString("en-GB", {
     weekday: "long",
@@ -22,7 +47,6 @@ export const Home = () => {
   const today = new Date();
   const factIndex = today.getDate() % sustainabilityFacts.length; // Ensures index wraps around
 
-  // WIP: Toggle habit completion
   const toggleCompletion = async (id: string) => {
     console.log("Toggling habit completion for habit with ID:", id);
     const updatedHabits: IUserHabit[] = [];

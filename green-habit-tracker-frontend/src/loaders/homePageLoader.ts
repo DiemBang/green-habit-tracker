@@ -1,11 +1,12 @@
 import { getFacts } from "../services/sustainabilityFactService";
-import { getUserHabitsWithCompletedTodayStatus } from "../services/userHabitService";
+import { getUserHabitsWithCompletedStatusByDay } from "../services/userHabitService";
 
 export const homePageLoader = async () => {
   try {
     const sustainabilityFacts = await getFacts();
     const userID = localStorage.getItem("userID") || "";
-    const userHabits = await getUserHabitsWithCompletedTodayStatus(userID);
+    const day = new Date().toISOString();
+    const userHabits = await getUserHabitsWithCompletedStatusByDay(userID, day);
 
     console.log("Sustainability facts loaded:", sustainabilityFacts);
 

@@ -19,3 +19,15 @@ export const getUserHabitsWithCompletedTodayStatus = async (
   );
   return response.data;
 };
+
+export const getUserHabitsWithCompletedStatusByDay = async (
+  userID: string,
+  day: string
+): Promise<IUserHabit> => {
+  let query = { userID: userID, day: day };
+  let response = await axios.post(
+    BASE_URL + "/withCompletedStatusByDay",
+    query
+  );
+  return response.data;
+};
