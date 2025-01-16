@@ -211,4 +211,125 @@ router.post(
   }
 );
 
+router.post(
+  "/withCompletedStatusByDay",
+  async (req: Request, res: Response): Promise<any> => {
+    try {
+      const { userID, day } = req.body;
+
+      if (!userID || !day) {
+        return res.status(400).json({ error: "userID and day are required." });
+      }
+
+      // Parse the "day" parameter to calculate the start and end of the specified day
+      const specifiedDay = new Date(day);
+      if (isNaN(specifiedDay.getTime())) {
+        return res.status(400).json({ error: "Invalid date format." });
+      }
+
+      const startOfDay = new Date(
+        specifiedDay.getFullYear(),
+        specifiedDay.getMonth(),
+        specifiedDay.getDate()
+      );
+      const endOfDay = new Date(startOfDay);
+      endOfDay.setDate(startOfDay.getDate() + 1);
+
+      // MongoDB aggregation pipeline
+      const results = await req.app.locals.db
+        .collection("UserHabit")
+        .aggregate([
+          // Step 1: Match UserHabit documents for the specified userId
+          { $match: { userID: userID } },
+
+          // Step 2: Lookup to join with UserHabitCompleted for the specified day's entries
+          {
+            $lookup: {
+              from: "UserHabitCompleted",
+              let: {
+                habitIdentifier: "$habitIdentifier",
+                habitUserID: "$userID",
+              },
+              pipeline: [
+                {
+                  $match: {
+                    $expr: {
+                      $and: [
+                        { $eq: ["$habitIdentifier", "$$habitIdentifier"] },
+                        { $eq: ["$userID", "$$habitUserID"] },
+                        { $gte: ["$dateCompleted", startOfDay] },
+                        { $lt: ["$dateCompleted", endOfDay] },
+                      ],
+                    },
+                  },
+                },
+              ],
+              as: "completedTodayEntries",
+            },
+          },
+
+          // Step 3: Lookup to fetch the most recent completion before the specified day
+          {
+            $lookup: {
+              from: "UserHabitCompleted",
+              let: {
+                habitIdentifier: "$habitIdentifier",
+                habitUserID: "$userID",
+              },
+              pipeline: [
+                {
+                  $match: {
+                    $expr: {
+                      $and: [
+                        { $eq: ["$habitIdentifier", "$$habitIdentifier"] },
+                        { $eq: ["$userID", "$$habitUserID"] },
+                        { $lt: ["$dateCompleted", endOfDay] }, // Before the end of the specified day
+                      ],
+                    },
+                  },
+                },
+                { $sort: { dateCompleted: -1 } }, // Sort by dateCompleted in descending order
+                { $limit: 1 }, // Get the most recent entry
+              ],
+              as: "lastCompletedEntry",
+            },
+          },
+
+          // Step 4: Add the completedToday and lastCompletedDate fields
+          {
+            $addFields: {
+              completedToday: { $gt: [{ $size: "$completedTodayEntries" }, 0] },
+              lastCompletedDate: {
+                $ifNull: [
+                  { $arrayElemAt: ["$lastCompletedEntry.dateCompleted", 0] }, // Extract the dateCompleted
+                  null, // Fallback to null if no lastCompletedEntry exists
+                ],
+              },
+            },
+          },
+
+          // Step 5: Clean up unnecessary fields
+          {
+            $project: {
+              completedTodayEntries: 0, // Remove the temporary join array for today's entries
+              lastCompletedEntry: 0, // Remove the temporary join array for the last completed date
+            },
+          },
+        ])
+        .toArray();
+
+      if (results.length === 0) {
+        return res.status(404).json({ error: "No habits found for the user." });
+      }
+
+      res.json(results);
+    } catch (error) {
+      console.error("Error processing request:", error);
+      res.status(500).json({
+        error: "Internal Server Error. Please try again later.",
+      });
+    }
+  }
+);
+
 export default router;
