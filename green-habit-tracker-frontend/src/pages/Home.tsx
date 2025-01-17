@@ -20,19 +20,20 @@ export const Home = () => {
 
   let userID = localStorage.getItem("userID") || "";
 
+  const getUserHabitsForNewSelectedDay = async () => {
+    let day = selectedDate.toISOString();
+    if (selectedDate) {
+      console.log("Selected date changed:", selectedDate);
+      const userHabits = await getUserHabitsWithCompletedStatusByDay(
+        userID,
+        day
+      );
+      console.log("userHabits", userHabits);
+      setHabits(userHabits);
+    }
+  };
+
   useEffect(() => {
-    const getUserHabitsForNewSelectedDay = async () => {
-      let day = selectedDate.toISOString();
-      if (selectedDate) {
-        console.log("Selected date changed:", selectedDate);
-        const userHabits = await getUserHabitsWithCompletedStatusByDay(
-          userID,
-          day
-        );
-        console.log("userHabits", userHabits);
-        setHabits(userHabits);
-      }
-    };
     getUserHabitsForNewSelectedDay();
   }, [selectedDate]); // Only runs when selectedDate changes
 
@@ -61,11 +62,12 @@ export const Home = () => {
 
         updatedHabits.push(updatedHabit);
         // TODO: Make backend call to add or remove CompletedUserHabit here
-        addUserHabitCompletedForUser(
+        await addUserHabitCompletedForUser(
           habit.userID,
           habit.habitIdentifier,
           habit.name
         );
+        getUserHabitsForNewSelectedDay();
       } else {
         updatedHabits.push(habit);
       }

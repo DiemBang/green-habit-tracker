@@ -1,5 +1,6 @@
-import { format } from "date-fns";
+import { format, differenceInDays, isSameDay } from "date-fns";
 import { IUserHabit } from "../models/IUserHabit";
+import { useCalendar } from "../contexts/CalendarContext";
 
 interface HabitTodoProps {
   habit: IUserHabit;
@@ -10,6 +11,8 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
   habit,
   toggleCompletion,
 }) => {
+  const { selectedDate } = useCalendar();
+
   // Determine the color based on frequency
   const getFrequencyColor = (frequency: string) => {
     switch (frequency.toLowerCase()) {
@@ -32,8 +35,90 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
     }
 
     const date = new Date(lastCompletedDate);
-
     return format(date, "d/M"); // Format day as "16" and month as "1"
+  };
+
+  const isPastOrFutureDate = () => {
+    const today = new Date();
+    return differenceInDays(new Date(selectedDate), today) !== 0;
+  };
+
+  const isLastCompletedDayToday = (
+    lastCompletedDate: string | null
+  ): boolean => {
+    if (!lastCompletedDate) return false;
+
+    const lastCompleted = new Date(lastCompletedDate);
+    const today = new Date();
+
+    return isSameDay(lastCompleted, today);
+  };
+
+  const isInactive = (): boolean => {
+    // Radio button should always be inactive for days other than today
+    if (isPastOrFutureDate()) return true;
+
+    // If lastCompletedDate is today then radio button should NOT be inactive
+    if (isLastCompletedDayToday(habit.lastCompletedDate)) return false;
+
+    // Daily buttons should always be active (for today)
+    if (habit.frequency === "daily") return false;
+
+    // Weekly buttons should be inactive if the lastCompletedDate is
+    // in the previous 7 days from the selectedDate
+    if (habit.frequency === "weekly") {
+      return (
+        habit.lastCompletedDate !== null &&
+        differenceInDays(
+          new Date(selectedDate),
+          new Date(habit.lastCompletedDate)
+        ) <= 7
+      );
+    }
+
+    // Monthly buttons should be inactive if the lastCompletedDate is
+    // in the previous 30 days from the selectedDate
+    if (habit.frequency === "monthly") {
+      return (
+        habit.lastCompletedDate !== null &&
+        differenceInDays(
+          new Date(selectedDate),
+          new Date(habit.lastCompletedDate)
+        ) <= 30
+      );
+    }
+    return true;
+  };
+
+  // Function that decide when radio button is checked.
+  const shouldShowCheckmark = (): boolean => {
+    // If habit has not been completed before selectedDate then
+    // checkmark should NOT be shown
+    if (!habit.lastCompletedDate) return false;
+
+    const lastCompleted = new Date(habit.lastCompletedDate);
+    const daysSinceLastCompletion = differenceInDays(
+      new Date(selectedDate),
+      lastCompleted
+    );
+    // Show checkmark if a daily habit is completed on selected date in calendar
+    if (habit.frequency === "daily") {
+      return isSameDay(lastCompleted, new Date(selectedDate));
+    }
+    // Show checkmark if a weekly habit has been completed within 7 days
+    if (habit.frequency === "weekly") {
+      if (daysSinceLastCompletion < 7 && daysSinceLastCompletion >= 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    // Show checkmark if a monthly habit has been completed within 30 days
+    if (habit.frequency === "monthly") {
+      return daysSinceLastCompletion <= 30 && daysSinceLastCompletion >= 0;
+    }
+
+    return false;
   };
 
   const lastCompletedDate = habit.lastCompletedDate; // e.g., "2025-01-16T09:52:29.629Z" or null
@@ -64,18 +149,26 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
           )}
       </div>
 
-      {/* Completion Icon and Date */}
+      {/* Completion Icon */}
       <div className="flex items-center gap-2 text-right">
         <span
-          onClick={() => toggleCompletion(habit._id)}
-          className={`material-symbols-outlined cursor-pointer text-2xl flex-shrink-0 ${
-            habit.completedToday ? "text-green-500" : "text-charcoalGray"
-          }`}
+          onClick={() => !isInactive() && toggleCompletion(habit._id)}
+          className={`material-symbols-outlined ${
+            isInactive()
+              ? "text-gray-400 cursor-not-allowed"
+              : shouldShowCheckmark()
+              ? "text-green-500 cursor-pointer"
+              : "text-charcoalGray cursor-pointer"
+          } text-2xl flex-shrink-0`}
           title={
-            habit.completedToday ? "Mark as incomplete" : "Mark as complete"
+            isInactive()
+              ? "Cannot toggle on this date"
+              : shouldShowCheckmark()
+              ? "Mark as incomplete"
+              : "Mark as complete"
           }
         >
-          {habit.completedToday ? "check_circle" : "radio_button_unchecked"}
+          {shouldShowCheckmark() ? "check_circle" : "radio_button_unchecked"}
         </span>
       </div>
     </li>
