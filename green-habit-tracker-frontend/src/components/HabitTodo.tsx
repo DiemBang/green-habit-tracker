@@ -121,6 +121,12 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
     return false;
   };
 
+  // Determine if the lastCompletedDate should be displayed
+  const shouldShowLastCompletedDate = (): boolean => {
+    if (habit.frequency === "daily") return false; // Never show for daily habits
+    return shouldShowCheckmark(); // Only show for weekly/monthly habits if the checkmark is shown
+  };
+
   const lastCompletedDate = habit.lastCompletedDate; // e.g., "2025-01-16T09:52:29.629Z" or null
   const formattedDate = formatLastCompletedDate(lastCompletedDate);
 
@@ -139,14 +145,12 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
         >
           {habit.frequency}
         </p>
-        {/* Only show the date for weekly or monthly habits */}
-        {formattedDate &&
-          (habit.frequency.toLowerCase() === "weekly" ||
-            habit.frequency.toLowerCase() === "monthly") && (
-            <span className="text-xs whitespace-nowrap">
-              Last Completed {formattedDate}
-            </span>
-          )}
+        {/* Show the last completed date only when applicable */}
+        {formattedDate && shouldShowLastCompletedDate() && (
+          <span className="text-xs whitespace-nowrap">
+            Last Completed {formattedDate}
+          </span>
+        )}
       </div>
 
       {/* Completion Icon */}
