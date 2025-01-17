@@ -9,7 +9,7 @@ import { CardSection } from "../components/CardSection";
 
 export const Categories = () => {
   return (
-    <div className="p-6">
+    <>
       <h3 className="mb-6">Categories</h3>
       <CardSection>
         <section className="grid grid-cols-2 sm:grid-cols-3 gap-6">
@@ -40,6 +40,6 @@ export const Categories = () => {
           </Link>
         </section>
       </CardSection>
-    </div>
+    </>
   );
 };

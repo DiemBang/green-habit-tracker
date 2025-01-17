@@ -10,18 +10,14 @@ export const HabitButton = ({ habitType }: HabitProps) => {
   return (
     <article
       key={habitType.identifier}
-      className="w-[95%] mb-2 p-0 border rounded-lg shadow-sm flex items-center justify-between"
+      className="mb-2 border rounded-lg shadow-sm bg-cloudWhite"
     >
       <Link
         to={`/habit/${habitType.identifier}`}
-        className="flex items-center justify-between w-full p-2 text-green-600 hover:underline"
+        className="flex items-center justify-between w-full px-3 text-green-600 hover:underline"
       >
-        <h3 className="text-base ml-2">{habitType.name}</h3>
-        <img
-          src={addIcon}
-          alt="Add Icon"
-          className="w-4 h-4 ml-2 align-middle"
-        />
+        <h4 className="text-sm mt-2 mb-2">{habitType.name}</h4>
+        <img src={addIcon} alt="Add Icon" className="w-5 h-5 ml-2" />
       </Link>
     </article>
   );
