@@ -9,37 +9,37 @@ import { CardSection } from "../components/CardSection";
 
 export const Categories = () => {
   return (
-    <>
-      <h2>Categories</h2>
+    <div className="p-6">
+      <h3 className="mb-6">Categories</h3>
       <CardSection>
-        <section className="grid grid-cols-2 gap-4">
+        <section className="grid grid-cols-2 sm:grid-cols-3 gap-6">
           <Link to="/habitsPerCategory/Home">
             <CategoryButton
               category={{ iconUrl: homeCategoryIcon, name: "Home" }}
-            ></CategoryButton>
+            />
           </Link>
           <Link to="/habitsPerCategory/Food">
             <CategoryButton
               category={{ iconUrl: foodCategoryIcon, name: "Food" }}
-            ></CategoryButton>
+            />
           </Link>
           <Link to="/habitsPerCategory/On-the-go">
             <CategoryButton
               category={{ iconUrl: onthegoCategoryIcon, name: "On-the-go" }}
-            ></CategoryButton>
+            />
           </Link>
           <Link to="/habitsPerCategory/Work">
             <CategoryButton
               category={{ iconUrl: workCategoryIcon, name: "Workplace" }}
-            ></CategoryButton>
+            />
           </Link>
           <Link to="/habitsPerCategory/All">
             <CategoryButton
               category={{ iconUrl: allCategoryIcon, name: "All" }}
-            ></CategoryButton>
+            />
           </Link>
         </section>
       </CardSection>
-    </>
+    </div>
   );
 };

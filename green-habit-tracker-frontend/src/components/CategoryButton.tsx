@@ -6,13 +6,13 @@ interface CategoryButtonProps {
 export const CategoryButton = ({ category }: CategoryButtonProps) => {
   return (
     <>
-      <div className="flex flex-col items-center justify-center bg-gray-100 rounded-lg p-4 w-full h-32">
+      <div className="flex flex-col items-center bg-gray-100 rounded-lg p-4 shadow-md">
         <img
-          className="mb-2 w-16 h-16"
+          className="h-12 mb-2"
           src={category.iconUrl}
           alt={"Icon for " + category.name}
         />
-        <h3 className="text-lg font-medium">{category.name}</h3>
+        <h4 className="mt-0">{category.name}</h4>
       </div>
     </>
   );
