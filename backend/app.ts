@@ -38,8 +38,10 @@ app.listen(port, () => {
 
 const username = process.env.MONGO_ROOT_USERNAME;
 const password = process.env.MONGO_ROOT_PASSWORD;
+const url = process.env.MONGO_URL;
 
-const connectionString = `mongodb://${username}:${password}@127.0.0.1:27017`;
+const connectionString = `mongodb+srv://${username}:${password}@${url}`;
+// const connectionString = `mongodb://${username}:${password}@127.0.0.1:27017`;
 
 MongoClient.connect(connectionString).then((client: MongoClient) => {
   console.log("We're connected to the database!");
