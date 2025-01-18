@@ -2,15 +2,15 @@ import { MongoClient } from "mongodb";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import habitRouter from "./routes/habits";
-import userRouter from "./routes/users";
-import userHabitRouter from "./routes/userHabits";
-import ecotipRouter from "./routes/ecotips";
-import challengeRouter from "./routes/challenges";
-import sustainabilityFactRouter from "./routes/sustainabilityFacts";
-import userHabitCompletedRouter from "./routes/userHabitsCompleted";
-import userChallengeCompletedRouter from "./routes/userChallengesCompleted";
-import userChallengeRouter from "./routes/userChallenges";
+import habitRouter from "../routes/habits";
+import userRouter from "../routes/users";
+import userHabitRouter from "../routes/userHabits";
+import ecotipRouter from "../routes/ecotips";
+import challengeRouter from "../routes/challenges";
+import sustainabilityFactRouter from "../routes/sustainabilityFacts";
+import userHabitCompletedRouter from "../routes/userHabitsCompleted";
+import userChallengeCompletedRouter from "../routes/userChallengesCompleted";
+import userChallengeRouter from "../routes/userChallenges";
 
 dotenv.config();
 

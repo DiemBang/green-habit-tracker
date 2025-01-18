@@ -2,12 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "api/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx ts-node app.ts",
+    "dev": "npx ts-node api/app.ts",
     "build": "tsc",
-    "start": "node app.js"
+    "start": "node api/app.js"
   },
   "author": "",
   "license": "ISC",
