@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "api/app.js",
+  "homepage": ".",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx ts-node api/app.ts",
