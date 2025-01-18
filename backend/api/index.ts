@@ -48,3 +48,5 @@ MongoClient.connect(connectionString).then((client: MongoClient) => {
   const db = client.db("green-habit-tracker");
   app.locals.db = db;
 });
+
+module.exports = app;

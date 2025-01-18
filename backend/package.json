@@ -2,16 +2,16 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "api/app.js",
+  "main": "api/index.js",
   "homepage": ".",
   "engines": {
     "node": "22.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx ts-node api/app.ts",
+    "dev": "npx ts-node api/index.ts",
     "build": "tsc",
-    "start": "node api/app.js"
+    "start": "node api/index.js"
   },
   "author": "",
   "license": "ISC",
