@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx ts-node app.ts"
+    "dev": "npx ts-node app.ts",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
