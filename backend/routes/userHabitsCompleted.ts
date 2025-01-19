@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
-import { IUserHabitCompleted } from "../models/IUserHabitCompleted";
+import { IUserHabitCompleted } from "../models/IUserHabitCompleted.js";
+import express from "express";
 
-var express = require("express");
 const router = Router();
 
 /* GET userHabitCompleted */

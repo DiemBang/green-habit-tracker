@@ -1,12 +1,12 @@
 import { Router, Request, Response } from "express";
-import { IUser } from "../models/IUser";
+import { IUser } from "../models/IUser.js";
 import crypto from "crypto";
-
-var express = require("express");
-const bcrypt = require("bcrypt");
+import express from "express";
+import bcrypt from "bcrypt";
+import mongodb from "mongodb";
 
 const router = Router();
-const ObjectId = require("mongodb").ObjectId;
+const ObjectId = mongodb.ObjectId;
 
 const saltRounds = 10;
 

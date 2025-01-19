@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
-import { IUserChallengeCompleted } from "../models/IUserChallengeCompleted";
+import { IUserChallengeCompleted } from "../models/IUserChallengeCompleted.js";
+import express from "express";
 
-var express = require("express");
 const router = Router();
 
 /* GET ecotips */

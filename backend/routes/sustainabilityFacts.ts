@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
-import { ISustainabilityFact } from "../models/ISustainabilityFact";
+import { ISustainabilityFact } from "../models/ISustainabilityFact.js";
+import express from "express";
 
-var express = require("express");
 const router = Router();
 
 /* GET sustainability facts */

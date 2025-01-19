@@ -7,9 +7,10 @@
   "engines": {
     "node": "22.x"
   },
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx ts-node api/index.ts",
+    "dev": "npx tsx api/index.ts",
     "build": "tsc",
     "start": "node api/index.js"
   },
@@ -28,6 +29,7 @@
     "@types/express": "^5.0.0",
     "@types/mongodb": "^4.0.6",
     "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   }
 }

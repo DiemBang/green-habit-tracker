@@ -2,19 +2,19 @@ import { MongoClient } from "mongodb";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import habitRouter from "../routes/habits";
-import userRouter from "../routes/users";
-import userHabitRouter from "../routes/userHabits";
-import ecotipRouter from "../routes/ecotips";
-import challengeRouter from "../routes/challenges";
-import sustainabilityFactRouter from "../routes/sustainabilityFacts";
-import userHabitCompletedRouter from "../routes/userHabitsCompleted";
-import userChallengeCompletedRouter from "../routes/userChallengesCompleted";
-import userChallengeRouter from "../routes/userChallenges";
+import habitRouter from "../routes/habits.js";
+import userRouter from "../routes/users.js";
+import userHabitRouter from "../routes/userHabits.js";
+import ecotipRouter from "../routes/ecotips.js";
+import challengeRouter from "../routes/challenges.js";
+import sustainabilityFactRouter from "../routes/sustainabilityFacts.js";
+import userHabitCompletedRouter from "../routes/userHabitsCompleted.js";
+import userChallengeCompletedRouter from "../routes/userChallengesCompleted.js";
+import userChallengeRouter from "../routes/userChallenges.js";
 
 dotenv.config();
 
-const app = express();
+export const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -43,10 +43,8 @@ const url = process.env.MONGO_URL;
 const connectionString = `mongodb+srv://${username}:${password}@${url}`;
 // const connectionString = `mongodb://${username}:${password}@127.0.0.1:27017`;
 
-MongoClient.connect(connectionString).then((client: MongoClient) => {
+await MongoClient.connect(connectionString).then((client: MongoClient) => {
   console.log("We're connected to the database!");
   const db = client.db("green-habit-tracker");
   app.locals.db = db;
 });
-
-module.exports = app;

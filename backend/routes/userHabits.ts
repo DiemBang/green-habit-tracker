@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
-import { IUserHabit } from "../models/IUserHabit";
+import { IUserHabit } from "../models/IUserHabit.js";
+import express from "express";
 
-var express = require("express");
 const router = Router();
 
 /* GET userHabits */

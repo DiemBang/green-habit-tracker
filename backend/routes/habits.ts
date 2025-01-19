@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
-import { IHabit } from "../models/IHabit";
+import { IHabit } from "../models/IHabit.js";
+import express from "express";
 
-var express = require("express");
 const router = Router();
 
 /* GET habitTypes */

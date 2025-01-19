@@ -1,8 +1,9 @@
 import { Router, Request, Response } from "express";
-import { IUserChallenge } from "../models/IUserChallenge";
+import { IUserChallenge } from "../models/IUserChallenge.js";
 import { ObjectId } from "mongodb";
+import express from "express";
 
-var express = require("express");
+// var express = require("express");
 const router = Router();
 
 /* GET userChallenge */

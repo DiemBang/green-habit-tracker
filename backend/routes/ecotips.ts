@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
-import { IEcotip } from "../models/IEcotip";
+import { IEcotip } from "../models/IEcotip.js";
+import express from "express";
 
-var express = require("express");
 const router = Router();
 
 /* GET ecotips */

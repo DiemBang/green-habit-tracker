@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
-import { IChallenge } from "../models/IChallenge";
+import { IChallenge } from "../models/IChallenge.js";
+import express from "express";
 
-var express = require("express");
 const router = Router();
 
 /* GET challenges */
