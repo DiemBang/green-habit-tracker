@@ -18,6 +18,7 @@ import { explorePageLoader } from "./loaders/explorePageLoader";
 import { ChallengePage } from "./pages/ChallengePage";
 import { challengeLoader } from "./loaders/challengeLoader";
 import { userLoader } from "./loaders/userLoader";
+import { Settings } from "./pages/Settings";
 
 export const router = createBrowserRouter([
   // Auth Layout (no header/footer)
@@ -89,6 +90,11 @@ export const router = createBrowserRouter([
         path: "/challenge/:identifier",
         element: <ChallengePage></ChallengePage>,
         loader: challengeLoader,
+      },
+      {
+        path: "/settings",
+        element: <Settings></Settings>,
+        loader: userLoader,
       },
     ],
   },

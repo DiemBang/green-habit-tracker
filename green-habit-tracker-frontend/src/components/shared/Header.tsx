@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logotype from "../../assets/category-icons/all-category.png";
 import notificationIcon from "/src/assets/header-footer-icons/notification.svg";
 import calendarIcon from "/src/assets/header-footer-icons/calendar-silhouette.svg";
@@ -92,12 +92,14 @@ export const Header = () => {
         )}
         {isProfilePage && (
           <div className="absolute right-4 flex items-center space-x-2">
-            <img
-              src={settingsIcon}
-              alt="settings icon"
-              className="w-6 h-6 svg"
-              aria-hidden="true"
-            />
+            <Link to="/settings">
+              <img
+                src={settingsIcon}
+                alt="settings icon"
+                className="w-6 h-6 svg"
+                aria-hidden="true"
+              />
+            </Link>
           </div>
         )}
         {/* Calendar Pop-up */}
