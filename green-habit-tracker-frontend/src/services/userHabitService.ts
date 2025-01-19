@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IUserHabit } from "../models/IUserHabit";
 
-const BASE_URL = "http://localhost:3000/api/userHabits";
+const BASE_URL = `${import.meta.env.VITE_BACKEND_BASE_URL}/api/userHabits`;
 
 export const getUserHabits = async (userID: string): Promise<IUserHabit> => {
   let query = { userID: userID };

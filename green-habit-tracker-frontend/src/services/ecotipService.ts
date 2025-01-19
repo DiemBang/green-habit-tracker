@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IEcotip } from "../models/IEcotip";
 
-const BASE_URL = "http://localhost:3000/api/ecotips";
+const BASE_URL = `${import.meta.env.VITE_BACKEND_BASE_URL}/api/ecotips`;
 
 export const getEcotips = async (): Promise<IEcotip[]> => {
   let response = await axios.get(BASE_URL);

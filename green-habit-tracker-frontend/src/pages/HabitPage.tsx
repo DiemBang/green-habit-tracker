@@ -17,7 +17,9 @@ export const HabitPage = () => {
 
       // Fetch the current user's habits
       const existingHabitsResponse = await axios.get(
-        `http://localhost:3000/api/userHabits?userID=${userID}`
+        `${
+          import.meta.env.VITE_BACKEND_BASE_URL
+        }/api/userHabits?userID=${userID}`
       );
 
       const existingHabits = existingHabitsResponse.data;
@@ -42,7 +44,7 @@ export const HabitPage = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:3000/api/userHabits/add",
+        `${import.meta.env.VITE_BACKEND_BASE_URL}/api/userHabits/add`,
         userHabit
       );
       console.log("Habit added to user:", response.data);

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IChallenge } from "../models/IChallenge";
 
-const BASE_URL = "http://localhost:3000/api/challenges";
+const BASE_URL = `${import.meta.env.VITE_BACKEND_BASE_URL}/api/challenges`;
 
 export const getChallenges = async (): Promise<IChallenge[]> => {
   let response = await axios.get(BASE_URL);

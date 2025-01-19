@@ -10,7 +10,7 @@ export const LoginPage: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/login",
+        `${import.meta.env.VITE_BACKEND_BASE_URL}/api/users/login`,
         userData
       );
       console.log("User logged in:", response.data);

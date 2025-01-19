@@ -16,7 +16,7 @@ export const ChallengePage = () => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/userChallenges/add",
+        `${import.meta.env.VITE_BACKEND_BASE_URL}/api/userChallenges/add`,
         userChallenge
       );
       console.log("Joining challenge:", response.data);

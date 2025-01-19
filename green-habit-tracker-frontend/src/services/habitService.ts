@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IHabit } from "../models/IHabit";
 
-const BASE_URL = "http://localhost:3000/api/habits";
+const BASE_URL = `${import.meta.env.VITE_BACKEND_BASE_URL}/api/habits`;
 
 export const getHabits = async () => {
   let response = await axios.get(BASE_URL);
