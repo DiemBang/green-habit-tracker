@@ -4,12 +4,14 @@ interface SettingButtonProps {
   children: React.ReactNode;
   showIcon?: boolean;
   variant?: "default" | "danger";
+  onClick?: () => void;
 }
 
 export const SettingButton: React.FC<SettingButtonProps> = ({
   children,
   showIcon = true,
   variant = "default",
+  onClick,
 }) => {
   const baseClasses =
     "flex items-center justify-between mb-2 border rounded-lg shadow-sm bg-cloudWhite pl-4 pr-2 h-10";
@@ -19,7 +21,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
       : "bg-cloudWhite border-gray-300 hover:bg-gray-100";
 
   return (
-    <article className={`${baseClasses} ${variantClasses}`}>
+    <article className={`${baseClasses} ${variantClasses}`} onClick={onClick}>
       <span>{children}</span>
       {showIcon && ( // Conditionally render the icon
         <span className={`material-symbols-outlined text-lg text-fontPrimary`}>

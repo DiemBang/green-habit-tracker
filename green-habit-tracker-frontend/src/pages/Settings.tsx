@@ -1,10 +1,21 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import avatar from "../assets/rabbit.svg";
 import { IUser } from "../models/IUser";
 import { SettingButton } from "../components/SettingButton";
 
 export const Settings = () => {
   const user = useLoaderData() as IUser;
+  const navigate = useNavigate();
+  // Sign Out Function
+  const handleSignOut = () => {
+    // Clear user session (e.g., token from localStorage)
+    localStorage.removeItem("userID");
+    localStorage.removeItem("userToken");
+
+    // Redirect to login or landing page
+    navigate("/login");
+  };
+
   return (
     <>
       <h2>Settings</h2>
@@ -33,7 +44,7 @@ export const Settings = () => {
       <SettingButton>
         <h4 className="text-sm mt-2 mb-2">Tutorial</h4>
       </SettingButton>
-      <SettingButton showIcon={false}>
+      <SettingButton showIcon={false} onClick={handleSignOut}>
         <h4 className="text-sm mt-2 mb-2">Sign out</h4>
       </SettingButton>
       <SettingButton showIcon={false} variant="danger">
