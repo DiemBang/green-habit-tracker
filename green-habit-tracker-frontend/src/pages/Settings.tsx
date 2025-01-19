@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import avatar from "../assets/rabbit.svg";
 import { IUser } from "../models/IUser";
 import { SettingButton } from "../components/SettingButton";
@@ -36,11 +36,13 @@ export const Settings = () => {
         </div>
       </section>
       <SettingButton>
-        <h4 className="text-sm mt-2 mb-2">Notifcations</h4>
+        <h4 className="text-sm mt-2 mb-2">Notifications</h4>
       </SettingButton>
-      <SettingButton>
-        <h4 className="text-sm mt-2 mb-2">About Green Habits</h4>
-      </SettingButton>
+      <Link to={"/about"}>
+        <SettingButton>
+          <h4 className="text-sm mt-2 mb-2">About Green Habits</h4>
+        </SettingButton>
+      </Link>
       <SettingButton>
         <h4 className="text-sm mt-2 mb-2">Tutorial</h4>
       </SettingButton>
