@@ -9,22 +9,30 @@ export const Profile = () => {
   return (
     <>
       <h2>Profile</h2>
-      <section>
-        <p>{user.name}</p>
+      <section className="flex items-center gap-6">
         <img
           src={avatar}
           alt="avatar profile"
-          className="w-32 h-32 rounded-full"
+          className="w-32 h-32 rounded-full shadow-md"
         />
-        <PointsBadge>1000</PointsBadge>
+        <div>
+          <p className="text-lg font-semibold">{user.name}</p>
+          <PointsBadge>
+            <span className="text-xl font-bold text-green-600">1000</span>
+          </PointsBadge>
+        </div>
       </section>
       <section>
         <h3>Progress</h3>
-        <CardSection>Check your progress and stats</CardSection>
+        <CardSection>
+          <p>Check your progress and stats</p>
+        </CardSection>
       </section>
       <section>
         <h3>Badges</h3>
-        <CardSection>List collected badges</CardSection>
+        <CardSection>
+          <p>List collected badges</p>
+        </CardSection>
       </section>
     </>
   );
