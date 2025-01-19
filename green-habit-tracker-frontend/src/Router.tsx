@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import { Suspense } from "react";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
@@ -26,6 +26,10 @@ export const router = createBrowserRouter([
     element: <AuthLayout></AuthLayout>,
     errorElement: <NotFound></NotFound>,
     children: [
+      {
+        index: true, // Indicates this is the default child route
+        element: <Navigate to="/login" replace />,
+      },
       {
         // http://localhost:5173/login
         path: "/login",
