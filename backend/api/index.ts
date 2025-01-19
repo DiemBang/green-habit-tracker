@@ -14,7 +14,7 @@ import userChallengeRouter from "../routes/userChallenges.js";
 
 dotenv.config();
 
-export const app = express();
+const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -48,3 +48,5 @@ await MongoClient.connect(connectionString).then((client: MongoClient) => {
   const db = client.db("green-habit-tracker");
   app.locals.db = db;
 });
+
+export default app;
