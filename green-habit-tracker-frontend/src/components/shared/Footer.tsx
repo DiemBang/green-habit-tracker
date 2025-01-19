@@ -26,7 +26,7 @@ export const Footer = () => {
                 className="w-6 h-6 svg"
                 aria-hidden="true"
               />
-              <p className="mt-0">Home</p>
+              <p className="mt-0 text-black">Home</p>
             </div>
           </Link>
           <Link to="/explore">
@@ -41,7 +41,7 @@ export const Footer = () => {
                 className="w-6 h-6 svg"
                 aria-hidden="true"
               />
-              <p>Explore</p>
+              <p className="mt-0 text-black">Explore</p>
             </div>
           </Link>
           <Link to="/profile">
@@ -56,7 +56,7 @@ export const Footer = () => {
                 className="w-6 h-6 svg"
                 aria-hidden="true"
               />
-              <p>Profile</p>
+              <p className="mt-0 text-black">Profile</p>
             </div>
           </Link>
         </section>

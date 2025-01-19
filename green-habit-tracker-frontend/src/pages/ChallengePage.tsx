@@ -7,6 +7,7 @@ import { PointsBadge } from "../components/PointsBadge";
 
 export const ChallengePage = () => {
   const challenge = useLoaderData() as IChallenge;
+
   const handleJoin = async () => {
     const userChallenge = {
       challengeID: challenge._id,
@@ -14,6 +15,7 @@ export const ChallengePage = () => {
       userID: localStorage.getItem("userID"),
       lengthOfChallengeInDays: challenge.lengthOfChallengeInDays,
     };
+
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_BASE_URL}/api/userChallenges/add`,
@@ -24,22 +26,25 @@ export const ChallengePage = () => {
       console.error("Error adding user:", error);
     }
   };
+
   return (
     <>
-      <h2>Challenge: {challenge.name}</h2>
+      {/* Challenge Title */}
+      <h3>{challenge.name}</h3>
 
-      <h3>What heading works here?</h3>
+      {/* Challenge Details */}
       <CardSection>
         <ul>
-          <li key={challenge._id}>
-            <h4>{challenge.name}</h4>
-            <p>{challenge.description}</p>
-            <PointsBadge>
-              <p>{challenge.points}</p>
-            </PointsBadge>
+          <li key={challenge._id} className="mb-6">
+            {/* Challenge Description */}
+            <p className="leading-relaxed mb-4">{challenge.description}</p>
+
+            {/* Points Badge */}
+            <PointsBadge>{challenge.points} Points</PointsBadge>
           </li>
         </ul>
-        <ButtonWithIcon text="Join" onClick={handleJoin} />
+        {/* Join Button */}
+        <ButtonWithIcon text="Join Challenge" onClick={handleJoin} />
       </CardSection>
     </>
   );
