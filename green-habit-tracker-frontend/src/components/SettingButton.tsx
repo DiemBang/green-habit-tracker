@@ -3,6 +3,9 @@ import React from "react";
 interface SettingButtonProps {
   children: React.ReactNode;
   showIcon?: boolean;
+  icon?: string;
+  iconSize?: string;
+  customIconStyle?: string;
   variant?: "default" | "danger";
   onClick?: () => void;
 }
@@ -10,6 +13,9 @@ interface SettingButtonProps {
 export const SettingButton: React.FC<SettingButtonProps> = ({
   children,
   showIcon = true,
+  icon = "chevron_right",
+  iconSize = "text-lg",
+  customIconStyle = "",
   variant = "default",
   onClick,
 }) => {
@@ -23,9 +29,11 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
   return (
     <article className={`${baseClasses} ${variantClasses}`} onClick={onClick}>
       <span>{children}</span>
-      {showIcon && ( // Conditionally render the icon
-        <span className={`material-symbols-outlined text-lg text-fontPrimary`}>
-          chevron_right
+      {showIcon && (
+        <span
+          className={`material-symbols-outlined ${iconSize} ${customIconStyle} text-fontPrimary`}
+        >
+          {icon}
         </span>
       )}
     </article>

@@ -20,6 +20,7 @@ import { challengeLoader } from "./loaders/challengeLoader";
 import { userLoader } from "./loaders/userLoader";
 import { Settings } from "./pages/Settings";
 import { About } from "./pages/About";
+import { Notifications } from "./pages/Notifications";
 
 export const router = createBrowserRouter([
   // Auth Layout (no header/footer)
@@ -100,6 +101,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/notifications",
+        element: <Notifications></Notifications>,
       },
     ],
   },

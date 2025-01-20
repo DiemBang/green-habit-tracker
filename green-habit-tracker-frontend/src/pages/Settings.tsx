@@ -35,9 +35,11 @@ export const Settings = () => {
           </span>
         </div>
       </section>
-      <SettingButton>
-        <h4 className="text-sm mt-2 mb-2">Notifications</h4>
-      </SettingButton>
+      <Link to={"/notifications"}>
+        <SettingButton>
+          <h4 className="text-sm mt-2 mb-2">Notifications</h4>
+        </SettingButton>
+      </Link>
       <Link to={"/about"}>
         <SettingButton>
           <h4 className="text-sm mt-2 mb-2">About Green Habits</h4>

@@ -12,6 +12,7 @@ export default {
         fontPrimary: "#495057", // Charcoal Gray
         fontAccent: "#9FB8AD", // Muted Teal
         fontMuted: "#BCCEDA", // Calm Blue
+        customGreen: "#8ec140",
       },
       fontFamily: {
         heading: ['"Quicksand"', "sans-serif"], // For headings
