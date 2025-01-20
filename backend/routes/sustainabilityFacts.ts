@@ -12,7 +12,6 @@ router.get("/", function (req: Request, res: Response) {
     .find()
     .toArray()
     .then((results: Array<ISustainabilityFact>) => {
-      console.log("results", results);
       res.json(results);
     });
 });

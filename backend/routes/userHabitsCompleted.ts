@@ -1,6 +1,8 @@
 import { Router, Request, Response } from "express";
 import { IUserHabitCompleted } from "../models/IUserHabitCompleted.js";
 import express from "express";
+import { addDays, isPast } from "date-fns";
+import mongodb from "mongodb";
 
 const router = Router();
 
@@ -12,7 +14,6 @@ router.get("/", function (req: Request, res: Response) {
     .find()
     .toArray()
     .then((results: Array<IUserHabitCompleted>) => {
-      console.log("results", results);
       res.json(results);
     });
 });
@@ -34,7 +35,6 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
         // Handle case where no user is found
         return res.status(404).json({ error: "User not found." });
       }
-      console.log("results", results);
       res.json(results);
     })
     .catch((dbError: unknown) => {
@@ -46,9 +46,101 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     });
 });
 
+const checkAndUpdateChallengeStatusForUser = async (
+  userID: string,
+  req: Request
+): Promise<void> => {
+  // Fetch userChallenges that do not have a `dateEnded`
+  const userChallenges = await req.app.locals.db
+    .collection("UserChallenge")
+    .find({ dateEnded: { $exists: false }, userID: userID })
+    .toArray();
+  for (const userChallenge of userChallenges) {
+    const { challengeID, dateJoined, userID } = userChallenge;
+
+    const objectId = new mongodb.ObjectId(challengeID);
+    // Get the corresponding Challenge object
+    const challenge = await req.app.locals.db
+      .collection("Challenge")
+      .findOne({ _id: objectId });
+    if (!challenge) {
+      console.error(`Challenge not found for ID: ${challengeID}`);
+      continue;
+    }
+
+    const {
+      lengthOfChallengeInDays,
+      noOfActionsCompletedNeeded,
+      habitIdentifier,
+    } = challenge;
+
+    const challengeEndDate = addDays(
+      new Date(dateJoined),
+      lengthOfChallengeInDays
+    );
+
+    // Check if the challenge end date is in the past
+    if (isPast(challengeEndDate)) {
+      await req.app.locals.db
+        .collection("UserChallenge")
+        .updateOne({ _id: challengeID }, { dateEnded: challengeEndDate });
+
+      // Count `UserHabitCompleted` for the habitIdentifier within the date range
+      const completedActions = await req.app.locals.db
+        .collection("UserHabitCompleted")
+        .countDocuments({
+          userID,
+          habitIdentifier,
+          dateCompleted: { $gte: new Date(dateJoined), $lte: challengeEndDate },
+        });
+
+      if (completedActions >= noOfActionsCompletedNeeded) {
+        // Mark as completed
+        await req.app.locals.db.collection("UserChallengeCompleted").create({
+          userID,
+          challengeID,
+          challengeName: challenge.name,
+          dateCompleted: challengeEndDate,
+        });
+      } else {
+        // Create a notification object
+        await req.app.locals.db.collection("Notications").create({
+          userID,
+          message: `You didn't complete the challenge: ${challenge.name}. Try again!`,
+          timestamp: new Date(),
+        });
+      }
+    } else {
+      // Challenge end date is in the future; check progress
+      const completedActions = await req.app.locals.db
+        .collection("UserHabitCompleted")
+        .countDocuments({
+          userID,
+          habitIdentifier,
+          dateCompleted: { $gte: new Date(dateJoined), $lte: challengeEndDate },
+        });
+
+      if (completedActions >= noOfActionsCompletedNeeded) {
+        await req.app.locals.db
+          .collection("UserChallenge")
+          .updateOne(
+            { _id: userChallenge._id },
+            { $set: { dateEnded: new Date() } }
+          );
+        // Mark as completed early
+        await req.app.locals.db.collection("UserChallengeCompleted").insertOne({
+          userID,
+          challengeID,
+          challengeName: challenge.name,
+          dateCompleted: new Date(),
+        });
+      }
+    }
+  }
+};
+
 /* Add completed habit for User */
 router.post("/add", async (req: Request, res: Response): Promise<void> => {
-  console.log("Incoming request body:", req.body);
   try {
     const dateCompleted: Date = new Date();
 
@@ -107,6 +199,8 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
         .collection("UserHabitCompleted")
         .insertOne(userHabitCompleted);
       console.log("Insert Result:", result);
+
+      await checkAndUpdateChallengeStatusForUser(req.body.userID, req);
 
       res.json({
         message: `New userHabitCompleted added with ID ${result.insertedId}`,
