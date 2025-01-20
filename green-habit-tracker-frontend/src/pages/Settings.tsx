@@ -6,6 +6,7 @@ import { SettingButton } from "../components/SettingButton";
 export const Settings = () => {
   const user = useLoaderData() as IUser;
   const navigate = useNavigate();
+
   // Sign Out Function
   const handleSignOut = () => {
     // Clear user session (e.g., token from localStorage)

@@ -21,6 +21,7 @@ import { userLoader } from "./loaders/userLoader";
 import { Settings } from "./pages/Settings";
 import { About } from "./pages/About";
 import { Notifications } from "./pages/Notifications";
+import { profilePageLoader } from "./loaders/profilePageLoader";
 
 export const router = createBrowserRouter([
   // Auth Layout (no header/footer)
@@ -72,7 +73,7 @@ export const router = createBrowserRouter([
         // http://localhost:5173/profile
         path: "/profile",
         element: <Profile></Profile>,
-        loader: userLoader,
+        loader: profilePageLoader,
       },
       {
         path: "/categories",

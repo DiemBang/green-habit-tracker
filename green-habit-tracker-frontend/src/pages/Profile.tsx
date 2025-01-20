@@ -2,10 +2,24 @@ import { useLoaderData } from "react-router-dom";
 import avatar from "../assets/rabbit.svg";
 import { CardSection } from "../components/CardSection";
 import { PointsBadge } from "../components/PointsBadge";
-import { IUser } from "../models/IUser";
+import utensilHeroBadge from "../assets/badges/utensil-hero.svg";
+import noMorePlasticBagsBadge from "../assets/badges/no-more-plastic-bags.svg";
+import paperSaverBadge from "../assets/badges/paper-saver.svg";
+import clothChampionBadge from "../assets/badges/cloth-champion.svg";
+import { IUserChallengeCompleted } from "../models/IUserChallengeCompleted";
 
 export const Profile = () => {
-  const user = useLoaderData() as IUser;
+  const { userChallenges, user } = useLoaderData();
+
+  type StringDictionary = { [key: string]: string };
+
+  const rewardBadges: StringDictionary = {
+    "Utensil Hero": utensilHeroBadge,
+    "No More Plastic Bags": noMorePlasticBagsBadge,
+    "Paper Saver": paperSaverBadge,
+    "Cloth Champion": clothChampionBadge,
+  };
+
   return (
     <>
       <h2>Profile</h2>
@@ -29,10 +43,22 @@ export const Profile = () => {
         </CardSection>
       </section>
       <section>
-        <h3>Badges</h3>
-        <CardSection>
-          <p>List collected badges</p>
-        </CardSection>
+        <h3>Rewards</h3>
+        <div className="flex flex-wrap gap-6 justify-start">
+          <CardSection className="grid grid-cols-2 gap-6">
+            {userChallenges.map((userChallenge: IUserChallengeCompleted) => (
+              <img
+                src={rewardBadges[userChallenge.challengeName]}
+                alt={
+                  "badge completed for challenge: " +
+                  userChallenge.challengeName
+                }
+                key={userChallenge.challengeID}
+                className="w-32 h-32 object-contain rounded-full"
+              />
+            ))}
+          </CardSection>
+        </div>
       </section>
     </>
   );
