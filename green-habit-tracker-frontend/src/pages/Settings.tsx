@@ -46,9 +46,11 @@ export const Settings = () => {
           <h4 className="text-sm mt-2 mb-2">About Green Habits</h4>
         </SettingButton>
       </Link>
-      <SettingButton>
-        <h4 className="text-sm mt-2 mb-2">Tutorial</h4>
-      </SettingButton>
+      <Link to={"/tutorial"}>
+        <SettingButton>
+          <h4 className="text-sm mt-2 mb-2">Tutorial</h4>
+        </SettingButton>
+      </Link>
       <SettingButton showIcon={false} onClick={handleSignOut}>
         <h4 className="text-sm mt-2 mb-2">Sign out</h4>
       </SettingButton>

@@ -22,6 +22,7 @@ import { Settings } from "./pages/Settings";
 import { About } from "./pages/About";
 import { Notifications } from "./pages/Notifications";
 import { profilePageLoader } from "./loaders/profilePageLoader";
+import { Tutorial } from "./pages/Tutorial";
 
 export const router = createBrowserRouter([
   // Auth Layout (no header/footer)
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
       {
         path: "/notifications",
         element: <Notifications></Notifications>,
+      },
+      {
+        path: "/tutorial",
+        element: <Tutorial></Tutorial>,
       },
     ],
   },
