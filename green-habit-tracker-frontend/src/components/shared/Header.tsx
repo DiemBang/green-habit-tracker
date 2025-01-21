@@ -3,17 +3,49 @@ import logotype from "/src/assets/greenhabit-logo.svg";
 import notificationIcon from "/src/assets/header-footer-icons/notification.svg";
 import calendarIcon from "/src/assets/header-footer-icons/calendar-silhouette.svg";
 import settingsIcon from "/src/assets/header-footer-icons/gear.svg";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Calendar, { CalendarProps } from "react-calendar";
 import { useCalendar } from "../../contexts/CalendarContext";
+import { NotificationPopup } from "../NotificationPopup";
 
 export const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
   const isProfilePage = location.pathname === "/profile";
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [notifications, setNotifications] = useState([
+    { id: 1, message: "You completed your streak for the week!", read: false },
+    {
+      id: 2,
+      message: "New challenge: Plastic-Free Month is available!",
+      read: true,
+    },
+    {
+      id: 3,
+      message: "You've earned 50 points for completing a challenge.",
+      read: false,
+    },
+  ]);
+  const togglePopup = () => setIsPopupVisible((prev) => !prev);
 
+  const popupRef = useRef<HTMLDivElement>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const iconRef = useRef<HTMLButtonElement | null>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+      setIsPopupVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isPopupVisible) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isPopupVisible]);
 
   const {
     toggleCalendar,
@@ -69,12 +101,18 @@ export const Header = () => {
         {/* Conditionally Render Icons */}
         {isHomePage && (
           <div className="absolute right-4 flex items-center space-x-2">
-            <img
-              src={notificationIcon}
-              alt="notifications icon"
-              className="w-6 h-6 svg"
-              aria-hidden="true"
-            />
+            <button
+              onClick={togglePopup}
+              aria-label="Toggle Notifications"
+              className="notification-icon p-1 rounded bg-calmBlue"
+            >
+              <img
+                src={notificationIcon}
+                alt="notifications icon"
+                className="w-6 h-6 svg"
+                aria-hidden="true"
+              />
+            </button>
             <button
               ref={iconRef}
               onClick={handleCalendarIconClick}
@@ -112,6 +150,15 @@ export const Header = () => {
               value={selectedDate}
               onChange={handleDateChange}
               className="react-calendar"
+            />
+          </div>
+        )}
+        {/* Notification Pop-up */}
+        {isPopupVisible && (
+          <div ref={popupRef}>
+            <NotificationPopup
+              notifications={notifications}
+              onClose={() => setIsPopupVisible(false)}
             />
           </div>
         )}

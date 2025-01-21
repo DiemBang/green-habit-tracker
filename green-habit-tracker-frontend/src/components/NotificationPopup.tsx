@@ -1,7 +1,52 @@
-export const NotificationsPopup = () => {
+export const NotificationPopup = ({
+  notifications,
+  onClose,
+}: {
+  notifications: { id: number; message: string; read: boolean }[];
+  onClose: () => void;
+}) => {
+  if (!notifications.length) {
+    return (
+      <div className="notification-popup relative">
+        <div className="absolute right-0 top-0 bg-cloudWhite shadow-md rounded-lg p-4 w-64 z-50">
+          <button
+            className="absolute top-2 right-0.5 p-1 w-6 h-6 !bg-transparent hover:text-black"
+            onClick={onClose}
+            aria-label="Close"
+          >
+            ✕
+          </button>
+          <p className="text-gray-600 text-center">No notifications yet!</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
-      <h2>Notification Popup</h2>
+      <div className="fixed right-0 left-0 top-16 m-auto bg-cloudWhite shadow-md rounded-lg p-4 w-64 z-50">
+        <button
+          className="absolute top-2 right-0.5 p-1 w-6 h-6 !bg-transparent hover:text-black"
+          onClick={onClose}
+          aria-label="Close"
+        >
+          ✕
+        </button>
+        <ul>
+          {notifications.map((notif, index) => (
+            <li
+              key={notif.id}
+              className={`p-2 ${notif.read ? "text-gray-500" : "text-black"} ${
+                index !== notifications.length - 1
+                  ? "border-b border-gray-300"
+                  : ""
+              }`}
+            >
+              {notif.message}
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };
