@@ -45,9 +45,9 @@ export const Profile = () => {
         </CardSection>
       </section>
       <section>
-        <h3>Rewards</h3>
+        <h3>Achievements</h3>
         <div className="flex flex-wrap gap-6 justify-start">
-          <CardSection className="grid grid-cols-2 gap-6">
+          <CardSection className="grid grid-cols-2 gap-6 mb-20">
             {userChallenges.map((userChallenge: IUserChallengeCompleted) => (
               <img
                 src={rewardBadges[userChallenge.challengeName]}

@@ -50,7 +50,7 @@ export const Explore = () => {
         Eco-tip of the day
       </h3>
 
-      <CardSection>
+      <CardSection className="mb-20">
         <div className="p-4">
           <h4>{ecotip.name}</h4>
           <p className="mt-2">{ecotip.description}</p>
