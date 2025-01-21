@@ -107,7 +107,10 @@ export const Tutorial = () => {
       <h3 className="mb-6">Tutorial</h3>
       <div className="space-y-4">
         {["Home", "Explore", "Profile"].map((section) => (
-          <CardSection key={section} className="p-0">
+          <section
+            key={section}
+            className="w-[95%] mx-auto p-0 bg-cloudWhite border rounded-lg shadow-md"
+          >
             <button
               className="flex justify-between items-center w-full px-4 py-3 bg-cloudWhite font-medium text-lg focus:outline-none hover:bg-gray-200 transition duration-300"
               onClick={() => toggleSection(section)}
@@ -124,7 +127,7 @@ export const Tutorial = () => {
             {openSection === section && (
               <div className="p-4 bg-white">{tutorialContent[section]}</div>
             )}
-          </CardSection>
+          </section>
         ))}
       </div>
     </div>
