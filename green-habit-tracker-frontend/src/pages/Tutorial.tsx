@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { CardSection } from "../components/CardSection";
 
 export const Tutorial = () => {
   const [openSection, setOpenSection] = useState<string | null>(null);
