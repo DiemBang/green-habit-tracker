@@ -6,6 +6,7 @@ import utensilHeroBadge from "../assets/badges/utensil-hero.svg";
 import noMorePlasticBagsBadge from "../assets/badges/no-more-plastic-bags.svg";
 import paperSaverBadge from "../assets/badges/paper-saver.svg";
 import clothChampionBadge from "../assets/badges/cloth-champion.svg";
+import eWasteHeroBadge from "../assets/badges/ewaste-hero.png";
 import { IUserChallengeCompleted } from "../models/IUserChallengeCompleted";
 
 export const Profile = () => {
@@ -18,6 +19,7 @@ export const Profile = () => {
     "No More Plastic Bags": noMorePlasticBagsBadge,
     "Paper Saver": paperSaverBadge,
     "Cloth Champion": clothChampionBadge,
+    "E-Waste Hero": eWasteHeroBadge,
   };
 
   return (

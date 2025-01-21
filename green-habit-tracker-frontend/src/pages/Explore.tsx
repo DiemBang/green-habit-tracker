@@ -4,6 +4,7 @@ import utensilHero from "../assets/challenge-icons/utensil-hero.png";
 import noMorePlasticBagsIcon from "../assets/challenge-icons/no-plasticbags.png";
 import paperSaverIcon from "../assets/challenge-icons/paper-saver.png";
 import clothChampionIcon from "../assets/challenge-icons/cloth-champion.png";
+import eWasteHeroIcon from "../assets/challenge-icons/ewaste-hero.png";
 import { IChallenge } from "../models/IChallenge";
 import { CardSection } from "../components/CardSection";
 import ecoIcon from "/src/assets/ecotip-icon.svg";
@@ -16,6 +17,7 @@ export const Explore = () => {
     "No More Plastic Bags": noMorePlasticBagsIcon,
     "Paper Saver": paperSaverIcon,
     "Cloth Champion": clothChampionIcon,
+    "E-Waste Hero": eWasteHeroIcon,
   };
 
   const { challenges, ecotip } = useLoaderData();
