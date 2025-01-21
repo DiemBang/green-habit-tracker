@@ -11,7 +11,7 @@ export const CardSection: React.FC<CardSectionProps> = ({
 }) => {
   return (
     <section
-      className={`w-[95%] mx-auto mb-6 p-6 bg-cloudWhite border rounded-lg shadow-md ${
+      className={`w-[95%] mx-auto mb-20 p-6 bg-cloudWhite border rounded-lg shadow-md ${
         className || ""
       }`}
     >
