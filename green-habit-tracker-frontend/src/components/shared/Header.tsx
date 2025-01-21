@@ -14,7 +14,12 @@ export const Header = () => {
   const isProfilePage = location.pathname === "/profile";
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [notifications, setNotifications] = useState([
-    { id: 1, message: "You completed your streak for the week!", read: false },
+    {
+      id: 1,
+      message:
+        "Hey, eco-warrior! 🌍 Don't forget to complete your [habit name] today. You're making a difference!",
+      read: false,
+    },
     {
       id: 2,
       message: "New challenge: Plastic-Free Month is available!",
