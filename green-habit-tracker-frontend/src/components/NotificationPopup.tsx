@@ -40,7 +40,7 @@ export const NotificationPopup = ({
                 index !== notifications.length - 1
                   ? "border-b border-gray-300"
                   : ""
-              }`}
+              } hover:bg-gray-100`}
             >
               {notif.message}
             </li>
