@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SettingButton } from "../components/SettingButton";
 
-export const Notifications = () => {
+export const NotificationsSettings = () => {
   const [toggles, setToggles] = useState({
     dailyReminder: false,
     rewardNotification: false,

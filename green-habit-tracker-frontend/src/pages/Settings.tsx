@@ -36,7 +36,7 @@ export const Settings = () => {
           </span>
         </div>
       </section>
-      <Link to={"/notifications"}>
+      <Link to={"/notifications-settings"}>
         <SettingButton>
           <h4 className="text-sm mt-2 mb-2">Notifications</h4>
         </SettingButton>
