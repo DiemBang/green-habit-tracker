@@ -86,7 +86,7 @@ export const Home = () => {
         <p>{sustainabilityFacts[factIndex].description}</p>
       </CardSection>
       <h3>Habits to complete</h3>
-      <CardSection>
+      <CardSection className="mb-20">
         <ul>
           {habits.map((habit: IUserHabit) => (
             <HabitTodo
