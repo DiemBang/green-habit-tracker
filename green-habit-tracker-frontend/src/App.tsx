@@ -1,11 +1,23 @@
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import { router } from "./Router";
+import { useState } from "react";
+import { SplashScreen } from "./pages/SplashScreen";
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  const handleSplashComplete = () => {
+    setShowSplash(false); // Hide splash screen after animation
+  };
+
   return (
     <>
-      <RouterProvider router={router}></RouterProvider>
+      {showSplash ? (
+        <SplashScreen onComplete={handleSplashComplete} />
+      ) : (
+        <RouterProvider router={router}></RouterProvider>
+      )}
     </>
   );
 }
