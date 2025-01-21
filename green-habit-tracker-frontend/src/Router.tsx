@@ -23,6 +23,7 @@ import { About } from "./pages/About";
 import { Notifications } from "./pages/Notifications";
 import { profilePageLoader } from "./loaders/profilePageLoader";
 import { Tutorial } from "./pages/Tutorial";
+import { SplashScreen } from "./pages/SplashScreen";
 
 export const router = createBrowserRouter([
   // Auth Layout (no header/footer)
@@ -111,6 +112,14 @@ export const router = createBrowserRouter([
       {
         path: "/tutorial",
         element: <Tutorial></Tutorial>,
+      },
+      {
+        path: "/splash",
+        element: (
+          <SplashScreen
+            onComplete={() => console.log("Splash screen completed!")}
+          ></SplashScreen>
+        ),
       },
     ],
   },
