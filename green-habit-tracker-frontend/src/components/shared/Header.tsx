@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import logotype from "../../assets/category-icons/all-category.png";
+import logotype from "/src/assets/greenhabit-logo.svg";
 import notificationIcon from "/src/assets/header-footer-icons/notification.svg";
 import calendarIcon from "/src/assets/header-footer-icons/calendar-silhouette.svg";
 import settingsIcon from "/src/assets/header-footer-icons/gear.svg";
