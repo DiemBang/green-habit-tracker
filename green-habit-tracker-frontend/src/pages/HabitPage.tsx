@@ -55,7 +55,7 @@ export const HabitPage = () => {
 
   return (
     <>
-      <CardSection>
+      <CardSection className="mb-20">
         {/* Habit Title */}
         <h3>{habit.name}</h3>
 

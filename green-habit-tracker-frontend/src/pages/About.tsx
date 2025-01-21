@@ -4,7 +4,7 @@ export const About = () => {
   return (
     <>
       <h3>About Us</h3>
-      <CardSection>
+      <CardSection className="mb-20">
         <p className="mb-4">
           Welcome to Green Habits, your companion for building a sustainable
           lifestyle! 🌱
