@@ -31,7 +31,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
       <span>{children}</span>
       {showIcon && (
         <span
-          className={`material-symbols-outlined ${iconSize} ${customIconStyle} text-fontPrimary`}
+          className={`material-symbols-outlined ${iconSize} ${customIconStyle}`}
         >
           {icon}
         </span>
