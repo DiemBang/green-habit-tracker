@@ -20,10 +20,11 @@ import { challengeLoader } from "./loaders/challengeLoader";
 import { userLoader } from "./loaders/userLoader";
 import { Settings } from "./pages/Settings";
 import { About } from "./pages/About";
-import { NotificationsSettings } from "./pages/NotificationsSettings";
+import { NotificationSettings } from "./pages/NotificationSettings";
 import { profilePageLoader } from "./loaders/profilePageLoader";
 import { Tutorial } from "./pages/Tutorial";
 import { headerLoader } from "./loaders/headerLoader";
+import { notificationSettingsLoader } from "./loaders/notificationSettingsLoader";
 // import { SplashScreen } from "./pages/SplashScreen";
 
 export const router = createBrowserRouter([
@@ -109,7 +110,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/notifications-settings",
-        element: <NotificationsSettings></NotificationsSettings>,
+        element: <NotificationSettings></NotificationSettings>,
+        loader: notificationSettingsLoader,
       },
       {
         path: "/tutorial",
