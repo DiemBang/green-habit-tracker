@@ -7,30 +7,35 @@ import { useEffect, useRef, useState } from "react";
 import Calendar, { CalendarProps } from "react-calendar";
 import { useCalendar } from "../../contexts/CalendarContext";
 import { NotificationPopup } from "../NotificationPopup";
+import { IUserNotification } from "../../models/IUserNotification";
 
-export const Header = () => {
+export const Header = ({
+  notifications,
+}: {
+  notifications: IUserNotification[];
+}) => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
   const isProfilePage = location.pathname === "/profile";
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [notifications, setNotifications] = useState([
-    {
-      id: 1,
-      message:
-        "Hey, eco-warrior! 🌍 Don't forget to complete your [habit name] today. You're making a difference!",
-      read: false,
-    },
-    {
-      id: 2,
-      message: "New challenge: Plastic-Free Month is available!",
-      read: true,
-    },
-    {
-      id: 3,
-      message: "You've earned 50 points for completing a challenge.",
-      read: false,
-    },
-  ]);
+  // const [notifications, setNotifications] = useState([
+  //   {
+  //     id: 1,
+  //     message:
+  //       "Hey, eco-warrior! 🌍 Don't forget to complete your [habit name] today. You're making a difference!",
+  //     read: false,
+  //   },
+  //   {
+  //     id: 2,
+  //     message: "New challenge: Plastic-Free Month is available!",
+  //     read: true,
+  //   },
+  //   {
+  //     id: 3,
+  //     message: "You've earned 50 points for completing a challenge.",
+  //     read: false,
+  //   },
+  // ]);
   const togglePopup = () => setIsPopupVisible((prev) => !prev);
 
   const popupRef = useRef<HTMLDivElement>(null);

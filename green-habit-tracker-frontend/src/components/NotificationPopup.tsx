@@ -1,8 +1,10 @@
+import { IUserNotification } from "../models/IUserNotification";
+
 export const NotificationPopup = ({
   notifications,
   onClose,
 }: {
-  notifications: { id: number; message: string; read: boolean }[];
+  notifications: IUserNotification[];
   onClose: () => void;
 }) => {
   if (!notifications.length) {
@@ -35,7 +37,7 @@ export const NotificationPopup = ({
         <ul>
           {notifications.map((notif, index) => (
             <li
-              key={notif.id}
+              key={notif._id}
               className={`p-2 ${notif.read ? "text-gray-500" : "text-black"} ${
                 index !== notifications.length - 1
                   ? "border-b border-gray-300"

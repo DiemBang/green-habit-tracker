@@ -23,6 +23,7 @@ import { About } from "./pages/About";
 import { NotificationsSettings } from "./pages/NotificationsSettings";
 import { profilePageLoader } from "./loaders/profilePageLoader";
 import { Tutorial } from "./pages/Tutorial";
+import { headerLoader } from "./loaders/headerLoader";
 // import { SplashScreen } from "./pages/SplashScreen";
 
 export const router = createBrowserRouter([
@@ -52,6 +53,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    loader: headerLoader,
     errorElement: <NotFound></NotFound>,
     children: [
       {
