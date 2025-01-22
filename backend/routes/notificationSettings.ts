@@ -17,7 +17,7 @@ router.post("/update", async (req: Request, res: Response): Promise<void> => {
   try {
     const collection = req.app.locals.db.collection("NotificationSettings");
     const result = await collection.updateOne(
-      { userID: new ObjectId(userID) },
+      { userID: userID },
       { $set: { [`settings.${setting}`]: enabled } }
     );
 
