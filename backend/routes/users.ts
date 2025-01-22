@@ -4,6 +4,7 @@ import crypto from "crypto";
 import express from "express";
 import bcrypt from "bcrypt";
 import mongodb from "mongodb";
+import { createDefaultNotificationSettings } from "../services/notificationService.js";
 
 const router = Router();
 const ObjectId = mongodb.ObjectId;
@@ -74,6 +75,8 @@ router.post("/add", async (req: Request, res: Response) => {
       .insertOne(newUser);
     console.log("Insert Result:", result);
     let userToken = await setUserToken(req, result.insertedId);
+
+    createDefaultNotificationSettings(req, result.insertedId);
 
     res.json({
       message: `New user created with ID ${result.insertedId}`,

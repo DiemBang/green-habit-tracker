@@ -1,6 +1,6 @@
 export interface IUserNotification {
-  _id: number;
-  userID: number;
+  _id: string;
+  userID: string;
   category: string;
   message: string;
   timestamp: Date;
