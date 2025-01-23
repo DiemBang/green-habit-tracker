@@ -1,5 +1,5 @@
 export interface IHabit {
-  _id: number;
+  _id: string;
   name: string;
   identifier: string;
   description: string;

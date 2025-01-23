@@ -25,6 +25,8 @@ import { profilePageLoader } from "./loaders/profilePageLoader";
 import { Tutorial } from "./pages/Tutorial";
 import { headerLoader } from "./loaders/headerLoader";
 import { notificationSettingsLoader } from "./loaders/notificationSettingsLoader";
+import ProgressSummary from "./pages/ProgressSummary";
+import { progressSummaryLoader } from "./loaders/progressSummaryLoader";
 // import { SplashScreen } from "./pages/SplashScreen";
 
 export const router = createBrowserRouter([
@@ -116,6 +118,11 @@ export const router = createBrowserRouter([
       {
         path: "/tutorial",
         element: <Tutorial></Tutorial>,
+      },
+      {
+        path: "/progress-summary",
+        element: <ProgressSummary></ProgressSummary>,
+        loader: progressSummaryLoader,
       },
       // {
       //   path: "/splash",

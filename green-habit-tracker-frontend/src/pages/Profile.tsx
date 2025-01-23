@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import avatar from "../assets/rabbit.svg";
 import { CardSection } from "../components/CardSection";
 import { PointsBadge } from "../components/PointsBadge";
@@ -8,6 +8,7 @@ import paperSaverBadge from "../assets/badges/paper-saver.svg";
 import clothChampionBadge from "../assets/badges/cloth-champion.svg";
 import eWasteHeroBadge from "../assets/badges/ewaste-hero.png";
 import { IUserChallengeCompleted } from "../models/IUserChallengeCompleted";
+import progressIcon from "../assets/progress-icon.svg";
 
 export const Profile = () => {
   const { userChallenges, user } = useLoaderData();
@@ -40,9 +41,21 @@ export const Profile = () => {
       </section>
       <section>
         <h3>Progress</h3>
-        <CardSection>
-          <p>Check your progress and stats</p>
-        </CardSection>
+        <Link to={"/progress-summary"}>
+          <CardSection>
+            <div className="flex items-center space-x-4">
+              <img
+                src={progressIcon}
+                alt="Icon for progress and stats"
+                className="w-8 h-8"
+              />
+              <p className="text-lg">Your Eco Progress at a Glance</p>
+              <span className="material-symbols-outlined text-2xl">
+                chevron_right
+              </span>
+            </div>
+          </CardSection>
+        </Link>
       </section>
       <section>
         <h3>Achievements</h3>
