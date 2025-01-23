@@ -1,6 +1,7 @@
 import { log } from "console";
 import { Request } from "express";
 import { read } from "fs";
+import { IChallenge } from "../models/IChallenge.js";
 
 export const createDefaultNotificationSettings = async (
   req: Request,
@@ -45,14 +46,50 @@ export const createNotification = async (
   });
 };
 
-export const notifyNewChallengeAvailable = async (
+export const runNotifyOnFirstDayOfMonth = async (
+  req: Request,
+  userID: string
+) => {
+  const today = new Date();
+  const currentChallenges = await getCurrentChallenges(req);
+  // Check if today is the first day of the month
+  if (today.getDate() === 23) {
+    currentChallenges.forEach(async (element) => {
+      try {
+        await notifyNewChallengeAvailable(
+          req,
+          userID,
+          element.name,
+          "challenge"
+        );
+        console.log("Notification sent successfully.");
+      } catch (error) {
+        console.error("Error sending notification:", error);
+      }
+    });
+  } else {
+    console.log(
+      "Today is not the first day of the month. No notification sent."
+    );
+  }
+};
+
+const getCurrentChallenges = async (req: Request): Promise<IChallenge[]> => {
+  const currentMonth = new Date().getMonth() + 1;
+
+  const challengeObjects = await req.app.locals.db
+    .collection("Challenge") // Specify the type for the collection
+    .find({ monthAvailableToJoin: currentMonth })
+    .toArray();
+  return challengeObjects;
+};
+
+const notifyNewChallengeAvailable = async (
   req: Request,
   userID: string,
   challengeName: string,
   category: string
 ) => {
-  // TODO: check if UserNotifications are turned on for category and user
-  // Otherwise just return without creating a Notification
   try {
     const collection = req.app.locals.db.collection("NotificationSettings");
     const userSettings = await collection.findOne({ userID });

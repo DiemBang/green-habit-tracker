@@ -26,7 +26,7 @@ export const NotificationPopup = ({
 
   return (
     <>
-      <div className="fixed right-0 left-0 top-16 m-auto bg-cloudWhite shadow-md rounded-lg p-4 w-64 z-50">
+      <div className="fixed right-0 left-0 top-16 m-auto bg-cloudWhite shadow-md rounded-lg p-4 w-68 z-50">
         <button
           className="absolute top-2 right-0.5 p-1 w-6 h-6 !bg-transparent hover:text-black"
           onClick={onClose}

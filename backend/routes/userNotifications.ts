@@ -10,6 +10,7 @@ router.get("/", function (req: Request, res: Response) {
   req.app.locals.db
     .collection("UserNotification")
     .find()
+    .sort({ timestamp: -1 })
     .toArray()
     .then((results: Array<IUserNotification>) => {
       console.log("results", results);
@@ -22,6 +23,7 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
   req.app.locals.db
     .collection("UserNotification") // Specify the type for the collection
     .find({ userID: req.body.userID })
+    .sort({ timestamp: -1 })
     .toArray()
     .then((results: IUserNotification[]) => {
       if (results.length === 0) {

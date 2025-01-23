@@ -7,6 +7,7 @@ import mongodb from "mongodb";
 import {
   createDefaultNotificationSettings,
   notifyDailyHabitReminder,
+  runNotifyOnFirstDayOfMonth,
 } from "../services/notificationService.js";
 
 const router = Router();
@@ -134,6 +135,7 @@ router.post("/login", async (req, res): Promise<any> => {
           if (result === true) {
             let userToken = await setUserToken(req, user._id);
             await notifyDailyHabitReminder(req, user._id.toString());
+            await runNotifyOnFirstDayOfMonth(req, user._id.toString());
             return res.json({
               email: checkEmail,
               userToken: userToken,
