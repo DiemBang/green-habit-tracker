@@ -40,4 +40,41 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     });
 });
 
+// MARK userNotifications as read
+router.patch(
+  "/mark-read",
+  async (req: Request, res: Response): Promise<any> => {
+    const { userID } = req.body;
+
+    if (!userID) {
+      return res.status(400).json({ error: "User ID is required." });
+    }
+
+    try {
+      const result = await req.app.locals.db
+        .collection("UserNotification")
+        .updateMany(
+          { userID: userID, read: false }, // Update only unread notifications for the user
+          { $set: { read: true } } // Set the read status to true
+        );
+
+      if (result.modifiedCount === 0) {
+        return res
+          .status(200)
+          .json({ message: "No unread notifications found for the user." });
+      }
+
+      res.status(200).json({
+        message: "Notifications marked as read successfully.",
+        updatedCount: result.modifiedCount,
+      });
+    } catch (dbError: unknown) {
+      console.error("Database error:", dbError);
+      res
+        .status(500)
+        .json({ error: "Internal Server Error. Please try again later." });
+    }
+  }
+);
+
 export default router;

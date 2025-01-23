@@ -8,36 +8,23 @@ import Calendar, { CalendarProps } from "react-calendar";
 import { useCalendar } from "../../contexts/CalendarContext";
 import { NotificationPopup } from "../NotificationPopup";
 import { IUserNotification } from "../../models/IUserNotification";
+import { markNotificationsAsRead } from "../../services/userNotificationService";
 
 export const Header = ({
-  notifications,
+  notifications: initialNotifications,
 }: {
   notifications: IUserNotification[];
 }) => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
   const isProfilePage = location.pathname === "/profile";
+
+  const [notifications, setNotifications] = useState(initialNotifications);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const togglePopup = () => setIsPopupVisible((prev) => !prev);
 
   const popupRef = useRef<HTMLDivElement>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const iconRef = useRef<HTMLButtonElement | null>(null);
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-      setIsPopupVisible(false);
-    }
-  };
-
-  useEffect(() => {
-    if (isPopupVisible) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isPopupVisible]);
 
   const {
     toggleCalendar,
@@ -47,114 +34,132 @@ export const Header = ({
     setShowCalendar,
   } = useCalendar();
 
-  // Type-safe onChange handler
+  const togglePopup = () => {
+    setIsPopupVisible((prev) => !prev);
+    // Mark all as read when closing notifications
+    // (i.e. isPopupVisible, because this is checked before
+    //  the value is updated for next render)
+    if (isPopupVisible) {
+      markNotificationsAsRead();
+      markAllAsRead();
+    }
+  };
+
+  const markAllAsRead = () => {
+    // TODO: Call service to mark as read in database
+    setNotifications((prevNotifications) =>
+      prevNotifications.map((notif) => ({ ...notif, read: true }))
+    );
+  };
+
   const handleDateChange: CalendarProps["onChange"] = (value) => {
     if (value instanceof Date) {
       setSelectedDate(value); // Update state if the value is a single Date
     }
   };
 
+  // Handle click outside for both calendar and notification popup
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element; // Ensure target is an Element
+
       if (
         calendarRef.current &&
-        !calendarRef.current.contains(event.target as Node) &&
+        !calendarRef.current.contains(target) &&
         iconRef.current &&
-        !iconRef.current.contains(event.target as Node)
+        !iconRef.current.contains(target)
       ) {
         setShowCalendar(false); // Close the calendar
       }
+
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(target) &&
+        !target.closest(".notification-icon")
+      ) {
+        setIsPopupVisible(false); // Close the notification popup
+        markAllAsRead();
+      }
     };
 
-    if (showCalendar) {
+    if (showCalendar || isPopupVisible) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
-    // Cleanup event listener
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showCalendar, setShowCalendar]);
-
-  const handleCalendarIconClick = () => {
-    toggleCalendar();
-  };
+  }, [showCalendar, isPopupVisible]);
 
   return (
-    <>
-      <header className="w-screen h-16 fixed top-0 rounded-b-lg flex items-center justify-center">
-        <span>
-          <img
-            src={logotype}
-            alt="logotype of the app"
-            className="h-12 w-auto"
-          />
-        </span>
-        {/* Conditionally Render Icons */}
-        {isHomePage && (
-          <div className="absolute right-4 flex items-center space-x-2">
-            <button
-              onClick={togglePopup}
-              aria-label="Toggle Notifications"
-              className="notification-icon p-1 rounded bg-calmBlue"
-            >
-              <img
-                src={notificationIcon}
-                alt="notifications icon"
-                className="w-6 h-6 svg"
-                aria-hidden="true"
-              />
-            </button>
-            <button
-              ref={iconRef}
-              onClick={handleCalendarIconClick}
-              aria-label="Toggle Calendar"
-              className="p-1 rounded bg-calmBlue"
-            >
-              <img
-                src={calendarIcon}
-                alt="calendar icon"
-                className="w-6 h-6 svg"
-                aria-hidden="true"
-              />
-            </button>
-          </div>
-        )}
-        {isProfilePage && (
-          <div className="absolute right-4 flex items-center space-x-2">
-            <Link to="/settings">
-              <img
-                src={settingsIcon}
-                alt="settings icon"
-                className="w-6 h-6 svg"
-                aria-hidden="true"
-              />
-            </Link>
-          </div>
-        )}
-        {/* Calendar Pop-up */}
-        {showCalendar && (
-          <div
-            ref={calendarRef}
-            className="absolute top-16 right-4 bg-cloudWhite p-4 shadow-lg rounded-lg z-50"
+    <header className="w-screen h-16 fixed top-0 rounded-b-lg flex items-center justify-center">
+      <span>
+        <img src={logotype} alt="logotype of the app" className="h-12 w-auto" />
+      </span>
+      {isHomePage && (
+        <div className="absolute right-4 flex items-center space-x-2">
+          <button
+            onClick={togglePopup}
+            aria-label="Toggle Notifications"
+            className="notification-icon p-1 rounded bg-calmBlue relative"
           >
-            <Calendar
-              value={selectedDate}
-              onChange={handleDateChange}
-              className="react-calendar"
+            <img
+              src={notificationIcon}
+              alt="notifications icon"
+              className="w-6 h-6 svg"
+              aria-hidden="true"
             />
-          </div>
-        )}
-        {/* Notification Pop-up */}
-        {isPopupVisible && (
-          <div ref={popupRef}>
-            <NotificationPopup
-              notifications={notifications}
-              onClose={() => setIsPopupVisible(false)}
+            {notifications.some((notif) => !notif.read) && (
+              <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full border border-white"></span>
+            )}
+          </button>
+          <button
+            ref={iconRef}
+            onClick={toggleCalendar}
+            aria-label="Toggle Calendar"
+            className="p-1 rounded bg-calmBlue"
+          >
+            <img
+              src={calendarIcon}
+              alt="calendar icon"
+              className="w-6 h-6 svg"
+              aria-hidden="true"
             />
-          </div>
-        )}
-      </header>
-    </>
+          </button>
+        </div>
+      )}
+      {isProfilePage && (
+        <div className="absolute right-4 flex items-center space-x-2">
+          <Link to="/settings">
+            <img
+              src={settingsIcon}
+              alt="settings icon"
+              className="w-6 h-6 svg"
+              aria-hidden="true"
+            />
+          </Link>
+        </div>
+      )}
+      {showCalendar && (
+        <div
+          ref={calendarRef}
+          className="absolute top-16 right-4 bg-cloudWhite p-4 shadow-lg rounded-lg z-50"
+        >
+          <Calendar
+            value={selectedDate}
+            onChange={handleDateChange}
+            className="react-calendar"
+          />
+        </div>
+      )}
+      {isPopupVisible && (
+        <div ref={popupRef}>
+          <NotificationPopup
+            notifications={notifications}
+            onClose={() => setIsPopupVisible(false)}
+          />
+        </div>
+      )}
+    </header>
   );
 };

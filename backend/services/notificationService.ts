@@ -1,5 +1,6 @@
 import { log } from "console";
 import { Request } from "express";
+import { read } from "fs";
 
 export const createDefaultNotificationSettings = async (
   req: Request,
@@ -32,12 +33,15 @@ export const createDefaultNotificationSettings = async (
 export const createNotification = async (
   req: Request,
   userID: string,
-  message: string
+  message: string,
+  category: string
 ) => {
   await req.app.locals.db.collection("UserNotification").insertOne({
     userID: userID,
     message: message,
     timestamp: new Date(),
+    read: false,
+    category: category,
   });
 };
 
@@ -63,7 +67,8 @@ export const notifyNewChallengeAvailable = async (
     createNotification(
       req,
       userID,
-      `New challenge alert! 🚀 Join the ${challengeName} and make a difference this month!`
+      `New challenge alert! 🚀 Join the ${challengeName} and make a difference this month!`,
+      category
     );
   } catch (error) {
     console.error(
@@ -92,7 +97,8 @@ export const notifyDailyHabitReminder = async (
     createNotification(
       req,
       userID,
-      `A greener world starts with small actions. 🌎 Complete your habits and keep up the great work!`
+      `A greener world starts with small actions. 🌎 Complete your habits and keep up the great work!`,
+      "habitReminder"
     );
   } else {
     console.log(
