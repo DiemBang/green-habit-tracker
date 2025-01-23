@@ -86,14 +86,8 @@ export const notifyDailyHabitReminder = async (
   // TODO: Check if daily habit reminders are enabled for the user
   const collection = req.app.locals.db.collection("NotificationSettings");
   const userSettings = await collection.findOne({ userID: userID });
-  console.log("daily habit1");
-  console.log("userID", userID);
-  // console.log("collection", collection);
-  console.log("userSettings", userSettings);
 
   if (userSettings?.settings?.dailyHabit) {
-    console.log("daily habit2");
-
     createNotification(
       req,
       userID,
