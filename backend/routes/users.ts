@@ -4,7 +4,10 @@ import crypto from "crypto";
 import express from "express";
 import bcrypt from "bcrypt";
 import mongodb from "mongodb";
-import { createDefaultNotificationSettings } from "../services/notificationService.js";
+import {
+  createDefaultNotificationSettings,
+  notifyDailyHabitReminder,
+} from "../services/notificationService.js";
 
 const router = Router();
 const ObjectId = mongodb.ObjectId;
@@ -90,7 +93,7 @@ router.post("/add", async (req: Request, res: Response) => {
 });
 
 /* Set User Token */
-async function setUserToken(req: Request, userId: number): Promise<string> {
+async function setUserToken(req: Request, userId: string): Promise<string> {
   try {
     // Generate Token
     const userToken: string = crypto.randomBytes(64).toString("hex");
@@ -130,6 +133,7 @@ router.post("/login", async (req, res): Promise<any> => {
         .then(async function (result: boolean) {
           if (result === true) {
             let userToken = await setUserToken(req, user._id);
+            await notifyDailyHabitReminder(req, user._id.toString());
             return res.json({
               email: checkEmail,
               userToken: userToken,

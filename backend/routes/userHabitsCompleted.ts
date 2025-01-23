@@ -96,7 +96,7 @@ const checkAndUpdateChallengeStatusForUser = async (
 
       if (completedActions >= noOfActionsCompletedNeeded) {
         // Mark as completed
-        await req.app.locals.db.collection("UserChallengeCompleted").create({
+        await req.app.locals.db.collection("UserChallengeCompleted").insertOne({
           userID,
           challengeID,
           challengeName: challenge.name,
@@ -104,7 +104,7 @@ const checkAndUpdateChallengeStatusForUser = async (
         });
       } else {
         // Create a notification object
-        await req.app.locals.db.collection("Notications").create({
+        await req.app.locals.db.collection("UserNotification").insertOne({
           userID,
           message: `You didn't complete the challenge: ${challenge.name}. Try again!`,
           timestamp: new Date(),
