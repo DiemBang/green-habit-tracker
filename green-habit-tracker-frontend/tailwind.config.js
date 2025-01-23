@@ -13,6 +13,7 @@ export default {
         fontAccent: "#9FB8AD", // Muted Teal
         fontMuted: "#BCCEDA", // Calm Blue
         customGreen: "#8ec140",
+        customBlue: "#4784aa",
       },
       fontFamily: {
         heading: ['"Quicksand"', "sans-serif"], // For headings
