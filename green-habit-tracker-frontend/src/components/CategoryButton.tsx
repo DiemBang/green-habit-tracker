@@ -6,7 +6,7 @@ interface CategoryButtonProps {
 export const CategoryButton = ({ category }: CategoryButtonProps) => {
   return (
     <>
-      <div className="flex flex-col items-center bg-gray-100 rounded-lg p-4 shadow-md">
+      <div className="flex flex-col items-center bg-gray-100 rounded-lg p-4 shadow-sm">
         <img
           className="h-12 mb-2"
           src={category.iconUrl}

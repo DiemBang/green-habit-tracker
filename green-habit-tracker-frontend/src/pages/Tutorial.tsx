@@ -108,7 +108,7 @@ export const Tutorial = () => {
         {["Home", "Explore", "Profile"].map((section) => (
           <section
             key={section}
-            className="w-[95%] mx-auto p-0 bg-cloudWhite border rounded-lg shadow-md"
+            className="w-[95%] mx-auto p-0 bg-cloudWhite border rounded-lg shadow-sm"
           >
             <button
               className="flex justify-between items-center w-full px-4 py-3 bg-cloudWhite font-medium text-lg focus:outline-none hover:bg-gray-200 transition duration-300"
