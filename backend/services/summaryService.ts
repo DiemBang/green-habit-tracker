@@ -18,16 +18,14 @@ export const calculateStreaks = (completedDates: Date[]) => {
   return { longestStreak, currentStreak };
 };
 
-export const summarizeHabits = (
-  completedHabits: { habitIdentifier: string }[]
-) => {
+export const summarizeHabits = (completedHabits: { name: string }[]) => {
   const habitCounts: Record<string, number> = {};
 
-  for (const { habitIdentifier } of completedHabits) {
-    if (habitCounts[habitIdentifier]) {
-      habitCounts[habitIdentifier]++;
+  for (const { name: name } of completedHabits) {
+    if (habitCounts[name]) {
+      habitCounts[name]++;
     } else {
-      habitCounts[habitIdentifier] = 1;
+      habitCounts[name] = 1;
     }
   }
 
@@ -39,13 +37,13 @@ export const summarizeHabits = (
 };
 
 export const calculateCO2Savings = (
-  completedHabits: { habitIdentifier: string }[],
-  habitsData: { [identifier: string]: { co2Savings: number } }
+  completedHabits: { name: string }[],
+  habitsData: { [name: string]: { co2Savings: number } }
 ) => {
   let totalCO2 = 0;
 
-  completedHabits.forEach(({ habitIdentifier }) => {
-    const habit = habitsData[habitIdentifier];
+  completedHabits.forEach(({ name }) => {
+    const habit = habitsData[name];
     if (habit && typeof habit.co2Savings === "number") {
       totalCO2 += habit.co2Savings;
     }

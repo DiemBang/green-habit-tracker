@@ -1,24 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { IProgressSummary } from "../models/IProgressSummary";
+import { getProgressSummary } from "../services/ProgressSummaryService";
 
 const ProgressSummary = () => {
-  const { streaks, habitSummary, co2Savings } = useLoaderData();
+  const progressSummaryFromLoader = useLoaderData();
   const [period, setPeriod] = useState("month");
+  const [progressSummary, setProgressSummary] = useState<IProgressSummary>(
+    progressSummaryFromLoader
+  );
 
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       setLoading(true);
-  //       try {
-  //         const summary = await fetchProgressSummary(userId, period);
-  //         setData(summary);
-  //       } catch (error) {
-  //         console.error("Error fetching progress summary:", error);
-  //       } finally {
-  //         setLoading(false);
-  //       }
-  //     };
-  //     fetchData();
-  //   }, [period]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userID = localStorage.getItem("userID") || "";
+        const summary = await getProgressSummary(userID, period);
+        setProgressSummary(summary);
+      } catch (error) {
+        console.error("Error fetching progress summary:", error);
+      }
+    };
+    fetchData();
+  }, [period]);
 
   return (
     <div className="progress-summary">
@@ -36,25 +39,27 @@ const ProgressSummary = () => {
 
       <section>
         <h2>Streaks</h2>
-        <p>Longest Streak: {streaks.longestStreak} days</p>
-        <p>Current Streak: {streaks.currentStreak} days</p>
+        <p>Longest Streak: {progressSummary.streaks.longestStreak} days</p>
+        <p>Current Streak: {progressSummary.streaks.currentStreak} days</p>
       </section>
 
       <section>
         <h2>Habit Summary</h2>
-        <p>Total Completed: {habitSummary.totalCompleted}</p>
+        <p>Total Completed: {progressSummary.habitSummary.totalCompleted}</p>
         <ul>
-          {habitSummary.topHabits.map(([habitId, count]: [string, number]) => (
-            <li key={habitId}>
-              {habitId}: {count} completions
-            </li>
-          ))}
+          {progressSummary.habitSummary.topHabits.map(
+            ([habitName, count]: [string, number]) => (
+              <li key={habitName}>
+                {habitName}: {count} completions
+              </li>
+            )
+          )}
         </ul>
       </section>
 
       <section>
         <h2>CO₂ Savings</h2>
-        <p>Total CO₂ Saved: {co2Savings.totalCO2} kg</p>
+        <p>Total CO₂ Saved: {progressSummary.co2Savings.totalCO2} kg</p>
       </section>
     </div>
   );

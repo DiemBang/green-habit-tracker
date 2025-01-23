@@ -4,4 +4,5 @@ export interface IUserHabitCompleted {
   dateCompleted: Date;
   habitIdentifier: string;
   userId: number;
+  name: string;
 }

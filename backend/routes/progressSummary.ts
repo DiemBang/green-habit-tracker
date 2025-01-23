@@ -11,7 +11,7 @@ import { IUserHabitCompleted } from "../models/IUserHabitCompleted.js";
 const router = express.Router();
 
 interface Co2Data {
-  [identifier: string]: {
+  [name: string]: {
     co2Savings: number;
   };
 }
@@ -48,7 +48,7 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     const co2Data: Co2Data = {};
 
     for (const habit of habitsData) {
-      co2Data[habit.identifier] = {
+      co2Data[habit.name] = {
         co2Savings: habit.co2EmissionKgPerAction,
       };
     }
