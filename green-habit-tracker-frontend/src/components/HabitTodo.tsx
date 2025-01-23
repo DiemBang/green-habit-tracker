@@ -1,4 +1,4 @@
-import { format, differenceInDays, isSameDay } from "date-fns";
+import { format, differenceInCalendarDays, isSameDay } from "date-fns";
 import { IUserHabit } from "../models/IUserHabit";
 import { useCalendar } from "../contexts/CalendarContext";
 
@@ -40,7 +40,7 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
 
   const isPastOrFutureDate = () => {
     const today = new Date();
-    return differenceInDays(new Date(selectedDate), today) !== 0;
+    return differenceInCalendarDays(new Date(selectedDate), today) !== 0;
   };
 
   const isLastCompletedDayToday = (
@@ -69,10 +69,10 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
     if (habit.frequency === "weekly") {
       return (
         habit.lastCompletedDate !== null &&
-        differenceInDays(
+        differenceInCalendarDays(
           new Date(selectedDate),
           new Date(habit.lastCompletedDate)
-        ) <= 7
+        ) < 7
       );
     }
 
@@ -81,7 +81,7 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
     if (habit.frequency === "monthly") {
       return (
         habit.lastCompletedDate !== null &&
-        differenceInDays(
+        differenceInCalendarDays(
           new Date(selectedDate),
           new Date(habit.lastCompletedDate)
         ) <= 30
@@ -97,7 +97,7 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
     if (!habit.lastCompletedDate) return false;
 
     const lastCompleted = new Date(habit.lastCompletedDate);
-    const daysSinceLastCompletion = differenceInDays(
+    const daysSinceLastCompletion = differenceInCalendarDays(
       new Date(selectedDate),
       lastCompleted
     );
