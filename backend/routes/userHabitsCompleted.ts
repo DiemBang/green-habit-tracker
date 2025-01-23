@@ -29,6 +29,7 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
   req.app.locals.db
     .collection("UserHabitCompleted") // Specify the type for the collection
     .find({ userID: findUser })
+    .sort({ dateCompleted: 1 })
     .toArray()
     .then((results: IUserHabitCompleted[]) => {
       if (results.length === 0) {

@@ -124,6 +124,9 @@ export const notifyDailyHabitReminder = async (
   const collection = req.app.locals.db.collection("NotificationSettings");
   const userSettings = await collection.findOne({ userID: userID });
 
+  // if there is not a daily notification sent for this user, day and category, notification will be sent.
+  // else it won't.
+
   if (userSettings?.settings?.dailyHabit) {
     createNotification(
       req,

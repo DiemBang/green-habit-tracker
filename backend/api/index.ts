@@ -13,6 +13,7 @@ import userChallengeCompletedRouter from "../routes/userChallengesCompleted.js";
 import userChallengeRouter from "../routes/userChallenges.js";
 import userNotificationRouter from "../routes/userNotifications.js";
 import notificationSettingsRouter from "../routes/notificationSettings.js";
+import progressSummaryRouter from "../routes/progressSummary.js";
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use("/api/ecotips", ecotipRouter);
 app.use("/api/sustainabilityFacts", sustainabilityFactRouter);
 app.use("/api/userNotifications", userNotificationRouter);
 app.use("/api/notificationSettings", notificationSettingsRouter);
+app.use("/api/progressSummary", progressSummaryRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

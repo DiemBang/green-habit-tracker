@@ -26,11 +26,6 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     .sort({ timestamp: -1 })
     .toArray()
     .then((results: IUserNotification[]) => {
-      if (results.length === 0) {
-        // Handle case where no user is found
-        return res.status(404).json({ error: "User not found." });
-      }
-      console.log("results", results);
       res.json(results);
     })
     .catch((dbError: unknown) => {
