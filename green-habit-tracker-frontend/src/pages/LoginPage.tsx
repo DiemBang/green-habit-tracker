@@ -18,7 +18,7 @@ export const LoginPage: React.FC = () => {
       // Set userID and userToken in local storage
       localStorage.setItem("userID", response.data.userID);
       localStorage.setItem("userToken", response.data.userToken);
-      // Redirect to the home page in React
+      // Redirect to the home page
       navigate("/home", { replace: true });
     } catch (error) {
       console.error("Error adding user:", error);
