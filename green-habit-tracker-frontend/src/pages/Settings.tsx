@@ -51,10 +51,10 @@ export const Settings = () => {
           <h4 className="text-sm mt-2 mb-2">Tutorial</h4>
         </SettingButton>
       </Link>
-      <SettingButton showIcon={false} onClick={handleSignOut}>
+      <SettingButton icon="logout" onClick={handleSignOut}>
         <h4 className="text-sm mt-2 mb-2">Sign out</h4>
       </SettingButton>
-      <SettingButton showIcon={false} variant="danger">
+      <SettingButton icon="delete_forever" variant="danger">
         <h4 className="text-sm mt-2 mb-2 text-white">Delete account</h4>
       </SettingButton>
     </>
