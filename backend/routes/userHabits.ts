@@ -75,6 +75,39 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
+// DELETE habit for User
+router.delete("/delete", async (req: Request, res: Response): Promise<void> => {
+  console.log("Incoming request body:", req.body);
+  try {
+    const { userID, habitIdentifier } = req.body;
+
+    // Validate the required fields
+    if (!userID || !habitIdentifier) {
+      res.status(400).json({ error: "Missing userID or habitIdentifier." });
+      return;
+    }
+
+    // Attempt to delete the habit
+    const result = await req.app.locals.db
+      .collection("UserHabit")
+      .deleteOne({ userID, habitIdentifier });
+
+    if (result.deletedCount === 0) {
+      // No matching habit found for deletion
+      res
+        .status(404)
+        .json({ error: "Habit not found for the specified user." });
+      return;
+    }
+
+    console.log("Habit deleted successfully:", result);
+    res.json({ message: "Habit deleted successfully." });
+  } catch (error) {
+    console.error("Error deleting habit:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 // GET userhabit for specific user
 router.post("/", async (req: Request, res: Response): Promise<any> => {
   req.app.locals.db
