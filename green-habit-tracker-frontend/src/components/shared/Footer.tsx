@@ -18,45 +18,51 @@ export const Footer = () => {
             <div
               role="button"
               aria-label="Go to Home"
-              className="flex flex-col items-center"
+              className="flex flex-col items-center group focus:outline-none"
             >
               <img
                 src={homeIcon}
                 alt="home icon"
-                className="w-6 h-6 svg"
+                className="w-6 h-6 svg group-hover:svghover group-focus:svghover"
                 aria-hidden="true"
               />
-              <p className="mt-0 text-black hover:text-customBlue">Home</p>
+              <p className="mt-0 text-black group-hover:text-customBlue group-focus:text-customBlue">
+                Home
+              </p>
             </div>
           </Link>
           <Link to="/explore">
             <div
               role="button"
               aria-label="Go to Explore"
-              className="flex flex-col items-center"
+              className="flex flex-col items-center group focus:outline-none"
             >
               <img
                 src={exploreIcon}
                 alt="explore icon"
-                className="w-6 h-6 svg"
+                className="w-6 h-6 svg group-hover:svghover group-focus:svghover"
                 aria-hidden="true"
               />
-              <p className="mt-0 text-black hover:text-customBlue">Explore</p>
+              <p className="mt-0 text-black group-hover:text-customBlue group-focus:text-customBlue">
+                Explore
+              </p>
             </div>
           </Link>
           <Link to="/profile">
             <div
               role="button"
               aria-label="Go to Profile"
-              className="flex flex-col items-center"
+              className="flex flex-col items-center group focus:outline-none"
             >
               <img
                 src={profileIcon}
                 alt=""
-                className="w-6 h-6 svg"
+                className="w-6 h-6 svg group-hover:svghover group-focus:svghover"
                 aria-hidden="true"
               />
-              <p className="mt-0 text-black hover:text-customBlue">Profile</p>
+              <p className="mt-0 text-blackgroup-hover:text-customBlue group-focus:text-customBlue">
+                Profile
+              </p>
             </div>
           </Link>
         </section>
