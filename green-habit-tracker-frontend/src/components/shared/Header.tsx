@@ -115,23 +115,24 @@ export const Header = ({
       <span>
         <img src={logotype} alt="logotype of the app" className="h-12 w-auto" />
       </span>
-      {isHomePage && (
-        <div className="absolute right-4 flex items-center space-x-2">
-          <button
-            onClick={togglePopup}
-            aria-label="Toggle Notifications"
-            className="notification-icon p-1 rounded bg-calmBlue relative"
-          >
-            <img
-              src={notificationIcon}
-              alt="notifications icon"
-              className="w-6 h-6 svg"
-              aria-hidden="true"
-            />
-            {notifications.some((notif) => !notif.read) && (
-              <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full border border-white"></span>
-            )}
-          </button>
+
+      <div className="absolute right-4 flex items-center space-x-2">
+        <button
+          onClick={togglePopup}
+          aria-label="Toggle Notifications"
+          className="notification-icon p-1 rounded bg-calmBlue relative"
+        >
+          <img
+            src={notificationIcon}
+            alt="notifications icon"
+            className="w-6 h-6 svg"
+            aria-hidden="true"
+          />
+          {notifications.some((notif) => !notif.read) && (
+            <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full border border-white"></span>
+          )}
+        </button>
+        {isHomePage && (
           <button
             ref={iconRef}
             onClick={toggleCalendar}
@@ -145,10 +146,9 @@ export const Header = ({
               aria-hidden="true"
             />
           </button>
-        </div>
-      )}
-      {isProfilePage && (
-        <div className="absolute right-4 flex items-center space-x-2">
+        )}
+
+        {isProfilePage && (
           <Link to="/settings">
             <img
               src={settingsIcon}
@@ -157,8 +157,8 @@ export const Header = ({
               aria-hidden="true"
             />
           </Link>
-        </div>
-      )}
+        )}
+      </div>
       {showCalendar && (
         <div
           ref={calendarRef}
