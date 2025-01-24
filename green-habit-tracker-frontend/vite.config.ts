@@ -16,5 +16,6 @@ export default defineConfig({
     rollupOptions: {
       input: "index.html", // Ensure it starts from your index.html
     },
+    sourcemap: true,
   },
 });

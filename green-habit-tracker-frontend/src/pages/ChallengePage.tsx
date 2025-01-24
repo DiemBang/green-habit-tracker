@@ -1,12 +1,13 @@
 import { useLoaderData } from "react-router-dom";
-import { IChallenge } from "../models/IChallenge";
 import { ButtonWithIcon } from "../components/ButtonWithIcon";
 import axios from "axios";
 import { CardSection } from "../components/CardSection";
 import { PointsBadge } from "../components/PointsBadge";
+import { useState } from "react";
 
 export const ChallengePage = () => {
-  const challenge = useLoaderData() as IChallenge;
+  const { challenge, isAlreadyJoined } = useLoaderData();
+  const [isJoined, setIsJoined] = useState<boolean>(isAlreadyJoined);
 
   const handleJoin = async () => {
     const userChallenge = {
@@ -22,8 +23,29 @@ export const ChallengePage = () => {
         userChallenge
       );
       console.log("Joining challenge:", response.data);
+      setIsJoined(true);
     } catch (error) {
       console.error("Error adding user:", error);
+    }
+  };
+
+  const handleLeave = async () => {
+    try {
+      const userID = localStorage.getItem("userID");
+
+      await axios.delete(
+        `${import.meta.env.VITE_BACKEND_BASE_URL}/api/userChallenges/delete`,
+        {
+          data: {
+            userID: userID,
+            challengeID: challenge._id,
+          },
+        }
+      );
+      console.log("User left challenge.");
+      setIsJoined(false);
+    } catch (error) {
+      console.error("Error leaving challenge:", error);
     }
   };
 
@@ -43,8 +65,11 @@ export const ChallengePage = () => {
             <PointsBadge>{challenge.points} Points</PointsBadge>
           </li>
         </ul>
-        {/* Join Button */}
-        <ButtonWithIcon text="Join Challenge" onClick={handleJoin} />
+        {/* Join/Leave Button */}
+        <ButtonWithIcon
+          text={isJoined ? "Leave Challenge" : "Join Challenge"}
+          onClick={isJoined ? handleLeave : handleJoin}
+        />
       </CardSection>
     </>
   );
