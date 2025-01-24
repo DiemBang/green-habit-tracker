@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logotype from "/src/assets/greenhabit-logo.svg";
 import notificationIcon from "/src/assets/header-footer-icons/notification.svg";
 import calendarIcon from "/src/assets/header-footer-icons/calendar-silhouette.svg";
@@ -9,6 +9,7 @@ import { useCalendar } from "../../contexts/CalendarContext";
 import { NotificationPopup } from "../NotificationPopup";
 import { IUserNotification } from "../../models/IUserNotification";
 import { markNotificationsAsRead } from "../../services/userNotificationService";
+import { getBackIconConfig } from "../../services/backIconConfig";
 
 export const Header = ({
   notifications: initialNotifications,
@@ -16,11 +17,18 @@ export const Header = ({
   notifications: IUserNotification[];
 }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === "/home";
   const isProfilePage = location.pathname === "/profile";
 
   const [notifications, setNotifications] = useState(initialNotifications);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  const { showBackIcon, backText } = getBackIconConfig(location.pathname);
+
+  const handleBackClick = () => {
+    navigate(-1);
+  };
 
   const popupRef = useRef<HTMLDivElement>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
@@ -93,6 +101,17 @@ export const Header = ({
 
   return (
     <header className="w-screen h-16 fixed top-0 rounded-b-lg flex items-center justify-center">
+      {showBackIcon && (
+        <div
+          className="absolute left-4 flex items-center space-x-2 cursor-pointer"
+          onClick={handleBackClick}
+        >
+          <span className="material-symbols-outlined text-xl">
+            arrow_back_ios_new
+          </span>
+          <span className="font-medium">{backText}</span>
+        </div>
+      )}
       <span>
         <img src={logotype} alt="logotype of the app" className="h-12 w-auto" />
       </span>
