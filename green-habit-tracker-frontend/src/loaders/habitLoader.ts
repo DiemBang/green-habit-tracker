@@ -1,6 +1,7 @@
 import { IHabit } from "../models/IHabit";
 import { ILoader } from "../models/ILoader";
 import { getHabit } from "../services/habitService";
+import { checkIfHabitAlreadyAdded } from "../services/userHabitService";
 
 export const habitLoader = async ({ params }: ILoader) => {
   let identifier = params.identifier ? params.identifier : "";
@@ -8,5 +9,9 @@ export const habitLoader = async ({ params }: ILoader) => {
   let habit: IHabit = await getHabit(identifier);
   console.log("habit", habit);
 
-  return habit;
+  let userID = localStorage.getItem("userID") || "";
+
+  let isAlreadyAdded = await checkIfHabitAlreadyAdded(habit.identifier, userID);
+
+  return { habit, isAlreadyAdded };
 };

@@ -25,7 +25,7 @@ const ProgressSummary = () => {
   }, [period]);
 
   return (
-    <CardSection>
+    <CardSection className="mb-20">
       <h1 className="text-3xl font-bold text-emerald-700 mb-6">
         Progress Summary
       </h1>

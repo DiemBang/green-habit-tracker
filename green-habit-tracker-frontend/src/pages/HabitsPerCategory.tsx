@@ -8,10 +8,12 @@ export const HabitsPerCategory = () => {
 
   return (
     <>
-      <h2>{category}</h2>
-      {habitTypes.map((habitType) => (
-        <HabitButton key={habitType._id} habitType={habitType}></HabitButton>
-      ))}
+      <section className="mb-20">
+        <h2>{category}</h2>
+        {habitTypes.map((habitType) => (
+          <HabitButton key={habitType._id} habitType={habitType}></HabitButton>
+        ))}
+      </section>
     </>
   );
 };

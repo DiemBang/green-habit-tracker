@@ -14,6 +14,7 @@ export default {
         fontMuted: "#BCCEDA", // Calm Blue
         customGreen: "#8ec140",
         customBlue: "#4784aa",
+        customRed: "#f1a0a0",
       },
       fontFamily: {
         heading: ['"Quicksand"', "sans-serif"], // For headings

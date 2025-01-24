@@ -1,5 +1,4 @@
 import { useLoaderData } from "react-router-dom";
-import { IHabit } from "../models/IHabit";
 import { ButtonWithIcon } from "../components/ButtonWithIcon";
 import { useState } from "react";
 import axios from "axios";
@@ -7,35 +6,15 @@ import { CardSection } from "../components/CardSection";
 import { PointsBadge } from "../components/PointsBadge";
 
 export const HabitPage = () => {
-  const habit = useLoaderData() as IHabit;
+  const { habit, isAlreadyAdded } = useLoaderData();
   const [frequency, setFrequency] = useState<string>("daily");
   const [reminderTime, setReminderTime] = useState<string>("");
+  const [isAdded, setIsAdded] = useState<boolean>(isAlreadyAdded);
 
   const handleAdd = async () => {
     try {
-      const userID = localStorage.getItem("userID");
+      const userID = localStorage.getItem("userID") || "";
 
-      // Fetch the current user's habits
-      const existingHabitsResponse = await axios.get(
-        `${
-          import.meta.env.VITE_BACKEND_BASE_URL
-        }/api/userHabits?userID=${userID}`
-      );
-
-      const existingHabits = existingHabitsResponse.data;
-
-      // Check if the habit already exists
-      const isHabitAlreadyAdded = existingHabits.some(
-        (h: { habitIdentifier: string }) =>
-          h.habitIdentifier === habit.identifier
-      );
-
-      if (isHabitAlreadyAdded) {
-        console.log("Habit already exists in the list.");
-        alert("This habit is already in your list.");
-        return; // Prevent duplicate addition
-      }
-      // If the habit is not a duplicate, add it
       const userHabit = {
         userID: userID,
         habitIdentifier: habit.identifier,
@@ -48,8 +27,29 @@ export const HabitPage = () => {
         userHabit
       );
       console.log("Habit added to user:", response.data);
+      setIsAdded(true);
     } catch (error) {
       console.error("Error adding user:", error);
+    }
+  };
+
+  const handleRemove = async () => {
+    try {
+      const userID = localStorage.getItem("userID");
+
+      await axios.delete(
+        `${import.meta.env.VITE_BACKEND_BASE_URL}/api/userHabits/delete`,
+        {
+          data: {
+            userID: userID,
+            habitIdentifier: habit.identifier,
+          },
+        }
+      );
+      console.log("Habit removed from user.");
+      setIsAdded(false);
+    } catch (error) {
+      console.error("Error deleting habit:", error);
     }
   };
 
@@ -59,9 +59,12 @@ export const HabitPage = () => {
         {/* Habit Title */}
         <h3>{habit.name}</h3>
 
-        {/* Add Button */}
+        {/* Add/Remove Button */}
         <div className="mb-6">
-          <ButtonWithIcon text="Add" onClick={handleAdd} />
+          <ButtonWithIcon
+            text={isAdded ? "Remove" : "Add"}
+            onClick={isAdded ? handleRemove : handleAdd}
+          />
         </div>
 
         {/* CO2 and Points */}

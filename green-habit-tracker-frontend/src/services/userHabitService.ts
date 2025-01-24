@@ -3,10 +3,22 @@ import { IUserHabit } from "../models/IUserHabit";
 
 const BASE_URL = `${import.meta.env.VITE_BACKEND_BASE_URL}/api/userHabits`;
 
-export const getUserHabits = async (userID: string): Promise<IUserHabit> => {
+export const getUserHabits = async (userID: string): Promise<IUserHabit[]> => {
   let query = { userID: userID };
   let response = await axios.post(BASE_URL, query);
   return response.data;
+};
+
+export const checkIfHabitAlreadyAdded = async (
+  habitIdentifier: string,
+  userID: string
+): Promise<boolean> => {
+  const existingHabits = await getUserHabits(userID);
+  // Check if the habit already exists
+  const isHabitAlreadyAdded = existingHabits.some(
+    (h: { habitIdentifier: string }) => h.habitIdentifier === habitIdentifier
+  );
+  return isHabitAlreadyAdded;
 };
 
 export const getUserHabitsWithCompletedTodayStatus = async (
