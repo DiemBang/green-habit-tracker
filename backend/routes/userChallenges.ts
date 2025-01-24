@@ -63,4 +63,38 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
+/* DELETE challenge for User */
+router.delete("/delete", async (req: Request, res: Response): Promise<void> => {
+  console.log("Incoming request body for deletion:", req.body);
+  try {
+    const { userID, challengeID } = req.body;
+
+    // Validate IDs
+    if (!ObjectId.isValid(challengeID)) {
+      res.status(400).json({ error: "Invalid challenge ID format." });
+      return;
+    }
+
+    // Remove the user's challenge from the UserChallenge collection
+    const result = await req.app.locals.db
+      .collection("UserChallenge")
+      .deleteOne({
+        userID: userID,
+        challengeID: challengeID,
+      });
+
+    if (result.deletedCount === 0) {
+      res.status(404).json({ error: "User challenge not found." });
+      return;
+    }
+
+    res.json({ message: "User challenge deleted successfully." });
+    return;
+  } catch (error) {
+    console.error("Error deleting user challenge:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+    return;
+  }
+});
+
 export default router;
