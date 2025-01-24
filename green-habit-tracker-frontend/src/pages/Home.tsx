@@ -100,7 +100,7 @@ export const Home = () => {
 
       <Link to="/categories">
         <button
-          className="fixed bottom-20 right-4 text-fontPrimary rounded-lg px-2 py-2 flex items-center"
+          className="fixed bottom-20 right-4 text-fontPrimary font-bold capitalize rounded-lg px-2 py-2 flex items-center"
           aria-label="Add Habit"
         >
           Add habit

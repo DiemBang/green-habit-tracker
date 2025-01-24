@@ -24,7 +24,7 @@ export const Explore = () => {
 
   return (
     <>
-      <h2>What's on?</h2>
+      <h2>Explore what's on</h2>
       <h3>Challenges</h3>
       <CardSection>
         <div className="flex flex-wrap gap-6 justify-start">
