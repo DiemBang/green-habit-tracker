@@ -12,11 +12,14 @@ export const ButtonWithIcon: React.FC<ButtonProps> = ({
   onClick,
   className,
 }) => {
-  // Dynamically select the icon based on the button text
-  const iconSrc = text === "Remove" ? removeIcon : addIcon;
+  const iconSrc =
+    text === "Remove" || text === "Leave Challenge" ? removeIcon : addIcon;
 
-  // Dynamic button color: Red for "Remove," Default for "Add"
-  const buttonColor = text === "Remove" ? "bg-customRed" : "bg-calmBlue";
+  // Dynamic button color
+  const buttonColor =
+    text === "Remove" || text === "Leave Challenge"
+      ? "bg-customRed"
+      : "bg-calmBlue";
 
   return (
     <button
