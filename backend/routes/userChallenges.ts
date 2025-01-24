@@ -19,6 +19,19 @@ router.get("/", function (req: Request, res: Response) {
     });
 });
 
+/* GET userChallenge for specific user */
+router.post("/", function (req: Request, res: Response) {
+  // HÄMTA (anropa databas connection som skapades i app.js )
+  req.app.locals.db
+    .collection("UserChallenge")
+    .find({ userID: req.body.userID })
+    .toArray()
+    .then((results: Array<IUserChallenge>) => {
+      console.log("results", results);
+      res.json(results);
+    });
+});
+
 /* Add challenge for User */
 router.post("/add", async (req: Request, res: Response): Promise<void> => {
   console.log("Incoming request body:", req.body);
