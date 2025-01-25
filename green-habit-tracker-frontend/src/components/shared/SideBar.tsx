@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import avatar from "../../assets/rabbit.svg";
 
 export const SideBar = () => {
@@ -19,78 +20,78 @@ export const SideBar = () => {
             <span className="material-symbols-outlined text-gray-600">
               dashboard
             </span>
-            <a
-              href="/home"
+            <Link
+              to="/home"
               className="text-gray-700 hover:text-blue-600 font-medium text-sm"
             >
               Dashboard
-            </a>
+            </Link>
           </li>
           <li className="flex items-center space-x-3">
             <span className="material-symbols-outlined text-gray-600">
               explore
             </span>
-            <a
-              href="/explore"
+            <Link
+              to="/explore"
               className="text-gray-700 hover:text-blue-600 font-medium text-sm"
             >
               Explore
-            </a>
+            </Link>
           </li>
           <li className="flex items-center space-x-3">
             <span className="material-symbols-outlined text-gray-600">
               person
             </span>
-            <a
-              href="/profile"
+            <Link
+              to="/profile"
               className="text-gray-700 hover:text-blue-600 font-medium text-sm"
             >
               Profile
-            </a>
+            </Link>
           </li>
           <li className="flex items-center space-x-3">
             <span className="material-symbols-outlined text-gray-600">
               info
             </span>
-            <a
-              href="/about"
+            <Link
+              to="/about"
               className="text-gray-700 hover:text-blue-600 font-medium text-sm"
             >
               About
-            </a>
+            </Link>
           </li>
           <li className="flex items-center space-x-3">
             <span className="material-symbols-outlined text-gray-600">
               school
             </span>
-            <a
-              href="/tutorial"
+            <Link
+              to="/tutorial"
               className="text-gray-700 hover:text-blue-600 font-medium text-sm"
             >
               Tutorial
-            </a>
+            </Link>
           </li>
           <li className="flex items-center space-x-3">
             <span className="material-symbols-outlined text-gray-600">
               settings
             </span>
-            <a
-              href="/settings"
+            <Link
+              to="/settings"
               className="text-gray-700 hover:text-blue-600 font-medium text-sm"
             >
               Settings
-            </a>
+            </Link>
           </li>
           <li className="flex items-center space-x-3">
             <span className="material-symbols-outlined text-red-600">
               logout
             </span>
-            <a
-              href="/login"
+            <Link
+              to="/login"
               className="text-red-600 hover:text-red-800 font-medium text-sm"
             >
               Sign out
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

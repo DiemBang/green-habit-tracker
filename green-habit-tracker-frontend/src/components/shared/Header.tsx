@@ -107,7 +107,7 @@ export const Header = ({
     <header className="w-screen h-16 fixed top-0 rounded-b-lg flex items-center justify-center">
       {showBackIcon && (
         <div
-          className="absolute left-4 flex items-center space-x-2 cursor-pointer"
+          className="absolute left-4 flex items-center space-x-2 cursor-pointer lg:hidden"
           onClick={handleBackClick}
         >
           <span className="material-symbols-outlined text-xl">

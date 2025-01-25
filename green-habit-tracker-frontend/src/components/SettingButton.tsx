@@ -7,6 +7,7 @@ interface SettingButtonProps {
   iconSize?: string;
   customIconStyle?: string;
   variant?: "default" | "danger";
+  className?: string;
   onClick?: () => void;
 }
 
@@ -17,6 +18,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
   iconSize = "text-lg",
   customIconStyle = "",
   variant = "default",
+  className,
   onClick,
 }) => {
   const baseClasses =
@@ -27,7 +29,10 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
       : "bg-cloudWhite border-gray-300 hover:bg-gray-100";
 
   return (
-    <article className={`${baseClasses} ${variantClasses}`} onClick={onClick}>
+    <article
+      className={`${baseClasses} ${variantClasses} ${className}`}
+      onClick={onClick}
+    >
       <span>{children}</span>
       {showIcon && (
         <span
