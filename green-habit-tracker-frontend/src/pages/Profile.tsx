@@ -59,21 +59,19 @@ export const Profile = () => {
       </section>
       <section>
         <h3>Achievements</h3>
-        <div className="flex flex-wrap gap-6 justify-start">
-          <CardSection className="grid grid-cols-2 gap-6 mb-20">
-            {userChallenges.map((userChallenge: IUserChallengeCompleted) => (
-              <img
-                src={rewardBadges[userChallenge.challengeName]}
-                alt={
-                  "badge completed for challenge: " +
-                  userChallenge.challengeName
-                }
-                key={userChallenge.challengeID}
-                className="w-32 h-32 object-contain rounded-full"
-              />
-            ))}
-          </CardSection>
-        </div>
+
+        <CardSection className="flex flex-row flex-wrap justify-start items-start gap-4 flex-none mb-20 px-4">
+          {userChallenges.map((userChallenge: IUserChallengeCompleted) => (
+            <img
+              src={rewardBadges[userChallenge.challengeName]}
+              alt={
+                "badge completed for challenge: " + userChallenge.challengeName
+              }
+              key={userChallenge.challengeID}
+              className="w-32 h-32 object-contain rounded-full"
+            />
+          ))}
+        </CardSection>
       </section>
     </>
   );

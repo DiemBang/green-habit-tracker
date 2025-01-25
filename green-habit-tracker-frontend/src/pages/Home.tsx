@@ -6,6 +6,7 @@ import { CardSection } from "../components/CardSection";
 import { useCalendar } from "../contexts/CalendarContext";
 import { HabitTodo } from "../components/HabitTodo";
 import { getUserHabitsWithCompletedStatusByDay } from "../services/userHabitService";
+import didYouKnowIcon from "../assets/know.svg";
 
 export const Home = () => {
   const { sustainabilityFacts, userHabits } = useLoaderData();
@@ -82,13 +83,13 @@ export const Home = () => {
     <>
       <h3>{formattedDate}</h3>
       <div className="flex flex-col lg:flex-row-reverse w-[100%]">
-        <div className="lg:w-[30%]">
-          <h3>Did you know?</h3>
-          <CardSection>
+        <div className="lg:w-[40%]">
+          <img src={didYouKnowIcon} alt="Did you know icon" className="w-20" />
+          <CardSection className="mt-[-0.375rem]">
             <p>{sustainabilityFacts[factIndex].description}</p>
           </CardSection>
         </div>
-        <div className="lg:w-[70%]">
+        <div className="lg:w-[60%]">
           <h3>Habits to complete</h3>
           <CardSection className="mb-20">
             <ul>
@@ -106,7 +107,7 @@ export const Home = () => {
 
       <Link to="/categories">
         <button
-          className="fixed bottom-20 right-4 max-w-[calc(100%-1rem)] text-fontPrimary font-bold capitalize rounded-lg px-2 py-2 flex items-center"
+          className="fixed bottom-20 right-4 lg:right-[16.75rem] max-w-[calc(100%-1rem)] text-fontPrimary font-bold capitalize rounded-lg px-2 py-2 flex items-center"
           aria-label="Add Habit"
         >
           Add habit

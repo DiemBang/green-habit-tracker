@@ -26,20 +26,16 @@ export const Explore = () => {
     <>
       <h3>Explore what's on</h3>
       <h3>Challenges</h3>
-      <CardSection>
-        <div className="flex flex-wrap gap-6 justify-start">
-          {challenges.map((challenge: IChallenge, index: number) => (
-            <div key={index} className="flex items-center justify-center">
-              <Link to={`/challenge/${challenge.habitIdentifier}`}>
-                <img
-                  src={challengeIcons[challenge.name]}
-                  alt={challenge.description}
-                  className="w-32 h-32 object-contain rounded-full"
-                />
-              </Link>
-            </div>
-          ))}
-        </div>
+      <CardSection className="flex flex-row flex-wrap justify-start items-start gap-4 flex-none mb-20 px-4">
+        {challenges.map((challenge: IChallenge) => (
+          <Link to={`/challenge/${challenge.habitIdentifier}`}>
+            <img
+              src={challengeIcons[challenge.name]}
+              alt={challenge.description}
+              className="w-32 h-32 object-contain rounded-full"
+            />
+          </Link>
+        ))}
       </CardSection>
       <h3 className="flex items-center">
         <img
