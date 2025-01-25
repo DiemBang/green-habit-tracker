@@ -157,7 +157,7 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         </g>
       </svg>
       <h1 className="app-name text-4xl font-bold text-white mt-6">
-        Green Habits
+        GreenHabits
       </h1>
       <p className="tagline text-lg text-white mt-2">
         Let's make every choice count!

@@ -7,11 +7,11 @@ export const Footer = () => {
   return (
     <>
       <footer
-        className="w-screen h-16 fixed bottom-0 flex items-center justify-around rounded-t-lg"
+        className="w-screen h-16 lg:h-8 fixed bottom-0 flex items-center justify-around rounded-t-lg"
         role="contentinfo"
       >
         <section
-          className="flex justify-around w-full"
+          className="flex justify-around w-full lg:hidden"
           aria-label="Footer navigation"
         >
           <Link to="/home">
@@ -65,6 +65,9 @@ export const Footer = () => {
               </p>
             </div>
           </Link>
+        </section>
+        <section className="hidden lg:block text-xs">
+          <p>© 2025 GreenHabits. All rights reserved.</p>
         </section>
       </footer>
     </>

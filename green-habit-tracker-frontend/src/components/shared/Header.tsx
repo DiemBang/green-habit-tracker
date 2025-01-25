@@ -121,21 +121,6 @@ export const Header = ({
       </span>
 
       <div className="absolute right-4 flex items-center space-x-2">
-        <button
-          onClick={togglePopup}
-          aria-label="Toggle Notifications"
-          className="notification-icon p-1 rounded bg-calmBlue relative"
-        >
-          <img
-            src={notificationIcon}
-            alt="notifications icon"
-            className="w-6 h-6 svg"
-            aria-hidden="true"
-          />
-          {notifications.some((notif) => !notif.read) && (
-            <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full border border-white"></span>
-          )}
-        </button>
         {isHomePage && (
           <button
             ref={iconRef}
@@ -151,6 +136,21 @@ export const Header = ({
             />
           </button>
         )}
+        <button
+          onClick={togglePopup}
+          aria-label="Toggle Notifications"
+          className="notification-icon p-1 rounded bg-calmBlue relative"
+        >
+          <img
+            src={notificationIcon}
+            alt="notifications icon"
+            className="w-6 h-6 svg"
+            aria-hidden="true"
+          />
+          {notifications.some((notif) => !notif.read) && (
+            <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full border border-white"></span>
+          )}
+        </button>
 
         {isProfilePage && (
           <Link to="/settings">
