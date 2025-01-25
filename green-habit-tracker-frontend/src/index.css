@@ -32,7 +32,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 100vw;
   min-height: 100vh;
   @apply font-body text-gray-800; /* Use Roboto for body */
   background-color: #f3f3f3;
