@@ -12,8 +12,8 @@ export const Layout = () => {
       <CalendarProvider>
         <Header notifications={notifications}></Header>
         <SideBar />
-        <div className="lg:pl-40">
-          <main className="mt-16 w-screen p-4">
+        <div className="lg:pl-40 mt-16">
+          <main className="py-4 px-4 lg:px-20">
             <Outlet></Outlet>
           </main>
         </div>

@@ -102,13 +102,13 @@ export const Tutorial = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-6">
-      <h3 className="mb-6">Tutorial</h3>
+    <>
+      <h3>Tutorial</h3>
       <div className="space-y-4">
         {["Home", "Explore", "Profile"].map((section) => (
           <section
             key={section}
-            className="w-[95%] mx-auto p-0 bg-cloudWhite border rounded-lg shadow-sm"
+            className="bg-cloudWhite border rounded-lg shadow-sm"
           >
             <button
               className="flex justify-between items-center w-full px-4 py-3 bg-cloudWhite font-medium text-lg focus:outline-none hover:bg-gray-200 transition duration-300"
@@ -129,6 +129,6 @@ export const Tutorial = () => {
           </section>
         ))}
       </div>
-    </div>
+    </>
   );
 };

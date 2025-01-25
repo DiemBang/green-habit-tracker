@@ -18,6 +18,7 @@
 
 #root {
   min-height: 100vh;
+  min-width: 100vw;
 }
 
 a {
@@ -28,6 +29,10 @@ a:hover {
   color: #10a605;
 }
 
+/* html {
+  overflow-x: hidden;
+} */
+
 body {
   margin: 0;
   display: flex;
@@ -36,6 +41,7 @@ body {
   min-height: 100vh;
   @apply font-body text-gray-800; /* Use Roboto for body */
   background-color: #f3f3f3;
+  /* overflow-x: hidden; */
 }
 
 h1,
@@ -61,8 +67,7 @@ h2 {
 h3 {
   font-size: 1.5rem; /* 24px */
   font-weight: 700; /* Bold */
-  margin-bottom: 0.75rem;
-  margin-top: 2rem;
+  margin: 1rem;
 }
 
 h4 {

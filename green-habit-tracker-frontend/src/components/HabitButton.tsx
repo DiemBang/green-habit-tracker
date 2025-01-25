@@ -10,7 +10,7 @@ export const HabitButton = ({ habitType }: HabitProps) => {
   return (
     <article
       key={habitType.identifier}
-      className="mb-2 border rounded-lg shadow-sm bg-cloudWhite"
+      className="mb-2 border rounded-lg shadow-sm bg-cloudWhite lg:w-[50%]"
     >
       <Link
         to={`/habit/${habitType.identifier}`}

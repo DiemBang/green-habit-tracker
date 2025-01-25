@@ -30,7 +30,7 @@ export const SettingButton: React.FC<SettingButtonProps> = ({
 
   return (
     <article
-      className={`${baseClasses} ${variantClasses} ${className}`}
+      className={`${baseClasses} ${variantClasses} ${className} lg:w-[50%]`}
       onClick={onClick}
     >
       <span>{children}</span>

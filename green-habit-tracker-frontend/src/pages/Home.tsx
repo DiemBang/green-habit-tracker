@@ -81,26 +81,32 @@ export const Home = () => {
   return (
     <>
       <h3>{formattedDate}</h3>
-      <h3>Did you know?</h3>
-      <CardSection>
-        <p>{sustainabilityFacts[factIndex].description}</p>
-      </CardSection>
-      <h3>Habits to complete</h3>
-      <CardSection className="mb-20">
-        <ul>
-          {habits.map((habit: IUserHabit) => (
-            <HabitTodo
-              habit={habit}
-              toggleCompletion={toggleCompletion}
-              key={habit._id}
-            ></HabitTodo>
-          ))}
-        </ul>
-      </CardSection>
+      <div className="flex flex-col lg:flex-row-reverse w-[100%]">
+        <div className="lg:w-[30%]">
+          <h3>Did you know?</h3>
+          <CardSection>
+            <p>{sustainabilityFacts[factIndex].description}</p>
+          </CardSection>
+        </div>
+        <div className="lg:w-[70%]">
+          <h3>Habits to complete</h3>
+          <CardSection className="mb-20">
+            <ul>
+              {habits.map((habit: IUserHabit) => (
+                <HabitTodo
+                  habit={habit}
+                  toggleCompletion={toggleCompletion}
+                  key={habit._id}
+                ></HabitTodo>
+              ))}
+            </ul>
+          </CardSection>
+        </div>
+      </div>
 
       <Link to="/categories">
         <button
-          className="fixed bottom-20 right-4 text-fontPrimary font-bold capitalize rounded-lg px-2 py-2 flex items-center"
+          className="fixed bottom-20 right-4 max-w-[calc(100%-1rem)] text-fontPrimary font-bold capitalize rounded-lg px-2 py-2 flex items-center"
           aria-label="Add Habit"
         >
           Add habit

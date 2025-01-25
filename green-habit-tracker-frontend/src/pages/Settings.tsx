@@ -42,18 +42,18 @@ export const Settings = () => {
         </SettingButton>
       </Link>
       <Link to={"/about"}>
-        <SettingButton className="lg: hidden">
+        <SettingButton className="lg:hidden">
           <h4 className="text-sm mt-2 mb-2">About Green Habits</h4>
         </SettingButton>
       </Link>
       <Link to={"/tutorial"}>
-        <SettingButton className="lg: hidden">
+        <SettingButton className="lg:hidden">
           <h4 className="text-sm mt-2 mb-2">Tutorial</h4>
         </SettingButton>
       </Link>
       <SettingButton
         icon="logout"
-        className="lg: hidden"
+        className="lg:hidden"
         onClick={handleSignOut}
       >
         <h4 className="text-sm mt-2 mb-2">Sign out</h4>
