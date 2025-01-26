@@ -100,7 +100,7 @@ export const Header = ({
   }, [showCalendar, isPopupVisible]);
 
   return (
-    <header className="w-screen h-16 fixed top-0 rounded-b-lg flex items-center justify-center">
+    <header className="w-screen h-16 fixed top-0 rounded-b-lg flex items-center justify-center z-20">
       {showBackIcon && (
         <div
           className="absolute left-4 flex items-center space-x-2 cursor-pointer lg:hidden"
@@ -162,7 +162,7 @@ export const Header = ({
       {showCalendar && (
         <div
           ref={calendarRef}
-          className="absolute top-16 lg:right-0 lg:w-[50%] bg-cloudWhite p-4 shadow-lg rounded-lg z-50"
+          className="absolute top-16 lg:right-0 lg:w-[50%] bg-cloudWhite p-4 shadow-lg rounded-lg z-30"
         >
           <Calendar
             value={selectedDate}

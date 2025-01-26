@@ -12,7 +12,7 @@ export const Layout = () => {
         <Header notifications={notifications}></Header>
         <SideBar name={name} />
         <div className="lg:pl-40 mt-16">
-          <main className="py-4 px-4 md:px-16 lg:px-20">
+          <main className="py-4 px-4 md:px-16 lg:px-20 z-10">
             <Outlet></Outlet>
           </main>
         </div>
