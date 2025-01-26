@@ -1,6 +1,7 @@
 import { format, differenceInCalendarDays, isSameDay } from "date-fns";
 import { IUserHabit } from "../models/IUserHabit";
 import { useCalendar } from "../contexts/CalendarContext";
+import { Link } from "react-router-dom";
 
 interface HabitTodoProps {
   habit: IUserHabit;
@@ -137,9 +138,11 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
     >
       {/* Habit Name and Frequency */}
       <div className="flex-grow">
-        <p className="text-lg font-medium leading-tight break-words">
-          {habit.name}
-        </p>
+        <Link to={`/habit/${habit.habitIdentifier}/?previous=home`}>
+          <p className="text-lg font-medium leading-tight break-words">
+            {habit.name}
+          </p>
+        </Link>
         <p
           className={`${getFrequencyColor(habit.frequency)} text-sm uppercase`}
         >
