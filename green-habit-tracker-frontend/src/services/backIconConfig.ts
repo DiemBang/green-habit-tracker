@@ -36,6 +36,15 @@ const backIconConfig: Record<string, BackIconConfig> = {
 };
 
 export const getBackIconConfig = (path: string): BackIconConfig => {
+  const searchParams = new URLSearchParams(location.search);
+  const previous = searchParams.get("previous");
+
+  // Handle the "previous=home" case
+  if (previous === "home") {
+    return { showBackIcon: true, backText: "Home" };
+  }
+
+  // Match dynamic paths
   if (path.startsWith("/habit/")) {
     return backIconConfig["/habit/*"];
   }
@@ -44,5 +53,6 @@ export const getBackIconConfig = (path: string): BackIconConfig => {
     return backIconConfig["/challenge/*"];
   }
 
+  // Default case
   return backIconConfig[path] || { showBackIcon: false, backText: "" };
 };
