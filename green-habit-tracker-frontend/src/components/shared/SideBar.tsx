@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import avatar from "../../assets/rabbit.svg";
 
-export const SideBar = () => {
+export const SideBar = ({ name }: { name: string }) => {
   return (
     <aside className="hidden lg:flex bg-gray-100 w-40 p-4 pt-10 h-[calc(100vh-4rem)] top-16 flex-col fixed left-0 shadow-lg">
       {/* Profile Section */}
@@ -11,6 +11,7 @@ export const SideBar = () => {
           alt="avatar profile"
           className="w-10 h-10 rounded-full shadow-md"
         />
+        <p className="text-lg font-semibold">{name}</p>
       </section>
 
       {/* Navigation Menu */}

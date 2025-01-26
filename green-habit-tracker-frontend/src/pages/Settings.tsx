@@ -31,9 +31,6 @@ export const Settings = () => {
             <p className="text-lg font-semibold">{user.name}</p>
             <p>{user.email}</p>
           </div>
-          <span className="material-symbols-outlined text-2xl">
-            chevron_right
-          </span>
         </div>
       </section>
       <Link to={"/notifications-settings"}>

@@ -7,7 +7,7 @@ const BASE_URL = `${
 
 export const getUserNotifications = async (
   userID: string
-): Promise<IUserNotification> => {
+): Promise<IUserNotification[]> => {
   let query = { userID: userID };
   let response = await axios.post(BASE_URL, query);
   return response.data;
