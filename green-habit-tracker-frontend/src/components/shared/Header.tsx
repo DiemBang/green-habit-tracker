@@ -99,10 +99,6 @@ export const Header = ({
     };
   }, [showCalendar, isPopupVisible]);
 
-  const handleClearAll = () => {
-    setNotifications([]); // Clear the notifications list
-  };
-
   return (
     <header className="w-screen h-16 fixed top-0 rounded-b-lg flex items-center justify-center">
       {showBackIcon && (
@@ -166,7 +162,7 @@ export const Header = ({
       {showCalendar && (
         <div
           ref={calendarRef}
-          className="absolute top-16 right-4 bg-cloudWhite p-4 shadow-lg rounded-lg z-50"
+          className="absolute top-16 lg:right-0 lg:w-[50%] bg-cloudWhite p-4 shadow-lg rounded-lg z-50"
         >
           <Calendar
             value={selectedDate}
@@ -180,7 +176,6 @@ export const Header = ({
           <NotificationPopup
             notifications={notifications}
             onClose={() => setIsPopupVisible(false)}
-            onClearAll={handleClearAll}
           />
         </div>
       )}

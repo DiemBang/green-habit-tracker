@@ -71,7 +71,7 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
     timeline.to(".splash-screen", {
       opacity: 0,
       duration: 1,
-      delay: 2,
+      delay: 1,
       ease: "power1.inOut",
     });
   }, [onComplete]);
@@ -160,7 +160,7 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         GreenHabits
       </h1>
       <p className="tagline text-lg text-white mt-2">
-        Let's make every choice count!
+        Let's make every choice count
       </p>
     </div>
   );

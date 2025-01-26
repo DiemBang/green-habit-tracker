@@ -26,7 +26,7 @@ export const Explore = () => {
     <>
       <h3>Explore what's on</h3>
       <h3>Challenges</h3>
-      <CardSection className="flex flex-row flex-wrap justify-start items-start gap-4 flex-none mb-20 px-4">
+      <CardSection className="flex flex-row flex-wrap justify-start items-start gap-4 flex-none px-4">
         {challenges.map((challenge: IChallenge) => (
           <Link to={`/challenge/${challenge.habitIdentifier}`}>
             <img

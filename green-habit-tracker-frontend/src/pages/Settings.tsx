@@ -19,7 +19,7 @@ export const Settings = () => {
 
   return (
     <>
-      <h2>Settings</h2>
+      <h3>Settings</h3>
       <section className="flex items-center gap-6 mb-4">
         <img
           src={avatar}

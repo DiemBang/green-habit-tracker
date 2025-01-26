@@ -104,31 +104,30 @@ export const Tutorial = () => {
   return (
     <>
       <h3>Tutorial</h3>
-      <div className="space-y-4">
-        {["Home", "Explore", "Profile"].map((section) => (
-          <section
-            key={section}
-            className="bg-cloudWhite border rounded-lg shadow-sm"
+
+      {["Home", "Explore", "Profile"].map((section) => (
+        <section
+          key={section}
+          className="m-2 lg:m-6 bg-cloudWhite border rounded-lg shadow-sm"
+        >
+          <button
+            className="flex justify-between items-center w-full px-4 py-3 bg-cloudWhite font-medium text-lg focus:outline-none hover:bg-gray-200 transition duration-300"
+            onClick={() => toggleSection(section)}
           >
-            <button
-              className="flex justify-between items-center w-full px-4 py-3 bg-cloudWhite font-medium text-lg focus:outline-none hover:bg-gray-200 transition duration-300"
-              onClick={() => toggleSection(section)}
+            {section}
+            <span
+              className={`transform transition-transform duration-300 ${
+                openSection === section ? "rotate-180" : ""
+              }`}
             >
-              {section}
-              <span
-                className={`transform transition-transform duration-300 ${
-                  openSection === section ? "rotate-180" : ""
-                }`}
-              >
-                🌿
-              </span>
-            </button>
-            {openSection === section && (
-              <div className="p-4 bg-white">{tutorialContent[section]}</div>
-            )}
-          </section>
-        ))}
-      </div>
+              🌿
+            </span>
+          </button>
+          {openSection === section && (
+            <div className="p-4 bg-white">{tutorialContent[section]}</div>
+          )}
+        </section>
+      ))}
     </>
   );
 };
