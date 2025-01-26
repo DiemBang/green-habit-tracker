@@ -88,6 +88,17 @@ export const Home = () => {
           <CardSection className="mt-[-0.375rem]">
             <p>{sustainabilityFacts[factIndex].description}</p>
           </CardSection>
+          <Link to="/categories">
+            <button
+              className="hidden lg:flex text-fontPrimary font-bold capitalize rounded-lg ml-6 px-2 py-2 items-center"
+              aria-label="Add Habit"
+            >
+              Add habit
+              <span className="material-symbols-outlined text-2xl ml-2">
+                add_circle
+              </span>
+            </button>
+          </Link>
         </div>
         <div className="lg:w-[60%]">
           <h3>Habits to complete</h3>
@@ -107,7 +118,7 @@ export const Home = () => {
 
       <Link to="/categories">
         <button
-          className="fixed bottom-20 right-4 lg:right-[16.75rem] max-w-[calc(100%-1rem)] text-fontPrimary font-bold capitalize rounded-lg px-2 py-2 flex items-center"
+          className="lg:hidden fixed bottom-20 right-4 lg:right-[16.75rem] max-w-[calc(100%-1rem)] text-fontPrimary font-bold capitalize rounded-lg px-2 py-2 flex items-center"
           aria-label="Add Habit"
         >
           Add habit
