@@ -53,7 +53,7 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
 
     // Fade in application name
     timeline.fromTo(
-      ".app-name",
+      ".app-title",
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 2, ease: "power2.out" },
       "-=1"
@@ -156,7 +156,7 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           />
         </g>
       </svg>
-      <h1 className="font-custom text-4xl font-bold text-white mt-6 mb-[-0.75rem]">
+      <h1 className="app-title font-custom text-4xl font-bold text-white mt-6 mb-[-0.75rem]">
         GreenHabits
       </h1>
       <h4 className="font-josefin tagline text-lg text-white">
