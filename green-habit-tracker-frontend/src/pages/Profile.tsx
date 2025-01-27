@@ -35,7 +35,9 @@ export const Profile = () => {
         <div>
           <p className="text-lg font-semibold">{user.name}</p>
           <PointsBadge>
-            <span className="text-xl font-bold text-green-600">1000</span>
+            <span className="text-xl font-bold text-green-600">
+              {user.points || 0}
+            </span>
           </PointsBadge>
         </div>
       </section>

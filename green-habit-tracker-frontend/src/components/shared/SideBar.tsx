@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import avatar from "../../assets/rabbit.svg";
 import { PointsBadge } from "../PointsBadge";
+import { IUser } from "../../models/IUser";
 
-export const SideBar = ({ name }: { name: string }) => {
+export const SideBar = ({ user }: { user: IUser }) => {
   return (
     <aside className="hidden lg:flex bg-gray-100 w-40 p-4 pt-10 h-[calc(100vh-4rem)] top-16 flex-col fixed left-0 shadow-lg">
       {/* Profile Section */}
@@ -12,9 +13,11 @@ export const SideBar = ({ name }: { name: string }) => {
           alt="avatar profile"
           className="w-12 h-12 rounded-full shadow-md"
         />
-        <p className="text-lg font-semibold">{name}</p>
+        <p className="text-lg font-semibold">{user.name}</p>
         <PointsBadge>
-          <span className="text-xl font-bold text-green-600">1000</span>
+          <span className="text-xl font-bold text-green-600">
+            {user.points}
+          </span>
         </PointsBadge>
       </section>
 

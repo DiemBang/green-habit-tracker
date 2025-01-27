@@ -6,10 +6,9 @@ import { getUser } from "../services/userService";
 export const headerLoader = async () => {
   let userID = localStorage.getItem("userID") || "";
   let user: IUser = await getUser(userID);
-  let name = user.name;
 
   let notifications: IUserNotification[] = await getUserNotifications(userID);
   console.log("notifications", notifications);
 
-  return { notifications, name };
+  return { notifications, user };
 };

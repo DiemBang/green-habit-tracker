@@ -32,7 +32,10 @@ export const Explore = () => {
       </p>
       <CardSection className="flex flex-row flex-wrap justify-start items-start gap-4 flex-none px-4">
         {challenges.map((challenge: IChallenge) => (
-          <Link to={`/challenge/${challenge.habitIdentifier}`}>
+          <Link
+            to={`/challenge/${challenge.habitIdentifier}`}
+            key={challenge._id}
+          >
             <img
               src={challengeIcons[challenge.name]}
               alt={challenge.description}

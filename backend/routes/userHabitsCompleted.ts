@@ -2,7 +2,7 @@ import { Router, Request, Response } from "express";
 import { IUserHabitCompleted } from "../models/IUserHabitCompleted.js";
 import express from "express";
 import { addDays, isPast } from "date-fns";
-import mongodb from "mongodb";
+import mongodb, { ObjectId } from "mongodb";
 
 const router = Router();
 
@@ -46,6 +46,68 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
         .json({ error: "Internal Server Error. Please try again later." });
     });
 });
+
+const getTotalPointsForUserHabitsCompleted = async (
+  userID: string,
+  req: Request
+): Promise<void> => {
+  const result = await req.app.locals.db
+    .collection("UserHabitCompleted")
+    .aggregate([
+      {
+        // Match documents for the given userID
+        $match: { userID: userID }, //get item from local storage?
+      },
+      {
+        // Perform a $lookup to join with the Habit collection
+        $lookup: {
+          from: "Habit",
+          localField: "habitIdentifier",
+          foreignField: "identifier",
+          as: "habitDetails",
+        },
+      },
+      {
+        // Unwind the habitDetails array to flatten the documents
+        $unwind: "$habitDetails",
+      },
+      {
+        // Group by userID and calculate the total points
+        $group: {
+          _id: "$userID",
+          totalPoints: { $sum: "$habitDetails.points" },
+        },
+      },
+    ])
+    .toArray();
+
+  return result.length > 0 ? result[0].totalPoints : 0;
+};
+
+const getTotalPointsAndSetItForUser = async (
+  userID: string,
+  req: Request
+): Promise<void> => {
+  try {
+    // Step 1: Get the total points for the user's completed habits
+    const totalPoints = await getTotalPointsForUserHabitsCompleted(userID, req);
+    let userObjectID = new ObjectId(req.body.userID);
+    // Step 2: Update the "points" field in the User collection
+    const result = await req.app.locals.db.collection("User").updateOne(
+      { _id: userObjectID }, // Match the user by userID
+      { $set: { points: totalPoints } } // Update the "points" field with the calculated total
+    );
+
+    if (result.modifiedCount > 0) {
+      console.log(`Successfully updated points for user ${userID}`);
+    } else {
+      console.log(`No updates made. User ${userID} may not exist.`);
+    }
+  } catch (error) {
+    console.error("Error updating total points for user:", error);
+    throw error; // Re-throw the error to propagate it
+  }
+};
 
 const checkAndUpdateChallengeStatusForUser = async (
   userID: string,
@@ -200,7 +262,7 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
         .collection("UserHabitCompleted")
         .insertOne(userHabitCompleted);
       console.log("Insert Result:", result);
-
+      await getTotalPointsAndSetItForUser(req.body.userID, req);
       await checkAndUpdateChallengeStatusForUser(req.body.userID, req);
 
       res.json({
