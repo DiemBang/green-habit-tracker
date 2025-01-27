@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: "CustomFont";
+  src: url("./assets/fonts/PetitCochon.ttf") format("truetype");
+  font-weight: normal; /* Add bold if necessary */
+  font-style: normal; /* Add italic if necessary */
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -29,10 +35,6 @@ a:hover {
   color: #10a605;
 }
 
-/* html {
-  overflow-x: hidden;
-} */
-
 body {
   margin: 0;
   display: flex;
@@ -41,7 +43,6 @@ body {
   min-height: 100vh;
   @apply font-body text-gray-800; /* Use Roboto for body */
   background-color: #f3f3f3;
-  /* overflow-x: hidden; */
 }
 
 h1,

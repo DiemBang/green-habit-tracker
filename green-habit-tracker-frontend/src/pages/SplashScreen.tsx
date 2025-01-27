@@ -156,7 +156,7 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           />
         </g>
       </svg>
-      <h1 className="app-name text-4xl font-bold text-white mt-6">
+      <h1 className="font-custom text-4xl font-bold text-white mt-6">
         GreenHabits
       </h1>
       <p className="tagline text-lg text-white mt-2">
