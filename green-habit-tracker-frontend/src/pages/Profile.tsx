@@ -26,7 +26,7 @@ export const Profile = () => {
   return (
     <>
       <h3>Profile</h3>
-      <section className="flex items-center gap-6">
+      <section className="flex items-center gap-6 mb-6">
         <img
           src={avatar}
           alt="avatar profile"
@@ -40,16 +40,28 @@ export const Profile = () => {
         </div>
       </section>
       <section>
-        <h3>Progress</h3>
         <Link to={"/progress-summary"}>
           <CardSection>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center justify-between">
+              {/* Icon on the left */}
               <img
                 src={progressIcon}
                 alt="Icon for progress and stats"
-                className="w-8 h-8"
+                className="w-8 h-8 flex-shrink-0"
               />
-              <p className="text-lg">Your Eco Progress at a Glance</p>
+
+              {/* Text content in the middle */}
+              <div className="flex-1 ml-4">
+                <h4 className="text-lg font-bold text-emerald-700">
+                  Your Eco Progress at a Glance
+                </h4>
+                <p>
+                  Discover how your habits are making a difference! Track your
+                  streaks, top habits, and CO₂ savings all in one place.
+                </p>
+              </div>
+
+              {/* Arrow icon on the right */}
               <span className="material-symbols-outlined text-2xl">
                 chevron_right
               </span>
@@ -58,7 +70,15 @@ export const Profile = () => {
         </Link>
       </section>
       <section>
-        <h3>Achievements</h3>
+        <h3 className="text-lg font-bold text-emerald-700 mb-2">
+          Achievements
+        </h3>
+        <p className="px-4 mb-4">
+          Every badge tells a story of your dedication to living sustainably.
+          From reducing waste to saving resources, these rewards celebrate the
+          challenges you’ve completed and the positive impact you’ve made. Keep
+          collecting to unlock your full eco potential!
+        </p>
 
         <CardSection className="flex flex-row flex-wrap justify-start items-start gap-4 flex-none mb-20 px-4">
           {userChallenges.map((userChallenge: IUserChallengeCompleted) => (

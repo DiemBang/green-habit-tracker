@@ -26,7 +26,7 @@ export const Explore = () => {
     <>
       <h3>Explore what's on</h3>
       <h3>Challenges</h3>
-      <p className="px-4 text-sm mb-4">
+      <p className="px-4 mb-4">
         Take on a challenge this month! Complete more green habits, make a
         positive impact, and collect points along the way.
       </p>
