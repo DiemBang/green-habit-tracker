@@ -26,6 +26,10 @@ export const Explore = () => {
     <>
       <h3>Explore what's on</h3>
       <h3>Challenges</h3>
+      <p className="px-4 text-sm mb-4">
+        Take on a challenge this month! Complete more green habits, make a
+        positive impact, and collect points along the way.
+      </p>
       <CardSection className="flex flex-row flex-wrap justify-start items-start gap-4 flex-none px-4">
         {challenges.map((challenge: IChallenge) => (
           <Link to={`/challenge/${challenge.habitIdentifier}`}>
