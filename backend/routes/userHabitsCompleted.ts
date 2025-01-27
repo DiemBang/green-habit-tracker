@@ -3,6 +3,7 @@ import { IUserHabitCompleted } from "../models/IUserHabitCompleted.js";
 import express from "express";
 import { addDays, isPast } from "date-fns";
 import mongodb, { ObjectId } from "mongodb";
+import { getTotalPointsForUserChallengesCompleted } from "./userChallengesCompleted.js";
 
 const router = Router();
 
@@ -50,7 +51,7 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
 const getTotalPointsForUserHabitsCompleted = async (
   userID: string,
   req: Request
-): Promise<void> => {
+): Promise<number> => {
   const result = await req.app.locals.db
     .collection("UserHabitCompleted")
     .aggregate([
@@ -90,12 +91,19 @@ const getTotalPointsAndSetItForUser = async (
 ): Promise<void> => {
   try {
     // Step 1: Get the total points for the user's completed habits
-    const totalPoints = await getTotalPointsForUserHabitsCompleted(userID, req);
+    const totalHabitPoints = await getTotalPointsForUserHabitsCompleted(
+      userID,
+      req
+    );
+    const totalChallengePoints = await getTotalPointsForUserChallengesCompleted(
+      userID,
+      req
+    );
     let userObjectID = new ObjectId(req.body.userID);
     // Step 2: Update the "points" field in the User collection
     const result = await req.app.locals.db.collection("User").updateOne(
       { _id: userObjectID }, // Match the user by userID
-      { $set: { points: totalPoints } } // Update the "points" field with the calculated total
+      { $set: { points: totalHabitPoints + totalChallengePoints } } // Update the "points" field with the calculated total
     );
 
     if (result.modifiedCount > 0) {
@@ -262,8 +270,8 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
         .collection("UserHabitCompleted")
         .insertOne(userHabitCompleted);
       console.log("Insert Result:", result);
-      await getTotalPointsAndSetItForUser(req.body.userID, req);
       await checkAndUpdateChallengeStatusForUser(req.body.userID, req);
+      await getTotalPointsAndSetItForUser(req.body.userID, req);
 
       res.json({
         message: `New userHabitCompleted added with ID ${result.insertedId}`,
