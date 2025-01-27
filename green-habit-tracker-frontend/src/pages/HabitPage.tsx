@@ -57,10 +57,10 @@ export const HabitPage = () => {
     <>
       <CardSection className="mb-20">
         {/* Habit Title */}
-        <h3>{habit.name}</h3>
+        <h3 className="m-0">{habit.name}</h3>
 
         {/* Add/Remove Button */}
-        <div className="mb-6">
+        <div className="my-2">
           <ButtonWithIcon
             text={isAdded ? "Remove" : "Add"}
             onClick={isAdded ? handleRemove : handleAdd}

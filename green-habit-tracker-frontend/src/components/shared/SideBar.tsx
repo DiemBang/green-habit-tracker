@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
 import avatar from "../../assets/rabbit.svg";
+import { PointsBadge } from "../PointsBadge";
 
 export const SideBar = ({ name }: { name: string }) => {
   return (
     <aside className="hidden lg:flex bg-gray-100 w-40 p-4 pt-10 h-[calc(100vh-4rem)] top-16 flex-col fixed left-0 shadow-lg">
       {/* Profile Section */}
-      <section className="flex flex-row items-center space-x-4 mb-6">
+      <section className="flex flex-col items-center space-y-2 mb-6">
         <img
           src={avatar}
           alt="avatar profile"
-          className="w-10 h-10 rounded-full shadow-md"
+          className="w-12 h-12 rounded-full shadow-md"
         />
         <p className="text-lg font-semibold">{name}</p>
+        <PointsBadge>
+          <span className="text-xl font-bold text-green-600">1000</span>
+        </PointsBadge>
       </section>
 
       {/* Navigation Menu */}
