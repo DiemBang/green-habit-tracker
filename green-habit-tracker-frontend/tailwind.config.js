@@ -19,6 +19,7 @@ export default {
       fontFamily: {
         heading: ['"Quicksand"', "sans-serif"], // For headings
         body: ['"Roboto"', "sans-serif"], // For body text
+        josefin: ['"Josefin Sans"', "sans-serif"], // For body text
         custom: ["CustomFont", "sans-serif"], // Add your custom font
       },
     },

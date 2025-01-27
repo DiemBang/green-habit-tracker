@@ -156,12 +156,12 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           />
         </g>
       </svg>
-      <h1 className="font-custom text-4xl font-bold text-white mt-6">
+      <h1 className="font-custom text-4xl font-bold text-white mt-6 mb-[-0.75rem]">
         GreenHabits
       </h1>
-      <p className="tagline text-lg text-white mt-2">
-        Let's make every choice count
-      </p>
+      <h4 className="font-josefin tagline text-lg text-white">
+        Every step counts for the planet
+      </h4>
     </div>
   );
 };

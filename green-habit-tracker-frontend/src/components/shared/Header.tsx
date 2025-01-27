@@ -100,7 +100,7 @@ export const Header = ({
   }, [showCalendar, isPopupVisible]);
 
   return (
-    <header className="w-screen h-16 fixed top-0 rounded-b-lg flex items-center justify-center z-20">
+    <header className="w-screen h-16 fixed top-0 rounded-b-lg flex items-center justify-center lg:justify-between px-4 z-20">
       {showBackIcon && (
         <div
           className="absolute left-4 flex items-center space-x-2 cursor-pointer lg:hidden"
@@ -112,9 +112,23 @@ export const Header = ({
           <span className="font-medium">{backText}</span>
         </div>
       )}
-      <span>
-        <img src={logotype} alt="logotype of the app" className="h-12 w-auto" />
-      </span>
+      <div className="flex items-center space-x-4">
+        <div className="flex flex-col items-start leading-tight">
+          <h1 className="hidden lg:block font-custom text-2xl text-white mb-[-0.75rem]">
+            GreenHabits
+          </h1>
+          <h4 className="hidden lg:block font-josefin text-sm text-white">
+            Every step counts for the planet
+          </h4>
+        </div>
+        <span>
+          <img
+            src={logotype}
+            alt="logotype of the app"
+            className="h-12 w-auto"
+          />
+        </span>
+      </div>
 
       <div className="absolute right-4 flex items-center space-x-2">
         {isHomePage && (
