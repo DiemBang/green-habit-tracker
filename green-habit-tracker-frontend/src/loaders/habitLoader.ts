@@ -1,7 +1,7 @@
 import { IHabit } from "../models/IHabit";
 import { ILoader } from "../models/ILoader";
 import { getHabit } from "../services/habitService";
-import { checkIfHabitAlreadyAdded } from "../services/userHabitService";
+import { checkIfHabitAlreadyAdded } from "../utils/userHabitUtils";
 
 export const habitLoader = async ({ params }: ILoader) => {
   let identifier = params.identifier ? params.identifier : "";
