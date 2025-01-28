@@ -6,4 +6,5 @@ export interface IUserChallenge {
   dateJoined: Date;
   userID: string;
   lengthOfChallengeInDays: number;
+  habitIdentifier: string;
 }

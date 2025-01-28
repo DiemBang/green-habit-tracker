@@ -9,7 +9,7 @@ import { getUserHabitsWithCompletedStatusByDay } from "../services/userHabitServ
 import didYouKnowIcon from "../assets/know.svg";
 
 export const Home = () => {
-  const { sustainabilityFacts, userHabits } = useLoaderData();
+  const { sustainabilityFacts, userHabits, challengeDict } = useLoaderData();
   const [habits, setHabits] = useState(userHabits);
   const { selectedDate } = useCalendar();
 
@@ -84,7 +84,7 @@ export const Home = () => {
       <h3>{formattedDate}</h3>
       <div className="flex flex-col lg:flex-row-reverse w-[100%]">
         <div className="lg:w-[40%]">
-          <img src={didYouKnowIcon} alt="Did you know icon" className="w-20" />
+          <img src={didYouKnowIcon} alt="Did you know icon" width="80" />
           <CardSection className="mt-[-0.375rem]">
             <p>{sustainabilityFacts[factIndex].description}</p>
           </CardSection>
@@ -109,6 +109,7 @@ export const Home = () => {
                   habit={habit}
                   toggleCompletion={toggleCompletion}
                   key={habit._id}
+                  challenge={challengeDict[habit.habitIdentifier]}
                 ></HabitTodo>
               ))}
             </ul>

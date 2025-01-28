@@ -56,6 +56,7 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
       challengeName: challenge.name,
       dateJoined: dateJoined,
       lengthOfChallengeInDays: challenge.lengthOfChallengeInDays,
+      habitIdentifier: challenge.habitIdentifier,
     };
 
     // Insert userChallenge into Database

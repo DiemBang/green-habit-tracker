@@ -2,15 +2,18 @@ import { format, differenceInCalendarDays, isSameDay } from "date-fns";
 import { IUserHabit } from "../models/IUserHabit";
 import { useCalendar } from "../contexts/CalendarContext";
 import { Link } from "react-router-dom";
+import challengeIcon from "/src/assets/planet.svg";
 
 interface HabitTodoProps {
   habit: IUserHabit;
   toggleCompletion: (id: string) => void;
+  challenge: boolean;
 }
 
 export const HabitTodo: React.FC<HabitTodoProps> = ({
   habit,
   toggleCompletion,
+  challenge,
 }) => {
   const { selectedDate } = useCalendar();
 
@@ -143,17 +146,34 @@ export const HabitTodo: React.FC<HabitTodoProps> = ({
             {habit.name}
           </p>
         </Link>
-        <p
-          className={`${getFrequencyColor(habit.frequency)} text-sm uppercase`}
-        >
-          {habit.frequency}
-        </p>
-        {/* Show the last completed date only when applicable */}
-        {formattedDate && shouldShowLastCompletedDate() && (
-          <span className="text-xs whitespace-nowrap">
-            Last Completed {formattedDate}
-          </span>
-        )}
+        <div className="flex items-center gap-2">
+          <p
+            className={`${getFrequencyColor(
+              habit.frequency
+            )} text-sm uppercase`}
+          >
+            {habit.frequency}
+          </p>
+          {/* Show the last completed date only when applicable */}
+          {formattedDate && shouldShowLastCompletedDate() && (
+            <span className="text-xs whitespace-nowrap">
+              Last Completed {formattedDate}
+            </span>
+          )}
+
+          {challenge !== undefined && (
+            <Link
+              to={"/challenge/" + habit.habitIdentifier + "/?previous=home"}
+            >
+              <img
+                src={challengeIcon}
+                alt="Challenge Icon"
+                title="This is a challenge!"
+                className="w-5 h-5 mr-2 inline-block"
+              />
+            </Link>
+          )}
+        </div>
       </div>
 
       {/* Completion Icon */}
