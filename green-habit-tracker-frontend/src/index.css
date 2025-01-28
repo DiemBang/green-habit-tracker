@@ -66,8 +66,9 @@ h2 {
 }
 
 h3 {
-  font-size: 1.5rem; /* 24px */
-  font-weight: 700; /* Bold */
+  font-size: 1.125rem; /* Corresponds to "text-lg" */
+  font-weight: 700; /* Corresponds to "font-bold" */
+  color: #047857; /* Corresponds to "text-emerald-700" */
   margin: 1rem;
 }
 

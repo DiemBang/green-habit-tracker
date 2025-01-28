@@ -72,9 +72,7 @@ export const Profile = () => {
         </Link>
       </section>
       <section>
-        <h3 className="text-lg font-bold text-emerald-700 mb-2">
-          Achievements
-        </h3>
+        <h3>Achievements</h3>
         <p className="px-4 mb-4">
           Every badge tells a story of your dedication to living sustainably.
           From reducing waste to saving resources, these rewards celebrate the
