@@ -49,3 +49,40 @@ describe("The Login Page", () => {
     // cy.get("h1").should("contain", "Kajsa");
   });
 });
+
+describe("The Add Habit Flow", () => {
+  beforeEach(() => {
+    // Log in before each test
+    const email = "kajsa@mail.com";
+    const password = "hejhej5";
+
+    cy.visit("/login");
+    cy.wait(8000);
+    cy.get("input[name=email]").type(email);
+    cy.get("input[name=password]").type(`${password}{enter}`);
+    cy.url().should("include", "/home");
+  });
+
+  it("allows the user to add a new habit to the To Complete list", () => {
+    // Click the "Add Habit" button
+    cy.contains("Add habit").click({ force: true });
+
+    // Select a category (e.g., Food)
+    cy.contains("Food").click();
+
+    // Select a habit under the Food category (e.g., "Reduce Meat Consumption")
+    cy.contains("Ditch the tea bags").click();
+
+    // Set the habit details on the habit page
+    cy.get("select[id=frequency]").select("Daily");
+    cy.get("input[type=time]").type("08:00");
+
+    // Click the "Add" button
+    cy.contains("Add").click();
+
+    // Validate that the habit is added to the To Complete list
+    cy.contains("Home").click();
+    cy.url().should("include", "/home");
+    cy.contains("Ditch the tea bags").should("be.visible");
+  });
+});
