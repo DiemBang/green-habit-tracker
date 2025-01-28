@@ -124,8 +124,9 @@ export const Header = ({
         <span>
           <img
             src={logotype}
-            alt="logotype of the app"
-            className="h-12 w-auto"
+            alt="App logo depicting a smiling Earth with leaves as hands."
+            width="48"
+            height="48"
           />
         </span>
       </div>
