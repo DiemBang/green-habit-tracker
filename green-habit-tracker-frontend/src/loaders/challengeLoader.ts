@@ -1,6 +1,7 @@
 import { IChallenge } from "../models/IChallenge";
 import { ILoader } from "../models/ILoader";
 import { getChallenge } from "../services/challengeService";
+import { getHabit } from "../services/habitService";
 import { checkIfChallengeAlreadyJoined } from "../services/userChallengeService";
 
 export const challengeLoader = async ({ params }: ILoader) => {
@@ -13,5 +14,7 @@ export const challengeLoader = async ({ params }: ILoader) => {
   console.log(challengeID);
   let isAlreadyJoined = await checkIfChallengeAlreadyJoined(challengeID);
   console.log(isAlreadyJoined);
-  return { challenge, isAlreadyJoined };
+  let habit = await getHabit(identifier);
+
+  return { challenge, isAlreadyJoined, habit };
 };

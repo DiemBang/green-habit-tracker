@@ -5,12 +5,15 @@ import { CardSection } from "../components/CardSection";
 import { PointsBadge } from "../components/PointsBadge";
 import { useState } from "react";
 import { IChallenge } from "../models/IChallenge";
+import { IHabit } from "../models/IHabit";
 
 export const ChallengePage = () => {
   const {
     challenge,
     isAlreadyJoined,
-  }: { challenge: IChallenge; isAlreadyJoined: boolean } = useLoaderData();
+    habit,
+  }: { challenge: IChallenge; isAlreadyJoined: boolean; habit: IHabit } =
+    useLoaderData();
   const [isJoined, setIsJoined] = useState<boolean>(isAlreadyJoined);
 
   const handleJoin = async () => {
@@ -80,7 +83,7 @@ export const ChallengePage = () => {
               <span className="font-medium">
                 Estimated CO₂ saved per action:
               </span>{" "}
-              {challenge.co2SavedPerAction} kg
+              {habit.co2EmissionKgPerAction} kg
             </p>
 
             {/* Points Badge */}
