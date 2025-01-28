@@ -4,9 +4,13 @@ import axios from "axios";
 import { CardSection } from "../components/CardSection";
 import { PointsBadge } from "../components/PointsBadge";
 import { useState } from "react";
+import { IChallenge } from "../models/IChallenge";
 
 export const ChallengePage = () => {
-  const { challenge, isAlreadyJoined } = useLoaderData();
+  const {
+    challenge,
+    isAlreadyJoined,
+  }: { challenge: IChallenge; isAlreadyJoined: boolean } = useLoaderData();
   const [isJoined, setIsJoined] = useState<boolean>(isAlreadyJoined);
 
   const handleJoin = async () => {
@@ -14,6 +18,7 @@ export const ChallengePage = () => {
       challengeID: challenge._id,
       challengeName: challenge.name,
       userID: localStorage.getItem("userID"),
+      noOfActionsCompletedNeeded: challenge.noOfActionsCompletedNeeded,
       lengthOfChallengeInDays: challenge.lengthOfChallengeInDays,
     };
 
@@ -53,6 +58,7 @@ export const ChallengePage = () => {
     <>
       {/* Challenge Title */}
       <h3>{challenge.name}</h3>
+      <p className="mx-4 mb-4">Take on this challenge to make a difference!</p>
 
       {/* Challenge Details */}
       <CardSection>
@@ -61,10 +67,29 @@ export const ChallengePage = () => {
             {/* Challenge Description */}
             <p className="leading-relaxed mb-4">{challenge.description}</p>
 
+            {/* Challenge Metrics */}
+            <p>
+              <span className="font-medium">Number of actions needed:</span>{" "}
+              {challenge.noOfActionsCompletedNeeded}
+            </p>
+            <p>
+              <span className="font-medium">Challenge length:</span>{" "}
+              {challenge.lengthOfChallengeInDays} days
+            </p>
+            <p>
+              <span className="font-medium">
+                Estimated CO₂ saved per action:
+              </span>{" "}
+              {challenge.co2SavedPerAction} kg
+            </p>
+
             {/* Points Badge */}
-            <PointsBadge>{challenge.points} Points</PointsBadge>
+            <div className="mt-4">
+              <PointsBadge>{challenge.points}</PointsBadge>
+            </div>
           </li>
         </ul>
+
         {/* Join/Leave Button */}
         <ButtonWithIcon
           text={isJoined ? "Leave Challenge" : "Join Challenge"}

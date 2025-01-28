@@ -59,14 +59,6 @@ export const HabitPage = () => {
         {/* Habit Title */}
         <h3 className="m-0">{habit.name}</h3>
 
-        {/* Add/Remove Button */}
-        <div className="my-2">
-          <ButtonWithIcon
-            text={isAdded ? "Remove" : "Add"}
-            onClick={isAdded ? handleRemove : handleAdd}
-          />
-        </div>
-
         {/* CO2 and Points */}
         <div className="grid grid-cols-2 gap-4 mb-6">
           <div>
@@ -119,6 +111,14 @@ export const HabitPage = () => {
               onChange={(e) => setReminderTime(e.target.value)}
             />
           </div>
+        </div>
+
+        {/* Add/Remove Button */}
+        <div className="my-2">
+          <ButtonWithIcon
+            text={isAdded ? "Remove" : "Add"}
+            onClick={isAdded ? handleRemove : handleAdd}
+          />
         </div>
       </CardSection>
     </>

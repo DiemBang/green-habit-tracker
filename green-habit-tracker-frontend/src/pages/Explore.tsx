@@ -8,6 +8,7 @@ import eWasteHeroIcon from "../assets/challenge-icons/ewaste-hero.png";
 import { IChallenge } from "../models/IChallenge";
 import { CardSection } from "../components/CardSection";
 import ecoIcon from "/src/assets/ecotip-icon.svg";
+import challengeIcon from "/src/assets/planet.svg";
 
 export const Explore = () => {
   type StringDictionary = { [key: string]: string };
@@ -24,8 +25,15 @@ export const Explore = () => {
 
   return (
     <>
-      <h3>Explore what's on</h3>
-      <h3>Challenges</h3>
+      <h3 className="flex items-center">Explore what's on</h3>
+      <h3>
+        <img
+          src={challengeIcon}
+          alt="Challenge Icon"
+          className="w-5 h-5 mr-2 inline-block"
+        />
+        Challenges
+      </h3>
       <p className="px-4 mb-4">
         Take on a challenge this month! Complete more green habits, make a
         positive impact, and collect points along the way.
