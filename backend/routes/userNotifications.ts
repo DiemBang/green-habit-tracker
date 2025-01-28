@@ -24,6 +24,7 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     .collection("UserNotification") // Specify the type for the collection
     .find({ userID: req.body.userID })
     .sort({ timestamp: -1 })
+    .limit(20)
     .toArray()
     .then((results: IUserNotification[]) => {
       res.json(results);
