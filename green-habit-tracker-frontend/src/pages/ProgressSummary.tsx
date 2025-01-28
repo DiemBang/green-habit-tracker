@@ -3,6 +3,8 @@ import { useLoaderData } from "react-router-dom";
 import { IProgressSummary } from "../models/IProgressSummary";
 import { getProgressSummary } from "../services/ProgressSummaryService";
 import { CardSection } from "../components/CardSection";
+import progressIcon from "../assets/progress-icon.svg";
+import ecoBadge from "../assets/eco-badge.svg";
 
 const ProgressSummary = () => {
   const progressSummaryFromLoader = useLoaderData();
@@ -26,9 +28,16 @@ const ProgressSummary = () => {
 
   return (
     <CardSection className="mb-20">
-      <h1 className="text-3xl font-bold text-emerald-700 mb-6">
-        Progress Summary
-      </h1>
+      <div className="flex items-center gap-3 mb-6">
+        <img
+          src={progressIcon}
+          alt="Icon for progress and stats"
+          className="w-8 h-8 flex-shrink-0"
+        />
+        <h1 className="text-3xl font-bold text-emerald-700">
+          Progress Summary
+        </h1>
+      </div>
       <div className="mb-8 flex">
         <label className="mr-4 text-lg font-medium text-gray-700">
           Period:
@@ -72,6 +81,7 @@ const ProgressSummary = () => {
             {progressSummary.habitSummary.totalCompleted}
           </span>
         </p>
+        <h3 className="ml-0">Top Habits Completed</h3>
         <ul className="list-none space-y-4">
           {progressSummary.habitSummary.topHabits.map(
             ([habitName, count]: [string, number]) => (
@@ -79,9 +89,11 @@ const ProgressSummary = () => {
                 key={habitName}
                 className="flex items-center bg-emerald-50 p-4 rounded-lg shadow-sm"
               >
-                <span className="w-8 h-8 flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-full mr-4">
-                  🌿
-                </span>
+                <img
+                  src={ecoBadge}
+                  alt="eco badge for top habits completed"
+                  className="w-8 h-8 flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-full mr-4"
+                />
                 <div>
                   <p className="font-medium">{habitName}</p>
                   <p className="text-sm text-gray-600">{count} completions</p>

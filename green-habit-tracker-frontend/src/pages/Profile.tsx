@@ -41,7 +41,8 @@ export const Profile = () => {
           </PointsBadge>
         </div>
       </section>
-      <section>
+      <section className="lg:hidden">
+        <h3>Your Eco Progress at a Glance</h3>
         <Link to={"/progress-summary"}>
           <CardSection>
             <div className="flex items-center justify-between">
@@ -51,12 +52,8 @@ export const Profile = () => {
                 alt="Icon for progress and stats"
                 className="w-8 h-8 flex-shrink-0"
               />
-
               {/* Text content in the middle */}
               <div className="flex-1 ml-4">
-                <h4 className="text-lg font-bold text-emerald-700">
-                  Your Eco Progress at a Glance
-                </h4>
                 <p>
                   Discover how your habits are making a difference! Track your
                   streaks, top habits, and CO₂ savings all in one place.

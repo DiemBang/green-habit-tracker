@@ -48,6 +48,17 @@ export const SideBar = ({ user }: { user: IUser }) => {
           </li>
           <li className="flex items-center space-x-3">
             <span className="material-symbols-outlined text-gray-600">
+              monitoring
+            </span>
+            <Link
+              to="/progress-summary"
+              className="text-gray-700 hover:text-blue-600 font-medium text-sm"
+            >
+              Progress
+            </Link>
+          </li>
+          <li className="flex items-center space-x-3">
+            <span className="material-symbols-outlined text-gray-600">
               person
             </span>
             <Link
