@@ -120,23 +120,50 @@ export const notifyDailyHabitReminder = async (
   req: Request,
   userID: string
 ) => {
-  // TODO: Check if daily habit reminders are enabled for the user
-  const collection = req.app.locals.db.collection("NotificationSettings");
-  const userSettings = await collection.findOne({ userID: userID });
+  const db = req.app.locals.db;
+  const notificationSettingsCollection = db.collection("NotificationSettings");
+  const notificationsCollection = db.collection("UserNotification");
 
-  // if there is not a daily notification sent for this user, day and category, notification will be sent.
-  // else it won't.
+  // Get the user's notification settings
+  const userSettings = await notificationSettingsCollection.findOne({ userID });
 
-  if (userSettings?.settings?.dailyHabit) {
-    createNotification(
-      req,
-      userID,
-      `A greener world starts with small actions. 🌎 Complete your habits and keep up the great work!`,
-      "habitReminder"
-    );
-  } else {
+  // Check if daily habit reminders are enabled
+  if (!userSettings?.settings?.dailyHabit) {
     console.log(
       `Daily habit reminders are disabled for user ${userID}. No notification created.`
     );
+    return;
   }
+
+  // Get the start of today (midnight)
+  const now = new Date();
+  const midnightToday = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
+  // Check if a 'habitReminder' notification has already been sent since midnight
+  const existingNotification = await notificationsCollection.findOne({
+    userID,
+    category: "habitReminder",
+    timestamp: { $gte: midnightToday }, // Notifications sent today
+  });
+
+  if (existingNotification) {
+    console.log(
+      `Notification for category 'habitReminder' already sent to user ${userID} today.`
+    );
+    return;
+  }
+
+  // Create the notification
+  await createNotification(
+    req,
+    userID,
+    `A greener world starts with small actions. 🌎 Complete your habits and keep up the great work!`,
+    "habitReminder"
+  );
+
+  console.log(`Daily habit reminder sent to user ${userID}.`);
 };
