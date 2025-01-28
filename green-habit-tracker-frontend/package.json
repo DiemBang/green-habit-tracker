@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.10",
+    "cypress": "^14.0.0",
     "vitest": "^3.0.4"
   }
 }
