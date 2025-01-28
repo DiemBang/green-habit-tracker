@@ -32,6 +32,51 @@ router.post("/", function (req: Request, res: Response) {
     });
 });
 
+const addHabitIfNotAlreadyAdded = async (
+  req: Request,
+  habitIdentifier: string
+) => {
+  try {
+    const dateStarted: Date = new Date();
+
+    // Check if the habit already exists for the user
+    const existingHabit = await req.app.locals.db
+      .collection("UserHabit")
+      .findOne({
+        userID: req.body.userID,
+        habitIdentifier: habitIdentifier,
+      });
+
+    if (existingHabit) {
+      return;
+    }
+
+    // Get Habit object so we can get the name
+    const habit = await req.app.locals.db
+      .collection("Habit")
+      .findOne({ identifier: habitIdentifier });
+
+    const habitName = habit.name;
+
+    // Create New User Object
+    const userHabit = {
+      userID: req.body.userID,
+      habitIdentifier: habitIdentifier,
+      dateStarted: dateStarted,
+      frequency: "daily",
+      name: habitName,
+    };
+
+    // Insert userHabit into Database
+    const result = await req.app.locals.db
+      .collection("UserHabit")
+      .insertOne(userHabit);
+    console.log("Insert Result:", result);
+  } catch (error) {
+    console.log();
+  }
+};
+
 /* Add challenge for User */
 router.post("/add", async (req: Request, res: Response): Promise<void> => {
   console.log("Incoming request body:", req.body);
@@ -64,6 +109,7 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
       .collection("UserChallenge")
       .insertOne(userChallenge);
     console.log("Insert Result:", result);
+    addHabitIfNotAlreadyAdded(req, challenge.habitIdentifier);
 
     res.json({
       message: `New userChallenge added with ID ${result.insertedId}`,
