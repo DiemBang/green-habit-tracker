@@ -35,12 +35,15 @@ export const Explore = () => {
           <Link
             to={`/challenge/${challenge.habitIdentifier}`}
             key={challenge._id}
+            className="group flex flex-col items-center justify-center transition-transform duration-200 transform hover:scale-105"
           >
-            <img
-              src={challengeIcons[challenge.name]}
-              alt={challenge.description}
-              className="w-32 h-32 object-contain rounded-full"
-            />
+            <div className="w-32 h-32 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full shadow-sm flex items-center justify-center border-2 border-white hover:border-emerald-500">
+              <img
+                src={challengeIcons[challenge.name]}
+                alt={challenge.description}
+                className="w-28 h-28 object-contain rounded-full"
+              />
+            </div>
           </Link>
         ))}
       </CardSection>
