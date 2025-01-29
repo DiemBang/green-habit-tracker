@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        cloudWhite: "#F8F9FA", // Backgrounds
+        cloudWhite: "#FFFAF2", // Backgrounds
         calmBlue: "#BCCEDA", // Secondary Buttons
         mutedTeal: "#9FB8AD", // Highlights/Badges
         sandstone: "#E8D8C3", // Secondary Backgrounds
@@ -12,9 +12,12 @@ export default {
         fontPrimary: "#495057", // Charcoal Gray
         fontAccent: "#9FB8AD", // Muted Teal
         fontMuted: "#BCCEDA", // Calm Blue
-        customGreen: "#8ec140",
+        buttonGreen: "#acd980",
+        customGreen: "#107f39",
         customBlue: "#4784aa",
         customRed: "#f1a0a0",
+        cardWhite: "#fffdf9",
+        headerAndFooterColor: "#fff0de",
       },
       fontFamily: {
         heading: ['"Quicksand"', "sans-serif"], // For headings

@@ -90,7 +90,7 @@ export const Home = () => {
           </CardSection>
           <Link to="/categories">
             <button
-              className="hidden lg:flex text-fontPrimary font-bold capitalize rounded-lg ml-6 px-2 py-2 items-center"
+              className="hidden lg:flex font-bold capitalize rounded-lg ml-6 px-2 py-2 items-center"
               aria-label="Add Habit"
             >
               Add habit
@@ -119,7 +119,7 @@ export const Home = () => {
 
       <Link to="/categories">
         <button
-          className="lg:hidden fixed bottom-20 right-4 lg:right-[16.75rem] max-w-[calc(100%-1rem)] text-fontPrimary font-bold capitalize rounded-lg px-2 py-2 flex items-center"
+          className="lg:hidden fixed bottom-20 right-4 lg:right-[16.75rem] max-w-[calc(100%-1rem)] text-black font-bold capitalize rounded-lg px-2 py-2 flex items-center"
           aria-label="Add Habit"
         >
           Add habit

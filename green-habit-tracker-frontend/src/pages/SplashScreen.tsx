@@ -77,7 +77,7 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   }, [onComplete]);
 
   return (
-    <div className="splash-screen flex flex-col justify-center items-center h-screen bg-calmBlue fixed top-0 left-0 w-full z-50">
+    <div className="splash-screen flex flex-col justify-center items-center h-screen bg-headerAndFooterColor fixed top-0 left-0 w-full z-50">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"

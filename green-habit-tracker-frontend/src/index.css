@@ -42,7 +42,7 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   @apply font-body text-gray-800; /* Use Roboto for body */
-  background-color: #f3f3f3;
+  background-color: #fffaf2;
 }
 
 h1,
@@ -56,31 +56,29 @@ h6 {
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 1.875rem;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
 h3 {
   font-size: 1.125rem; /* Corresponds to "text-lg" */
   font-weight: 700; /* Corresponds to "font-bold" */
-  color: #047857; /* Corresponds to "text-emerald-700" */
+  /* color: #047857; Corresponds to "text-emerald-700" */
   margin: 1rem;
 }
 
 h4 {
-  font-size: 1.125rem; /* 18px */
+  font-size: 1rem; /* 18px */
   font-weight: 600; /* Semibold */
-  color: #1f2937; /* Equivalent to Tailwind's text-gray-800 */
 }
 
 footer,
 header {
-  background-color: #bcceda;
+  background-color: #fff0de;
   color: #495057;
 }
 
@@ -91,13 +89,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
-  background-color: #a4e699;
+  background-color: #acd980;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #6c9f39;
 }
 button:focus,
 button:focus-visible {
@@ -105,7 +102,7 @@ button:focus-visible {
 }
 
 .react-calendar {
-  background-color: #bcceda; /* Calm Blue */
+  background-color: #fff0de; /* Calm Blue */
   color: #495057; /* Charcoal Gray for text */
   border-radius: 0.5rem; /* Rounded corners */
   padding: 1rem;
@@ -121,13 +118,13 @@ button:focus-visible {
 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
-  background-color: #4784aa;
-  color: #ffffff; /* White text on hover */
+  background-color: #fff0de;
+  color: #acd980;
 }
 
 .react-calendar__tile--active {
-  background-color: #4784aa;
-  color: #ffffff;
+  background-color: #fff0de;
+  color: #acd980;
 }
 
 .react-calendar__navigation {
@@ -138,7 +135,7 @@ button:focus-visible {
 }
 .react-calendar__navigation button {
   color: #495057; /* Charcoal Gray for navigation arrows */
-  background-color: #bcceda; /* Calm Blue */
+  background-color: #fff0de; /* Calm Blue */
   padding: 0.75rem;
   font-weight: bold;
 }
@@ -148,7 +145,7 @@ button:focus-visible {
 }
 
 .react-calendar__tile--now {
-  color: #f8f9fa;
+  color: #107f39;
 }
 abbr:where([title]) {
   text-decoration: none;
@@ -160,16 +157,16 @@ abbr:where([title]) {
     background-color: #ffffff;
   }
   a:hover {
-    color: #4784aa;
+    color: #107f39;
   }
 
   .svg:hover {
-    filter: invert(52%) sepia(5%) saturate(4502%) hue-rotate(160deg)
-      brightness(89%) contrast(78%);
+    filter: invert(21%) sepia(77%) saturate(2480%) hue-rotate(135deg)
+      brightness(102%) contrast(87%);
   }
 
   .svghover {
-    filter: invert(52%) sepia(5%) saturate(4502%) hue-rotate(160deg)
-      brightness(89%) contrast(78%);
+    filter: invert(21%) sepia(77%) saturate(2480%) hue-rotate(135deg)
+      brightness(102%) contrast(87%);
   }
 }

@@ -168,10 +168,10 @@ export const Tutorial = () => {
       {["Home", "Explore", "Profile"].map((section) => (
         <section
           key={section}
-          className="m-2 lg:m-6 bg-cloudWhite border rounded-lg shadow-sm"
+          className="m-2 lg:m-6 bg-cardWhite border rounded-lg shadow-sm"
         >
           <button
-            className="flex justify-between items-center w-full px-4 py-3 bg-cloudWhite font-medium text-lg focus:outline-none hover:bg-gray-200 transition duration-300"
+            className="flex justify-between items-center w-full px-4 py-3 bg-cardWhite font-medium text-lg focus:outline-none hover:bg-headerAndFooterColor transition duration-300"
             onClick={() => toggleSection(section)}
           >
             {/* Responsive Heading */}

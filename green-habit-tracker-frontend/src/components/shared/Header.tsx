@@ -114,10 +114,10 @@ export const Header = ({
       )}
       <div className="flex items-center space-x-4">
         <div className="flex flex-col items-start leading-tight">
-          <h1 className="hidden lg:block font-custom text-2xl text-white mb-[-0.75rem]">
+          <h1 className="hidden lg:block font-custom text-2xl text-customGreen mb-[-0.75rem]">
             GreenHabits
           </h1>
-          <h2 className="hidden lg:block font-josefin text-sm text-white">
+          <h2 className="hidden lg:block m-0 font-josefin text-sm text-customGreen">
             Every step counts for the planet
           </h2>
         </div>
@@ -137,7 +137,7 @@ export const Header = ({
             ref={iconRef}
             onClick={toggleCalendar}
             aria-label="Toggle Calendar"
-            className="p-1 rounded bg-calmBlue"
+            className="p-1 rounded bg-headerAndFooterColor"
           >
             <img
               src={calendarIcon}
@@ -150,7 +150,7 @@ export const Header = ({
         <button
           onClick={togglePopup}
           aria-label="Toggle Notifications"
-          className="notification-icon p-1 rounded bg-calmBlue relative"
+          className="notification-icon p-1 rounded bg-headerAndFooterColor relative"
         >
           <img
             src={notificationIcon}

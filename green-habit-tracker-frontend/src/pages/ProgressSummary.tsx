@@ -34,9 +34,7 @@ const ProgressSummary = () => {
           alt="Icon for progress and stats"
           className="w-8 h-8 flex-shrink-0"
         />
-        <h1 className="text-3xl font-bold text-emerald-700">
-          Progress Summary
-        </h1>
+        <h1 className="text-3xl font-bold">Progress Summary</h1>
       </div>
       <div className="mb-8 flex">
         <label className="mr-4 text-lg font-medium text-gray-700">
@@ -45,7 +43,7 @@ const ProgressSummary = () => {
         <select
           value={period}
           onChange={(e) => setPeriod(e.target.value)}
-          className="p-2 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-300"
+          className="p-2 bg-emerald-50 rounded-lg border border-emerald-300"
         >
           <option value="week">Week</option>
           <option value="month">Month</option>

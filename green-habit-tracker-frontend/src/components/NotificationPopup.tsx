@@ -36,7 +36,7 @@ export const NotificationPopup = ({
       <div className="flex justify-between items-center mb-2 pr-8">
         <h3 className="text-lg font-semibold m-0">Notifications</h3>
       </div>
-      <ul className="max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-calmBlue scrollbar-track-transparent">
+      <ul className="max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-headerAndFooterColor scrollbar-track-transparent">
         {notifications.map((notif, index) => (
           <li
             key={notif._id}

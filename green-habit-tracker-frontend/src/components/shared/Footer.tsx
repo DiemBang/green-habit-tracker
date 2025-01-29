@@ -26,7 +26,7 @@ export const Footer = () => {
                 className="w-6 h-6 svg group-hover:svghover group-focus:svghover"
                 aria-hidden="true"
               />
-              <p className="mt-0 text-black group-hover:text-customBlue group-focus:text-customBlue">
+              <p className="mt-0 text-black group-hover:text-customGreen group-focus:text-customGreen">
                 Home
               </p>
             </div>
@@ -43,7 +43,7 @@ export const Footer = () => {
                 className="w-6 h-6 svg group-hover:svghover group-focus:svghover"
                 aria-hidden="true"
               />
-              <p className="mt-0 text-black group-hover:text-customBlue group-focus:text-customBlue">
+              <p className="mt-0 text-black group-hover:text-customGreen group-focus:text-customGreen">
                 Explore
               </p>
             </div>
@@ -60,7 +60,7 @@ export const Footer = () => {
                 className="w-6 h-6 svg group-hover:svghover group-focus:svghover"
                 aria-hidden="true"
               />
-              <p className="mt-0 text-black group-hover:text-customBlue group-focus:text-customBlue">
+              <p className="mt-0 text-black group-hover:text-customGreen group-focus:text-customGreen">
                 Profile
               </p>
             </div>

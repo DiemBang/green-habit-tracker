@@ -5,7 +5,7 @@ import { IUser } from "../../models/IUser";
 
 export const SideBar = ({ user }: { user: IUser }) => {
   return (
-    <aside className="hidden lg:flex bg-gray-100 w-40 p-4 pt-10 h-[calc(100vh-4rem)] top-16 flex-col fixed left-0 shadow-lg">
+    <aside className="hidden lg:flex bg-cloudWhite-100 w-40 p-4 pt-10 h-[calc(100vh-4rem)] top-16 flex-col fixed left-0 shadow-lg">
       {/* Profile Section */}
       <section className="flex flex-col items-center space-y-2 mb-6">
         <img
