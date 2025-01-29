@@ -26,7 +26,7 @@ export const About = () => {
           trackable habit, we hope to inspire a greener lifestyle—one step at a
           time.
         </p>
-        <p className="mb-4">Ready to make every choice count? 🌱🌍✨</p>
+        <p className="mb-4">Ready to make every choice count? 💚♻️🌱🌍✨</p>
       </CardSection>
     </>
   );

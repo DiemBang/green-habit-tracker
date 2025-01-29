@@ -73,8 +73,9 @@ export const Tutorial = () => {
               </ul>
             </li>
             <li>
-              Use the calendar: Select any date to view or plan your habits for
-              that day.
+              Use the calendar: Select any date to view your habits for that
+              day. <strong>Note:</strong> You can only mark habits as completed
+              on the current (today), not past or future dates.
             </li>
             <li>
               Sustainable fact of the day: Get inspired with a daily
@@ -102,12 +103,33 @@ export const Tutorial = () => {
             your habit list on the Home page.
           </li>
           <li>
+            Challenge icon: Once a habit is added from a challenge, a challenge
+            icon will appear next to it, indicating that it is part of the
+            monthly challenge.
+          </li>
+          <li>
             Earn points for completion: Points for completing the challenge will
             be added to your profile once the challenge is completed.
           </li>
           <li>
-            Leave challenges: If the challenge is still available, you can leave
-            it by clicking the "Leave" button.
+            Habit stays after challenge completion: When you complete a
+            challenge, the habit will remain on your list as a daily habit
+            unless you choose to remove it.
+          </li>
+          <li>
+            Leave challenges: Yoi can choose to leave a challenge by:
+            <ul className="list-[circle] list-inside ml-6">
+              <li>
+                Find the challenge on the Explore page and clicking the "Leave"
+                button on the challenge page.
+              </li>
+              <li>
+                Clicking the challenge icon in your Habits to complete list.
+              </li>
+            </ul>
+            <strong>⚠ Note:</strong> If the monthly challenges have changed and
+            are no longer available on the Explore page, you may not be able to
+            re-join the same challenge.
           </li>
           <li>
             Eco-tip of the day: Learn practical tips to live more sustainably.
@@ -117,40 +139,38 @@ export const Tutorial = () => {
     ),
     Progress: (
       <>
-        <div className="hidden lg:block">
-          <p className="mb-2">
-            The Progress Summary page gives you insights into your eco-friendly
-            habits.
-          </p>
-          <ul className="list-disc list-inside text-gray-700">
-            <li>
-              Time Period Selection: At the top of the summary, you can choose a
-              time period—Week, Month, or Year—to view your progress over
-              different durations. Simply select your preferred timeframe from
-              the dropdown menu, and your stats will update accordingly.
-            </li>
-            <li>
-              The Streaks section tracks: Longest Streak – The most consecutive
-              days you’ve completed at least one habit. Current Streak – The
-              number of consecutive days you’ve maintained your sustainable
-              habits. Keep up your streaks to build a lasting green routine!
-            </li>
-            <li>
-              The Habit Summary gives an insight into your overall habit
-              completion: Total Completed – The total number of habits you’ve
-              successfully tracked. Top Habits Completed – A list of the habits
-              you’ve completed the most. This section helps you identify your
-              strongest eco-friendly habits and encourages you to diversify your
-              sustainable actions.
-            </li>
-            <li>
-              The CO₂ Savings section displays: Total CO₂ Saved – The amount of
-              CO₂ emissions you have prevented by completing your tracked
-              habits. Every small action adds up! Keep tracking your habits to
-              see your impact grow over time.
-            </li>
-          </ul>
-        </div>
+        <p className="mb-2">
+          The Progress Summary page gives you insights into your eco-friendly
+          habits.
+        </p>
+        <ul className="list-disc list-inside text-gray-700">
+          <li>
+            Time Period Selection: At the top of the summary, you can choose a
+            time period—Week, Month, or Year—to view your progress over
+            different durations. Simply select your preferred timeframe from the
+            dropdown menu, and your stats will update accordingly.
+          </li>
+          <li>
+            The Streaks section tracks: Longest Streak – The most consecutive
+            days you’ve completed at least one habit. Current Streak – The
+            number of consecutive days you’ve maintained your sustainable
+            habits. Keep up your streaks to build a lasting green routine!
+          </li>
+          <li>
+            The Habit Summary gives an insight into your overall habit
+            completion: Total Completed – The total number of habits you’ve
+            successfully tracked. Top Habits Completed – A list of the habits
+            you’ve completed the most. This section helps you identify your
+            strongest eco-friendly habits and encourages you to diversify your
+            sustainable actions.
+          </li>
+          <li>
+            The CO₂ Savings section displays: Total CO₂ Saved – The amount of
+            CO₂ emissions you have prevented by completing your tracked habits.
+            Every small action adds up! Keep tracking your habits to see your
+            impact grow over time.
+          </li>
+        </ul>
       </>
     ),
     Profile: (
