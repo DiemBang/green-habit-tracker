@@ -57,7 +57,7 @@ export const HabitPage = () => {
     <>
       <CardSection className="mb-20">
         {/* Habit Title */}
-        <h3 className="m-0">{habit.name}</h3>
+        <h2 className="m-0">{habit.name}</h2>
 
         {/* CO2 and Points */}
         <div className="grid grid-cols-2 gap-4 mb-6">

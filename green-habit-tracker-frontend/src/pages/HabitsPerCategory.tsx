@@ -9,7 +9,7 @@ export const HabitsPerCategory = () => {
   return (
     <>
       <section className="mb-20">
-        <h3>{category}</h3>
+        <h2>{category}</h2>
         {habitTypes.map((habitType) => (
           <HabitButton key={habitType._id} habitType={habitType}></HabitButton>
         ))}

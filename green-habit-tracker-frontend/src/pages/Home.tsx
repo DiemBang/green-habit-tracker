@@ -81,7 +81,7 @@ export const Home = () => {
   // ToDo: add habit.completed in database backend query
   return (
     <>
-      <h3>{formattedDate}</h3>
+      <h1>{formattedDate}</h1>
       <div className="flex flex-col lg:flex-row-reverse w-[100%]">
         <div className="lg:w-[40%]">
           <img src={didYouKnowIcon} alt="Did you know icon" width="80" />

@@ -60,7 +60,7 @@ export const ChallengePage = () => {
   return (
     <>
       {/* Challenge Title */}
-      <h3>{challenge.name}</h3>
+      <h2>{challenge.name}</h2>
       <p className="mx-4 mb-4">Take on this challenge to make a difference!</p>
 
       {/* Challenge Details */}

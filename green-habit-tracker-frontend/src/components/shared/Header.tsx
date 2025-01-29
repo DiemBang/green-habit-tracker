@@ -117,9 +117,9 @@ export const Header = ({
           <h1 className="hidden lg:block font-custom text-2xl text-white mb-[-0.75rem]">
             GreenHabits
           </h1>
-          <h4 className="hidden lg:block font-josefin text-sm text-white">
+          <h2 className="hidden lg:block font-josefin text-sm text-white">
             Every step counts for the planet
-          </h4>
+          </h2>
         </div>
         <span>
           <img

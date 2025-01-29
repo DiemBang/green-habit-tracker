@@ -163,7 +163,7 @@ export const Tutorial = () => {
 
   return (
     <>
-      <h3>Tutorial</h3>
+      <h2>Tutorial</h2>
 
       {["Home", "Explore", "Profile"].map((section) => (
         <section

@@ -25,7 +25,7 @@ export const Explore = () => {
 
   return (
     <>
-      <h3 className="flex items-center">Explore what's on</h3>
+      <h1 className="flex items-center">Explore what's on</h1>
       <h3>
         <img
           src={challengeIcon}

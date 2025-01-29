@@ -25,7 +25,7 @@ export const Profile = () => {
 
   return (
     <>
-      <h3>Profile</h3>
+      <h1>Profile</h1>
       <section className="flex items-center gap-6 mb-6">
         <img
           src={avatar}

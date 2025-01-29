@@ -19,7 +19,7 @@ export const Settings = () => {
 
   return (
     <>
-      <h3>Settings</h3>
+      <h2>Settings</h2>
       <section className="flex items-center gap-6 mb-4">
         <img
           src={avatar}
@@ -35,17 +35,17 @@ export const Settings = () => {
       </section>
       <Link to={"/notifications-settings"}>
         <SettingButton>
-          <h4 className="text-sm mt-2 mb-2">Notifications</h4>
+          <h3 className="text-sm mt-2 mb-2">Notifications</h3>
         </SettingButton>
       </Link>
-      <Link to={"/about"}>
-        <SettingButton className="lg:hidden">
-          <h4 className="text-sm mt-2 mb-2">About Green Habits</h4>
+      <Link to={"/about"} className="lg:hidden">
+        <SettingButton>
+          <h3 className="text-sm mt-2 mb-2">About Green Habits</h3>
         </SettingButton>
       </Link>
-      <Link to={"/tutorial"}>
-        <SettingButton className="lg:hidden">
-          <h4 className="text-sm mt-2 mb-2">Tutorial</h4>
+      <Link to={"/tutorial"} className="lg:hidden">
+        <SettingButton>
+          <h3 className="text-sm mt-2 mb-2">Tutorial</h3>
         </SettingButton>
       </Link>
       <SettingButton
@@ -53,10 +53,10 @@ export const Settings = () => {
         className="lg:hidden"
         onClick={handleSignOut}
       >
-        <h4 className="text-sm mt-2 mb-2">Sign out</h4>
+        <h3 className="text-sm mt-2 mb-2">Sign out</h3>
       </SettingButton>
       <SettingButton icon="delete_forever" variant="danger">
-        <h4 className="text-sm mt-2 mb-2 text-white">Delete account</h4>
+        <h3 className="text-sm mt-2 mb-2 text-white">Delete account</h3>
       </SettingButton>
     </>
   );
