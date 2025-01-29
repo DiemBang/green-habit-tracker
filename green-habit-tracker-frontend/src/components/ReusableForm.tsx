@@ -54,13 +54,10 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
 
   return (
     <>
-      <div className="w-full max-w-xs md:max-w-md p-6 sm:p-8 space-y-8 bg-white rounded-lg shadow-sm">
+      <div className="w-full max-w-xs md:max-w-md p-6 sm:p-8 space-y-8 bg-cardWhite rounded-lg shadow-sm">
         {/* Title */}
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-green-600">
-            Green Habit Tracker
-          </h1>
-          <p className="text-gray-500">{title}</p>
+          <p>{title}</p>
         </div>
 
         {/* Form */}
@@ -68,10 +65,7 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
           {/* Optional Extra Field */}
           {extraField && (
             <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="name" className="block text-sm font-medium">
                 {extraField.label}
               </label>
               <input
@@ -88,10 +82,7 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
           )}
           {/* Email Input */}
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="email" className="block text-sm font-medium">
               Email
             </label>
 
@@ -143,7 +134,7 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
           <div>
             <button
               type="submit"
-              className="w-full px-4 py-3 font-bold text-white bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              className="w-full px-4 py-3 font-bold text-black bg-buttonGreen rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
               {buttonText}
             </button>
@@ -154,7 +145,7 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
         <div className="text-center">
           <p className="text-sm text-gray-500">
             {linkDescription}{" "}
-            <a href={linkHref} className="text-green-500 hover:underline">
+            <a href={linkHref} className="text-customGreen hover:underline">
               {linkText}
             </a>
           </p>
