@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import avatar from "../assets/rabbit.svg";
+import { useProfileImage } from "../contexts/ProfileImageContext";
 
 export const ProfilePhotoUpload = () => {
-  const [image, setImage] = useState<string | null>(null);
+  const { image, setImage } = useProfileImage();
   const [changeImage, setChangeImage] = useState<boolean>(false);
 
   useEffect(() => {

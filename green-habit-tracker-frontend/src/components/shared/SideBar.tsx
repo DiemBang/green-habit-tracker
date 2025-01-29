@@ -10,10 +10,11 @@ import aboutIcon from "/src/assets/header-footer-icons/about.svg";
 import tutorialIcon from "/src/assets/header-footer-icons/tutorial.svg";
 import settingsIcon from "/src/assets/header-footer-icons/gear.svg";
 import signoutIcon from "/src/assets/header-footer-icons/logout.svg";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useProfileImage } from "../../contexts/ProfileImageContext";
 
 export const SideBar = ({ user }: { user: IUser }) => {
-  const [image, setImage] = useState<string | null>(null);
+  const { image, setImage } = useProfileImage();
 
   useEffect(() => {
     // Retrieve the stored image when the component loads
