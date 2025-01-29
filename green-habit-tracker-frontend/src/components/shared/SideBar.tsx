@@ -10,17 +10,36 @@ import aboutIcon from "/src/assets/header-footer-icons/about.svg";
 import tutorialIcon from "/src/assets/header-footer-icons/tutorial.svg";
 import settingsIcon from "/src/assets/header-footer-icons/gear.svg";
 import signoutIcon from "/src/assets/header-footer-icons/logout.svg";
+import { useEffect, useState } from "react";
 
 export const SideBar = ({ user }: { user: IUser }) => {
+  const [image, setImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Retrieve the stored image when the component loads
+    const storedImage = localStorage.getItem("profilePic");
+    if (storedImage) {
+      setImage(storedImage);
+    }
+  }, []);
+
   return (
     <aside className="hidden lg:flex bg-cloudWhite-100 w-40 p-4 pt-10 h-[calc(100vh-4rem)] top-16 flex-col fixed left-0 shadow-lg">
       {/* Profile Section */}
       <section className="flex flex-col items-center space-y-2 mb-6">
-        <img
-          src={avatar}
-          alt="avatar profile"
-          className="w-12 h-12 rounded-full shadow-md"
-        />
+        {image ? (
+          <img
+            src={image}
+            alt="Profile"
+            className="w-16 h-16 rounded-full shadow-md object-cover"
+          />
+        ) : (
+          <img
+            src={avatar}
+            alt="avatar profile"
+            className="w-12 h-12 rounded-full shadow-md"
+          />
+        )}
         <p className="text-lg font-semibold">{user.name}</p>
         <PointsBadge>
           <span className="text-xl font-bold text-green-600">

@@ -1,7 +1,8 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import avatar from "../assets/rabbit.svg";
+// import avatar from "../assets/rabbit.svg";
 import { IUser } from "../models/IUser";
 import { SettingButton } from "../components/SettingButton";
+import { ProfilePhotoUpload } from "../components/ProfilePhoto";
 
 export const Settings = () => {
   const user = useLoaderData() as IUser;
@@ -20,12 +21,8 @@ export const Settings = () => {
   return (
     <>
       <h2>Settings</h2>
-      <section className="flex items-center gap-6 mb-4">
-        <img
-          src={avatar}
-          alt="avatar profile"
-          className="w-32 h-32 rounded-full shadow-md"
-        />
+      <section className="flex flex-wrap items-center gap-6 mb-4">
+        <ProfilePhotoUpload></ProfilePhotoUpload>
         <div className="flex items-center justify-between w-full">
           <div>
             <p className="text-lg font-semibold">{user.name}</p>

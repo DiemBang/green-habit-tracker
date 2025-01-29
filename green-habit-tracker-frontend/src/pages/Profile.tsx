@@ -9,9 +9,19 @@ import clothChampionBadge from "../assets/badges/cloth-champion.svg";
 import eWasteHeroBadge from "../assets/badges/ewaste-hero.png";
 import { IUserChallengeCompleted } from "../models/IUserChallengeCompleted";
 import progressIcon from "../assets/progress-icon.svg";
+import { useState, useEffect } from "react";
 
 export const Profile = () => {
   const { userChallenges, user } = useLoaderData();
+  const [image, setImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Retrieve the stored image when the component loads
+    const storedImage = localStorage.getItem("profilePic");
+    if (storedImage) {
+      setImage(storedImage);
+    }
+  }, []);
 
   type StringDictionary = { [key: string]: string };
 
@@ -27,11 +37,19 @@ export const Profile = () => {
     <>
       <h1>Profile</h1>
       <section className="flex items-center gap-6 my-6">
-        <img
-          src={avatar}
-          alt="avatar profile"
-          className="w-32 h-32 rounded-full shadow-md"
-        />
+        {image ? (
+          <img
+            src={image}
+            alt="Profile"
+            className="w-32 h-32 rounded-full shadow-md object-cover"
+          />
+        ) : (
+          <img
+            src={avatar}
+            alt="avatar profile"
+            className="w-32 h-32 rounded-full shadow-md object-cover"
+          />
+        )}
         <div>
           <p className="text-lg font-semibold">{user.name}</p>
           <PointsBadge>
