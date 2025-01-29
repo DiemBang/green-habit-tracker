@@ -125,6 +125,8 @@ router.post("/login", async (req, res): Promise<any> => {
   let checkPassword = req.body.password;
   console.log("Incoming request body:", req.body);
 
+  const isProduction = process.env.NODE_ENV === "production";
+
   req.app.locals.db
     .collection("User")
     .findOne({ email: checkEmail })
@@ -138,7 +140,8 @@ router.post("/login", async (req, res): Promise<any> => {
             await runNotifyOnFirstDayOfMonth(req, user._id.toString());
             res.cookie("authToken", userToken, {
               httpOnly: true, // Prevent JavaScript access for security
-              secure: process.env.NODE_ENV === "production", // Send only over HTTPS in production
+              secure: isProduction, // Send only over HTTPS in production
+              sameSite: isProduction ? "none" : "lax", // ✅ Allow cross-site in production, but stricter in development
             });
             return res.json({
               email: checkEmail,
