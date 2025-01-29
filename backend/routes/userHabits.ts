@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import { IUserHabit } from "../models/IUserHabit.js";
 import express from "express";
+import { authMiddleware } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
@@ -246,6 +247,7 @@ router.post(
 
 router.post(
   "/withCompletedStatusByDay",
+  authMiddleware,
   async (req: Request, res: Response): Promise<any> => {
     try {
       const { userID, day } = req.body;

@@ -136,6 +136,10 @@ router.post("/login", async (req, res): Promise<any> => {
             let userToken = await setUserToken(req, user._id);
             await notifyDailyHabitReminder(req, user._id.toString());
             await runNotifyOnFirstDayOfMonth(req, user._id.toString());
+            res.cookie("authToken", userToken, {
+              httpOnly: true, // Prevent JavaScript access for security
+              secure: process.env.NODE_ENV === "production", // Send only over HTTPS in production
+            });
             return res.json({
               email: checkEmail,
               userToken: userToken,

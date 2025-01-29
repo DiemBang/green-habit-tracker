@@ -12,7 +12,8 @@ export const LoginPage: React.FC = () => {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_BASE_URL}/api/users/login`,
-        userData
+        userData,
+        { withCredentials: true }
       );
       console.log("User logged in:", response.data);
 

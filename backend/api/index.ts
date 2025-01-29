@@ -1,6 +1,7 @@
 import { MongoClient } from "mongodb";
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import habitRouter from "../routes/habits.js";
 import userRouter from "../routes/users.js";
@@ -17,13 +18,16 @@ import progressSummaryRouter from "../routes/progressSummary.js";
 
 dotenv.config();
 
+const allowedOrigin = process.env.CORS_ORIGIN || "http://localhost:5173"; // Default to local frontend in dev
+
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(cors());
+app.use(cors({ origin: allowedOrigin, credentials: true }));
+app.use(cookieParser());
 
 app.use("/api/habits", habitRouter);
 app.use("/api/users", userRouter);

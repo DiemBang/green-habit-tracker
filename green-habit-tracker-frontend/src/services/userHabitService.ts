@@ -27,7 +27,8 @@ export const getUserHabitsWithCompletedStatusByDay = async (
   let query = { userID: userID, day: day };
   let response = await axios.post(
     BASE_URL + "/withCompletedStatusByDay",
-    query
+    query,
+    { withCredentials: true }
   );
   return response.data;
 };
