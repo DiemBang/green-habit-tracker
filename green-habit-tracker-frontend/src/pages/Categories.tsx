@@ -10,7 +10,7 @@ import { CardSection } from "../components/CardSection";
 export const Categories = () => {
   return (
     <>
-      <h2 className="mb-6">Categories</h2>
+      <h2>Categories</h2>
       <CardSection>
         <section className="grid grid-cols-2 sm:grid-cols-3 gap-6">
           <Link to="/habitsPerCategory/Home">

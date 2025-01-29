@@ -19,7 +19,7 @@ export const ButtonWithIcon: React.FC<ButtonProps> = ({
   const buttonColor =
     text === "Remove" || text === "Leave Challenge"
       ? "bg-customRed"
-      : "bg-calmBlue";
+      : "bg-buttonGreen";
 
   return (
     <button

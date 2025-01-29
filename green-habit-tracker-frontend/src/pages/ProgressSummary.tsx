@@ -6,7 +6,7 @@ import { CardSection } from "../components/CardSection";
 import progressIcon from "../assets/progress-icon.svg";
 import ecoBadge from "../assets/eco-badge.svg";
 
-const ProgressSummary = () => {
+export const ProgressSummary = () => {
   const progressSummaryFromLoader = useLoaderData();
   const [period, setPeriod] = useState("month");
   const [progressSummary, setProgressSummary] = useState<IProgressSummary>(
@@ -116,5 +116,3 @@ const ProgressSummary = () => {
     </CardSection>
   );
 };
-
-export default ProgressSummary;

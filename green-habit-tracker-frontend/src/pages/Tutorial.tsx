@@ -115,6 +115,44 @@ export const Tutorial = () => {
         </ul>
       </>
     ),
+    Progress: (
+      <>
+        <div className="hidden lg:block">
+          <p className="mb-2">
+            The Progress Summary page gives you insights into your eco-friendly
+            habits.
+          </p>
+          <ul className="list-disc list-inside text-gray-700">
+            <li>
+              Time Period Selection: At the top of the summary, you can choose a
+              time period—Week, Month, or Year—to view your progress over
+              different durations. Simply select your preferred timeframe from
+              the dropdown menu, and your stats will update accordingly.
+            </li>
+            <li>
+              The Streaks section tracks: Longest Streak – The most consecutive
+              days you’ve completed at least one habit. Current Streak – The
+              number of consecutive days you’ve maintained your sustainable
+              habits. Keep up your streaks to build a lasting green routine!
+            </li>
+            <li>
+              The Habit Summary gives an insight into your overall habit
+              completion: Total Completed – The total number of habits you’ve
+              successfully tracked. Top Habits Completed – A list of the habits
+              you’ve completed the most. This section helps you identify your
+              strongest eco-friendly habits and encourages you to diversify your
+              sustainable actions.
+            </li>
+            <li>
+              The CO₂ Savings section displays: Total CO₂ Saved – The amount of
+              CO₂ emissions you have prevented by completing your tracked
+              habits. Every small action adds up! Keep tracking your habits to
+              see your impact grow over time.
+            </li>
+          </ul>
+        </div>
+      </>
+    ),
     Profile: (
       <>
         {/* Mobile-specific text */}
@@ -141,6 +179,7 @@ export const Tutorial = () => {
             </li>
           </ul>
         </div>
+
         {/* Desktop-specific text */}
         <div className="hidden lg:block">
           <p className="mb-2">
@@ -150,10 +189,6 @@ export const Tutorial = () => {
             <li>
               See your achievements: View completed challenges and earned
               badges.
-            </li>
-            <li>
-              Track your impact: Discover how your habits contribute to a
-              greener planet.
             </li>
           </ul>
         </div>
@@ -165,7 +200,7 @@ export const Tutorial = () => {
     <>
       <h1 className="ml-5">Tutorial</h1>
 
-      {["Home", "Explore", "Profile"].map((section) => (
+      {["Home", "Explore"].map((section) => (
         <section
           key={section}
           className="m-2 lg:m-6 bg-cardWhite border rounded-lg shadow-sm"
@@ -198,6 +233,48 @@ export const Tutorial = () => {
           )}
         </section>
       ))}
+
+      {/* Progress Summary - Only displayed on large screens and above Profile */}
+      <div className="hidden lg:block">
+        <section className="m-2 lg:m-6 bg-cardWhite border rounded-lg shadow-sm">
+          <button
+            className="flex justify-between items-center w-full px-4 py-3 bg-cardWhite font-medium text-lg focus:outline-none hover:bg-headerAndFooterColor transition duration-300"
+            onClick={() => toggleSection("Progress")}
+          >
+            <span className="text-left">Progress</span>
+            <span
+              className={`transform transition-transform duration-300 ${
+                openSection === "Progress" ? "rotate-180" : ""
+              }`}
+            >
+              🌿
+            </span>
+          </button>
+          {openSection === "Progress" && (
+            <div className="p-4 bg-white">{tutorialContent["Progress"]}</div>
+          )}
+        </section>
+      </div>
+
+      {/* Profile Section (Appears Below Progress) */}
+      <section className="m-2 lg:m-6 bg-cardWhite border rounded-lg shadow-sm">
+        <button
+          className="flex justify-between items-center w-full px-4 py-3 bg-cardWhite font-medium text-lg focus:outline-none hover:bg-headerAndFooterColor transition duration-300"
+          onClick={() => toggleSection("Profile")}
+        >
+          <span className="text-left">Profile</span>
+          <span
+            className={`transform transition-transform duration-300 ${
+              openSection === "Profile" ? "rotate-180" : ""
+            }`}
+          >
+            🌿
+          </span>
+        </button>
+        {openSection === "Profile" && (
+          <div className="p-4 bg-white">{tutorialContent["Profile"]}</div>
+        )}
+      </section>
     </>
   );
 };
