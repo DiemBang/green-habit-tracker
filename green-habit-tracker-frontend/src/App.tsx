@@ -5,7 +5,7 @@ import { useState } from "react";
 import { SplashScreen } from "./pages/SplashScreen";
 
 function App() {
-  const [showSplash, setShowSplash] = useState(false); //turn on when app is finished
+  const [showSplash, setShowSplash] = useState(true); //turn on when app is finished
 
   const handleSplashComplete = () => {
     setShowSplash(false); // Hide splash screen after animation
