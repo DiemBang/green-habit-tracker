@@ -54,21 +54,24 @@ h6 {
   @apply font-heading; /* Use Quicksand for headings */
   color: #495057;
 }
+/* Equivalent to sm */
+/* @media (min-width: 40rem) {
+ 
+} */
 
 h1 {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
 }
 
+/* heading for card section */
 h2 {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 h3 {
   font-size: 1.125rem; /* Corresponds to "text-lg" */
   font-weight: 700; /* Corresponds to "font-bold" */
   /* color: #047857; Corresponds to "text-emerald-700" */
-  margin: 1rem;
 }
 
 h4 {

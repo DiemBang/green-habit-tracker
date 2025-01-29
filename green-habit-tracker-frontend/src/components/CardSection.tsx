@@ -13,7 +13,7 @@ export const CardSection: React.FC<CardSectionProps> = ({
 }) => {
   return (
     <section
-      className={`p-6 lg:m-6 bg-cardWhite border rounded-lg shadow-sm ${
+      className={`p-6 my-3 lg:mt-3 bg-cardWhite border rounded-lg shadow-sm ${
         className || ""
       }`}
       onClick={onClick}

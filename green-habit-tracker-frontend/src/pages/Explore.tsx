@@ -25,7 +25,7 @@ export const Explore = () => {
 
   return (
     <>
-      <h1 className="flex items-center">Explore what's on</h1>
+      <h2 className="flex items-center">Explore what's on</h2>
       <h3>
         <img
           src={challengeIcon}
@@ -34,7 +34,7 @@ export const Explore = () => {
         />
         Challenges
       </h3>
-      <p className="px-4 mb-4">
+      <p className="my-4">
         Take on a challenge this month! Complete more green habits, make a
         positive impact, and collect points along the way.
       </p>
@@ -65,7 +65,7 @@ export const Explore = () => {
       </h3>
 
       <CardSection className="mb-20">
-        <div className="p-4">
+        <div>
           <h4>{ecotip.name}</h4>
           <p className="mt-2">{ecotip.description}</p>
         </div>

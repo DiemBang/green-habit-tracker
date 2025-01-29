@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import homeIcon from "/src/assets/header-footer-icons/home.svg";
-import exploreIcon from "/src/assets/header-footer-icons/idea.svg";
+import exploreIcon from "/src/assets/header-footer-icons/explore.svg";
 import profileIcon from "/src/assets/header-footer-icons/profile-user.svg";
 
 export const Footer = () => {

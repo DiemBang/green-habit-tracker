@@ -81,16 +81,16 @@ export const Home = () => {
   // ToDo: add habit.completed in database backend query
   return (
     <>
-      <h1>{formattedDate}</h1>
+      <h2>{formattedDate}</h2>
       <div className="flex flex-col lg:flex-row-reverse w-[100%]">
-        <div className="lg:w-[40%]">
+        <div className="lg:w-[40%] lg:m-6">
           <img src={didYouKnowIcon} alt="Did you know icon" width="80" />
           <CardSection className="mt-[-0.375rem]">
             <p>{sustainabilityFacts[factIndex].description}</p>
           </CardSection>
           <Link to="/categories">
             <button
-              className="hidden lg:flex font-bold capitalize rounded-lg ml-6 px-2 py-2 items-center"
+              className="hidden lg:flex font-bold capitalize rounded-lg px-2 py-2 items-center"
               aria-label="Add Habit"
             >
               Add habit
