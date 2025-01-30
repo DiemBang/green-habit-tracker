@@ -13,6 +13,16 @@ export const getChallengesForSpecificUser = async (): Promise<
   return response.data;
 };
 
+export const getChallengesForSpecificUserWithNoEndDate = async (): Promise<
+  IUserChallenge[]
+> => {
+  let userID = localStorage.getItem("userID") || "";
+  let query = { userID: userID };
+  let response = await axios.post(BASE_URL + "/noEndDate", query);
+
+  return response.data;
+};
+
 export const checkIfChallengeAlreadyJoined = async (
   challengeID: string
 ): Promise<boolean> => {

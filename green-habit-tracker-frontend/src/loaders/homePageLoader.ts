@@ -1,5 +1,5 @@
 import { getFacts } from "../services/sustainabilityFactService";
-import { getChallengesForSpecificUser } from "../services/userChallengeService";
+import { getChallengesForSpecificUserWithNoEndDate } from "../services/userChallengeService";
 import { getUserHabitsWithCompletedStatusByDay } from "../services/userHabitService";
 
 export const homePageLoader = async () => {
@@ -10,7 +10,7 @@ export const homePageLoader = async () => {
     const userHabits = await getUserHabitsWithCompletedStatusByDay(userID, day);
 
     console.log("Sustainability facts loaded:", sustainabilityFacts);
-    const userChallenges = await getChallengesForSpecificUser();
+    const userChallenges = await getChallengesForSpecificUserWithNoEndDate();
 
     // Initialize an empty dictionary
     let challengeDict: { [key: string]: boolean } = {};

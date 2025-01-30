@@ -166,13 +166,21 @@ const checkAndUpdateChallengeStatusForUser = async (
         });
 
       if (completedActions >= noOfActionsCompletedNeeded) {
-        // Mark as completed
-        await req.app.locals.db.collection("UserChallengeCompleted").insertOne({
-          userID,
-          challengeID,
-          challengeName: challenge.name,
-          dateCompleted: challengeEndDate,
-        });
+        const existingCompletion = await req.app.locals.db
+          .collection("UserChallengeCompleted")
+          .findOne({ userID, challengeID });
+
+        if (!existingCompletion) {
+          // Mark as completed only if it doesn't already exist
+          await req.app.locals.db
+            .collection("UserChallengeCompleted")
+            .insertOne({
+              userID,
+              challengeID,
+              challengeName: challenge.name,
+              dateCompleted: challengeEndDate,
+            });
+        }
       } else {
         // Create a notification object
         await req.app.locals.db.collection("UserNotification").insertOne({
@@ -198,13 +206,21 @@ const checkAndUpdateChallengeStatusForUser = async (
             { _id: userChallenge._id },
             { $set: { dateEnded: new Date() } }
           );
-        // Mark as completed early
-        await req.app.locals.db.collection("UserChallengeCompleted").insertOne({
-          userID,
-          challengeID,
-          challengeName: challenge.name,
-          dateCompleted: new Date(),
-        });
+        const existingCompletion = await req.app.locals.db
+          .collection("UserChallengeCompleted")
+          .findOne({ userID, challengeID });
+
+        if (!existingCompletion) {
+          // Mark as completed early
+          await req.app.locals.db
+            .collection("UserChallengeCompleted")
+            .insertOne({
+              userID,
+              challengeID,
+              challengeName: challenge.name,
+              dateCompleted: new Date(),
+            });
+        }
       }
     }
   }

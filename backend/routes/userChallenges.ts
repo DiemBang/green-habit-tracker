@@ -32,6 +32,25 @@ router.post("/", function (req: Request, res: Response) {
     });
 });
 
+/* GET userChallenge for specific user with no end date */
+router.post("/noEndDate", function (req: Request, res: Response) {
+  req.app.locals.db
+    .collection("UserChallenge")
+    .find({
+      userID: req.body.userID,
+      $or: [{ dateEnded: null }, { dateEnded: undefined }, { dateEnded: "" }], // Ensures endDate is empty
+    })
+    .toArray()
+    .then((results: Array<IUserChallenge>) => {
+      console.log("results", results);
+      res.json(results);
+    })
+    .catch((error: any) => {
+      console.error("Error fetching user challenges:", error);
+      res.status(500).json({ error: "Failed to fetch user challenges" });
+    });
+});
+
 const addHabitIfNotAlreadyAdded = async (
   req: Request,
   habitIdentifier: string

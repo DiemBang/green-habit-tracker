@@ -10,6 +10,7 @@ export const profilePageLoader = async () => {
 
     let user: IUser = await getUser(userID);
     console.log("user", user);
+    console.log("userChallenges", userChallenges);
 
     return { userChallenges, user };
   } catch (error) {

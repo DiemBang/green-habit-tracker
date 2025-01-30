@@ -102,7 +102,7 @@ export const Profile = () => {
               alt={
                 "badge completed for challenge: " + userChallenge.challengeName
               }
-              key={userChallenge.challengeID}
+              key={"BadgeImg" + userChallenge.challengeID}
               className="w-32 h-32 object-contain rounded-full"
             />
           ))}

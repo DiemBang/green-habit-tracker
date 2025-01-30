@@ -25,7 +25,7 @@ import { profilePageLoader } from "./loaders/profilePageLoader";
 import { Tutorial } from "./pages/Tutorial";
 import { headerLoader } from "./loaders/headerLoader";
 import { notificationSettingsLoader } from "./loaders/notificationSettingsLoader";
-import ProgressSummary from "./pages/ProgressSummary";
+import { ProgressSummary } from "./pages/ProgressSummary";
 import { progressSummaryLoader } from "./loaders/progressSummaryLoader";
 // import { SplashScreen } from "./pages/SplashScreen";
 
