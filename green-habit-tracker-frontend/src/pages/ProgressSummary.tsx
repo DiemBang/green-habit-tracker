@@ -6,6 +6,11 @@ import { CardSection } from "../components/CardSection";
 import progressIcon from "../assets/progress-icon.svg";
 import ecoBadge from "../assets/eco-badge.svg";
 
+const round = (value: number, precision: number): number => {
+  var multiplier = Math.pow(10, precision || 0);
+  return Math.round(value * multiplier) / multiplier;
+};
+
 export const ProgressSummary = () => {
   const progressSummaryFromLoader = useLoaderData();
   const [period, setPeriod] = useState("month");
@@ -79,7 +84,7 @@ export const ProgressSummary = () => {
             {progressSummary.habitSummary.totalCompleted}
           </span>
         </p>
-        <h3 className="ml-0">Top Habits Completed</h3>
+        <h3 className="ml-0 mb-2">Top Habits Completed</h3>
         <ul className="list-none space-y-4">
           {progressSummary.habitSummary.topHabits.map(
             ([habitName, count]: [string, number]) => (
@@ -109,7 +114,7 @@ export const ProgressSummary = () => {
         <p className="text-lg font-medium">
           Total CO₂ Saved:{" "}
           <span className="text-emerald-800 font-bold">
-            {progressSummary.co2Savings.totalCO2} kg
+            {round(progressSummary.co2Savings.totalCO2, 1)} kg
           </span>
         </p>
       </section>
