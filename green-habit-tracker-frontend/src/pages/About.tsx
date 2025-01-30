@@ -5,7 +5,7 @@ export const About = () => {
     <>
       <h1>About GreenHabits</h1>
       <CardSection className="mb-20">
-        <p className="mb-4">
+        <p className="mb-5">
           GreenHabits is a passion project born from my final-year degree work,
           inspired by my internship at a greentech data company. During my time
           there, I saw firsthand how data-driven insights can help people make
@@ -13,20 +13,20 @@ export const About = () => {
           GreenHabits—an app designed to make eco-friendly living easy,
           engaging, and rewarding.
         </p>
-        <p className="mb-4">
+        <p className="mb-5">
           With GreenHabits, you can track small everyday actions that add up to
           a big impact. Whether it's reducing food waste, choosing sustainable
           transport, or joining monthly challenges, the app helps you stay
           consistent with green habits. You'll also get real-time insights, like
           CO₂ savings per action, and earn points as you progress.
         </p>
-        <p className="mb-4">
+        <p className="mb-5">
           My goal with GreenHabits is to empower individuals to make sustainable
           choices every day. By turning eco-friendly actions into a fun and
-          trackable habit, we hope to inspire a greener lifestyle—one step at a
+          trackable habit, I hope to inspire a greener lifestyle—one step at a
           time.
         </p>
-        <p className="mb-4">Ready to make every choice count? 💚♻️🌱🌍✨</p>
+        <p className="mb-5">Ready to make every choice count? 💚♻️🌱🌍✨</p>
       </CardSection>
     </>
   );

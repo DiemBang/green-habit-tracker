@@ -60,7 +60,7 @@ export const Profile = () => {
         </div>
       </section>
       <section className="lg:hidden">
-        <h3>Your Eco Progress at a Glance</h3>
+        <h3>Your eco progress at a glance</h3>
         <Link to={"/progress-summary"}>
           <CardSection>
             <div className="flex items-center justify-between">

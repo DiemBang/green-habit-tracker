@@ -34,7 +34,7 @@ export const ProgressSummary = () => {
           alt="Icon for progress and stats"
           className="w-8 h-8 flex-shrink-0"
         />
-        <h2 className="lg:ml-0 font-bold">Progress Summary</h2>
+        <h2 className="lg:ml-0">Progress Summary</h2>
       </div>
       <div className="mb-8 flex">
         <label className="mr-4 text-lg font-medium text-gray-700">

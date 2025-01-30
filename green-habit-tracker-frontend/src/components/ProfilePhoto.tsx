@@ -52,11 +52,16 @@ export const ProfilePhotoUpload = () => {
       )}
       {changeImage && (
         <>
-          <input type="file" accept="image/*" onChange={handleFileChange} />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="text-xs"
+          />
           {image && (
             <button
               onClick={handleRemovePhoto}
-              className="bg-red-500 text-white px-3 py-1 rounded"
+              className="bg-red-500 text-white px-3 py-1 rounded text-xs"
             >
               Remove Photo
             </button>
@@ -64,7 +69,10 @@ export const ProfilePhotoUpload = () => {
         </>
       )}
       {!changeImage && (
-        <button onClick={() => setChangeImage(!changeImage)} className="mt-4">
+        <button
+          onClick={() => setChangeImage(!changeImage)}
+          className="mt-4 text-xs"
+        >
           Change image
         </button>
       )}
