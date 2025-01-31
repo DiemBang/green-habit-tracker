@@ -116,11 +116,6 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     .find({ userID: req.body.userID })
     .toArray()
     .then((results: IUserHabit[]) => {
-      if (results.length === 0) {
-        // Handle case where no user is found
-        return res.status(404).json({ error: "User not found." });
-      }
-      console.log("results", results);
       res.json(results);
     })
     .catch((dbError: unknown) => {
@@ -352,10 +347,6 @@ router.post(
           },
         ])
         .toArray();
-
-      if (results.length === 0) {
-        return res.status(404).json({ error: "No habits found for the user." });
-      }
 
       res.json(results);
     } catch (error) {

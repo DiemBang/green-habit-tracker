@@ -8,7 +8,7 @@ export const createDefaultNotificationSettings = async (
   userId: string
 ) => {
   const defaultSettings = {
-    userID: userId,
+    userID: userId.toString(),
     settings: {
       dailyHabit: false,
       reward: false,

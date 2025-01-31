@@ -20,7 +20,8 @@ export const SignUpPage: React.FC = () => {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_BASE_URL}/api/users/add`,
-        userData
+        userData,
+        { withCredentials: true }
       );
       console.log("User added:", response.data);
 

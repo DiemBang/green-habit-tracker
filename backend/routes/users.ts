@@ -66,6 +66,8 @@ router.post("/add", async (req: Request, res: Response) => {
     console.log("User Password:", saltRounds);
     const hashedPW = await bcrypt.hash(userPw, saltRounds);
 
+    const isProduction = process.env.NODE_ENV === "production";
+
     // Create New User Object
     const newUser = {
       name: req.body.name,
@@ -79,6 +81,13 @@ router.post("/add", async (req: Request, res: Response) => {
       .insertOne(newUser);
     console.log("Insert Result:", result);
     let userToken = await setUserToken(req, result.insertedId);
+
+    res.cookie("authToken", userToken, {
+      httpOnly: true, // Prevent JavaScript access for security
+      secure: isProduction, // Send only over HTTPS in production
+      sameSite: isProduction ? "none" : "lax", // ✅ Allow cross-site in production, but stricter in development,
+      maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days in milliseconds
+    });
 
     createDefaultNotificationSettings(req, result.insertedId);
 

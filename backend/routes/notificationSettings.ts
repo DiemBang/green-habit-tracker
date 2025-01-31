@@ -18,13 +18,9 @@ router.post("/update", async (req: Request, res: Response): Promise<void> => {
     const collection = req.app.locals.db.collection("NotificationSettings");
     const result = await collection.updateOne(
       { userID: userID },
-      { $set: { [`settings.${setting}`]: enabled } }
+      { $set: { [`settings.${setting}`]: enabled } },
+      { upsert: true } // Create settings object if it doesn't exist
     );
-
-    if (result.matchedCount === 0) {
-      res.status(404).json({ error: "User not found" });
-      return;
-    }
 
     res.status(200).json({ message: "Notification setting updated" });
   } catch (error) {
@@ -47,11 +43,6 @@ router.post("/get", async (req: Request, res: Response): Promise<void> => {
     const userSettings = await collection.findOne({
       userID: userID,
     });
-
-    if (!userSettings) {
-      res.status(404).json({ error: "User settings not found" });
-      return;
-    }
 
     res.status(200).json(userSettings);
   } catch (error) {
