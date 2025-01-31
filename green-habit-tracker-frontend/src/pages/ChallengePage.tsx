@@ -26,11 +26,11 @@ export const ChallengePage = () => {
     };
 
     try {
-      const response = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_BACKEND_BASE_URL}/api/userChallenges/add`,
         userChallenge
       );
-      console.log("Joining challenge:", response.data);
+
       setIsJoined(true);
     } catch (error) {
       console.error("Error adding user:", error);
@@ -50,7 +50,7 @@ export const ChallengePage = () => {
           },
         }
       );
-      console.log("User left challenge.");
+
       setIsJoined(false);
     } catch (error) {
       console.error("Error leaving challenge:", error);

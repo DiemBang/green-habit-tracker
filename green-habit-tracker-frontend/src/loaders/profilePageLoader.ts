@@ -9,8 +9,6 @@ export const profilePageLoader = async () => {
     const userChallenges = await getUserChallengesCompleted(userID);
 
     let user: IUser = await getUser(userID);
-    console.log("user", user);
-    console.log("userChallenges", userChallenges);
 
     return { userChallenges, user };
   } catch (error) {

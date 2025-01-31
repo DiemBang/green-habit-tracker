@@ -23,7 +23,6 @@ export const LoginPage: React.FC = () => {
         userData,
         { withCredentials: true }
       );
-      console.log("User logged in:", response.data);
 
       // Set userID and userToken in local storage
       localStorage.setItem("userID", response.data.userID);

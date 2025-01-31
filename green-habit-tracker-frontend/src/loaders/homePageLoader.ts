@@ -9,7 +9,6 @@ export const homePageLoader = async () => {
     const day = new Date().toISOString();
     const userHabits = await getUserHabitsWithCompletedStatusByDay(userID, day);
 
-    console.log("Sustainability facts loaded:", sustainabilityFacts);
     const userChallenges = await getChallengesForSpecificUserWithNoEndDate();
 
     // Initialize an empty dictionary

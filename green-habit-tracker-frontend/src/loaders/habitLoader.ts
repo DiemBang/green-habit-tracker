@@ -7,7 +7,6 @@ export const habitLoader = async ({ params }: ILoader) => {
   let identifier = params.identifier ? params.identifier : "";
 
   let habit: IHabit = await getHabit(identifier);
-  console.log("habit", habit);
 
   let userID = localStorage.getItem("userID") || "";
 

@@ -24,12 +24,11 @@ export const Home = () => {
   const getUserHabitsForNewSelectedDay = async () => {
     let day = selectedDate.toISOString();
     if (selectedDate) {
-      console.log("Selected date changed:", selectedDate);
       const userHabits = await getUserHabitsWithCompletedStatusByDay(
         userID,
         day
       );
-      console.log("userHabits", userHabits);
+
       setHabits(userHabits);
     }
   };
@@ -55,7 +54,6 @@ export const Home = () => {
   const factIndex = today.getDate() % sustainabilityFacts.length; // Ensures index wraps around
 
   const toggleCompletion = async (id: string) => {
-    console.log("Toggling habit completion for habit with ID:", id);
     const updatedHabits: IUserHabit[] = [];
 
     for (const habit of habits) {

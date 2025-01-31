@@ -6,14 +6,12 @@ const BASE_URL = `${import.meta.env.VITE_BACKEND_BASE_URL}/api/challenges`;
 export const getChallenges = async (): Promise<IChallenge[]> => {
   let response = await axios.get(BASE_URL);
 
-  console.log(response.data);
   return response.data;
 };
 
 export const getCurrentChallenges = async (): Promise<IChallenge[]> => {
   let response = await axios.get(BASE_URL + "/current");
 
-  console.log(response.data);
   return response.data;
 };
 

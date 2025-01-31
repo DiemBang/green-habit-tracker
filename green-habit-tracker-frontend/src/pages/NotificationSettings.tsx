@@ -14,7 +14,6 @@ export const NotificationSettings = () => {
 
     try {
       await updateNotificationSetting(key, newValue);
-      console.log(`${key} updated successfully to ${newValue}`);
     } catch (error) {
       console.error(`Failed to update ${key}, reverting toggle`);
       setToggles((prev) => ({ ...prev, [key]: !newValue })); // Revert toggle if API fails

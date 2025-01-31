@@ -6,8 +6,6 @@ export const explorePageLoader = async () => {
     const challenges = await getCurrentChallenges();
     const ecotip = await getCurrentEcotip();
 
-    console.log("Challenges loaded:", challenges);
-
     return { challenges, ecotip };
   } catch (error) {
     console.error("Error loading sustainability facts:", error);

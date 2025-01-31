@@ -23,7 +23,6 @@ export const SignUpPage: React.FC = () => {
         userData,
         { withCredentials: true }
       );
-      console.log("User added:", response.data);
 
       // Set UserID and UserToken in local storage
       localStorage.setItem("userID", response.data.userID);

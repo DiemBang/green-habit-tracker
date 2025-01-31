@@ -22,11 +22,10 @@ export const HabitPage = () => {
         frequency: frequency,
       };
 
-      const response = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_BACKEND_BASE_URL}/api/userHabits/add`,
         userHabit
       );
-      console.log("Habit added to user:", response.data);
       setIsAdded(true);
     } catch (error) {
       console.error("Error adding user:", error);
@@ -46,7 +45,6 @@ export const HabitPage = () => {
           },
         }
       );
-      console.log("Habit removed from user.");
       setIsAdded(false);
     } catch (error) {
       console.error("Error deleting habit:", error);

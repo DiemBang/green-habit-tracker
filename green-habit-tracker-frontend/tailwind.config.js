@@ -5,7 +5,6 @@ export default {
     extend: {
       colors: {
         cloudWhite: "#FFFAF2", // Backgrounds
-        calmBlue: "#BCCEDA", // Secondary Buttons
         charcoalGray: "#495057", // Text, Header, Footer
         fontPrimary: "#495057", // Charcoal Gray
         buttonGreen: "#acd980",

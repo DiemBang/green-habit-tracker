@@ -16,11 +16,9 @@ export const getUserNotifications = async (
 export const markNotificationsAsRead = async () => {
   const userID = localStorage.getItem("userID");
   try {
-    const response = await axios.patch(BASE_URL + "/mark-read", {
+    await axios.patch(BASE_URL + "/mark-read", {
       userID,
     });
-
-    console.log(response.data.message);
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error("Axios error:", error.response?.data || error.message);

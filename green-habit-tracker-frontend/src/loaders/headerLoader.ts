@@ -8,7 +8,6 @@ export const headerLoader = async () => {
   let user: IUser = await getUser(userID);
 
   let notifications: IUserNotification[] = await getUserNotifications(userID);
-  console.log("notifications", notifications);
 
   return { notifications, user };
 };

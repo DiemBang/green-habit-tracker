@@ -34,7 +34,6 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("in ReusableForm handleSubmit");
 
     // Validate email
     const isValidEmail = email.includes("@") && email.includes(".");

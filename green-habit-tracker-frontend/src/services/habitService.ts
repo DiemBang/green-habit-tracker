@@ -6,14 +6,12 @@ const BASE_URL = `${import.meta.env.VITE_BACKEND_BASE_URL}/api/habits`;
 export const getHabits = async () => {
   let response = await axios.get(BASE_URL);
 
-  console.log(response.data);
   return response.data;
 };
 
 export const getHabitsFiltered = async (category: string) => {
   let response = await axios.get(BASE_URL, { params: { category: category } });
 
-  console.log(response.data);
   return response.data;
 };
 
