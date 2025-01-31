@@ -141,7 +141,8 @@ router.post("/login", async (req, res): Promise<any> => {
             res.cookie("authToken", userToken, {
               httpOnly: true, // Prevent JavaScript access for security
               secure: isProduction, // Send only over HTTPS in production
-              sameSite: isProduction ? "none" : "lax", // ✅ Allow cross-site in production, but stricter in development
+              sameSite: isProduction ? "none" : "lax", // ✅ Allow cross-site in production, but stricter in development,
+              maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days in milliseconds
             });
             return res.json({
               email: checkEmail,
