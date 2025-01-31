@@ -11,7 +11,7 @@ import didYouKnowIcon from "../assets/know.svg";
 export const Home = () => {
   const { sustainabilityFacts, userHabits, challengeDict } = useLoaderData();
   const [habits, setHabits] = useState(userHabits);
-  const { selectedDate } = useCalendar();
+  const { selectedDate, setSelectedDate } = useCalendar();
 
   // 1. Add a useEffect function to listen for when selected date changes
   // 2. In the useEffect, call the getUserHabitsWithCompletedStatusByDay
@@ -33,6 +33,11 @@ export const Home = () => {
       setHabits(userHabits);
     }
   };
+
+  // Set selected date to current day when loading page
+  useEffect(() => {
+    setSelectedDate(new Date());
+  }, []);
 
   useEffect(() => {
     getUserHabitsForNewSelectedDay();
