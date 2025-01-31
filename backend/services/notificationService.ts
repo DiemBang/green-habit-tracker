@@ -20,7 +20,6 @@ export const createDefaultNotificationSettings = async (
   try {
     const collection = req.app.locals.db.collection("NotificationSettings");
     await collection.insertOne(defaultSettings);
-    console.log(`Default settings created for user ${userId}`);
     return defaultSettings;
   } catch (error) {
     console.error(
@@ -62,7 +61,6 @@ export const runNotifyOnFirstDayOfMonth = async (
           element.name,
           "challenge"
         );
-        console.log("Notification sent successfully.");
       } catch (error) {
         console.error("Error sending notification:", error);
       }

@@ -12,7 +12,6 @@ router.get("/", function (req: Request, res: Response) {
     .find()
     .toArray()
     .then((results: Array<IUserChallengeCompleted>) => {
-      console.log("results", results);
       res.json(results);
     });
 });
@@ -30,7 +29,6 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
     .find({ userID: findUser })
     .toArray()
     .then((results: IUserChallengeCompleted[]) => {
-      console.log("results", results);
       res.json(results);
     })
     .catch((dbError: unknown) => {

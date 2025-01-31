@@ -13,7 +13,6 @@ router.get("/", function (req: Request, res: Response) {
     .sort({ timestamp: -1 })
     .toArray()
     .then((results: Array<IUserNotification>) => {
-      console.log("results", results);
       res.json(results);
     });
 });

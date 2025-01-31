@@ -13,14 +13,12 @@ router.get("/", function (req: Request, res: Response) {
     .find()
     .toArray()
     .then((results: Array<IUserHabit>) => {
-      console.log("results", results);
       res.json(results);
     });
 });
 
 /* Add habit for User */
 router.post("/add", async (req: Request, res: Response): Promise<void> => {
-  console.log("Incoming request body:", req.body);
   try {
     const dateStarted: Date = new Date();
 
@@ -33,7 +31,6 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
       });
 
     if (existingHabit) {
-      console.log("Habit already exists for this user.");
       res.status(400).json({ error: "Habit already exists." });
       return;
     }
@@ -64,7 +61,6 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
     const result = await req.app.locals.db
       .collection("UserHabit")
       .insertOne(userHabit);
-    console.log("Insert Result:", result);
 
     res.json({
       message: `New userHabit added with ID ${result.insertedId}`,
@@ -78,7 +74,6 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
 
 // DELETE habit for User
 router.delete("/delete", async (req: Request, res: Response): Promise<void> => {
-  console.log("Incoming request body:", req.body);
   try {
     const { userID, habitIdentifier } = req.body;
 
@@ -101,7 +96,6 @@ router.delete("/delete", async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    console.log("Habit deleted successfully:", result);
     res.json({ message: "Habit deleted successfully." });
   } catch (error) {
     console.error("Error deleting habit:", error);
@@ -227,7 +221,6 @@ router.post(
           // Handle case where no user is found
           return res.status(404).json({ error: "User not found." });
         }
-        console.log("results", results);
         res.json(results);
       })
       .catch((dbError: unknown) => {

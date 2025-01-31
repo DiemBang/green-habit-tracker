@@ -43,7 +43,7 @@ app.use("/api/notificationSettings", notificationSettingsRouter);
 app.use("/api/progressSummary", progressSummaryRouter);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Listening on port ${port}`);
 });
 
 const username = process.env.MONGO_ROOT_USERNAME;

@@ -107,7 +107,6 @@ const getTotalPointsAndSetItForUser = async (
     );
 
     if (result.modifiedCount > 0) {
-      console.log(`Successfully updated points for user ${userID}`);
     } else {
       console.log(`No updates made. User ${userID} may not exist.`);
     }
@@ -206,6 +205,7 @@ const checkAndUpdateChallengeStatusForUser = async (
             { _id: userChallenge._id },
             { $set: { dateEnded: new Date() } }
           );
+
         const existingCompletion = await req.app.locals.db
           .collection("UserChallengeCompleted")
           .findOne({ userID, challengeID });
@@ -285,7 +285,6 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
       const result = await req.app.locals.db
         .collection("UserHabitCompleted")
         .insertOne(userHabitCompleted);
-      console.log("Insert Result:", result);
       await checkAndUpdateChallengeStatusForUser(req.body.userID, req);
       await getTotalPointsAndSetItForUser(req.body.userID, req);
 

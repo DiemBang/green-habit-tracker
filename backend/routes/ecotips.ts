@@ -12,7 +12,6 @@ router.get("/", function (req: Request, res: Response) {
     .find()
     .toArray()
     .then((results: Array<IEcotip>) => {
-      console.log("results", results);
       res.json(results);
     });
 });
@@ -45,7 +44,6 @@ router.get("/current", async (req: Request, res: Response): Promise<any> => {
         // Handle case where no ecotip is found
         return res.status(404).json({ error: "Ecotip not found." });
       }
-      console.log("results", results);
       res.json(results[dayRemainder]);
     });
 });

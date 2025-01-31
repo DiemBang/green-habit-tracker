@@ -14,7 +14,6 @@ router.get("/", function (req: Request, res: Response) {
     .find()
     .toArray()
     .then((results: Array<IUserChallenge>) => {
-      console.log("results", results);
       res.json(results);
     });
 });
@@ -27,7 +26,6 @@ router.post("/", function (req: Request, res: Response) {
     .find({ userID: req.body.userID })
     .toArray()
     .then((results: Array<IUserChallenge>) => {
-      console.log("results", results);
       res.json(results);
     });
 });
@@ -42,7 +40,6 @@ router.post("/noEndDate", function (req: Request, res: Response) {
     })
     .toArray()
     .then((results: Array<IUserChallenge>) => {
-      console.log("results", results);
       res.json(results);
     })
     .catch((error: any) => {
@@ -87,18 +84,14 @@ const addHabitIfNotAlreadyAdded = async (
     };
 
     // Insert userHabit into Database
-    const result = await req.app.locals.db
-      .collection("UserHabit")
-      .insertOne(userHabit);
-    console.log("Insert Result:", result);
+    await req.app.locals.db.collection("UserHabit").insertOne(userHabit);
   } catch (error) {
-    console.log();
+    console.log(error);
   }
 };
 
 /* Add challenge for User */
 router.post("/add", async (req: Request, res: Response): Promise<void> => {
-  console.log("Incoming request body:", req.body);
   try {
     const dateJoined: Date = new Date();
     let findChallenge;
@@ -127,7 +120,7 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
     const result = await req.app.locals.db
       .collection("UserChallenge")
       .insertOne(userChallenge);
-    console.log("Insert Result:", result);
+
     addHabitIfNotAlreadyAdded(req, challenge.habitIdentifier);
 
     res.json({
@@ -144,7 +137,6 @@ router.post("/add", async (req: Request, res: Response): Promise<void> => {
 
 /* DELETE challenge for User */
 router.delete("/delete", async (req: Request, res: Response): Promise<void> => {
-  console.log("Incoming request body for deletion:", req.body);
   try {
     const { userID, challengeID } = req.body;
 

@@ -8,7 +8,7 @@ export const authMiddleware = (
   (async () => {
     try {
       const authHeader: string | undefined = req.cookies.authToken;
-      console.log("authHeader", authHeader);
+
       if (!authHeader) {
         return res
           .status(401)

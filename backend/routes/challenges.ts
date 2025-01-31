@@ -12,7 +12,6 @@ router.get("/", function (req: Request, res: Response) {
     .find()
     .toArray()
     .then((results: Array<IChallenge>) => {
-      console.log("results", results);
       res.json(results);
     });
 });
@@ -30,7 +29,7 @@ router.get("/current", async (req: Request, res: Response): Promise<any> => {
         // Handle case where no challenge is found
         return res.status(404).json({ error: "Challenge not found." });
       }
-      console.log("results", results);
+
       res.json(results);
     });
 });
@@ -38,7 +37,6 @@ router.get("/current", async (req: Request, res: Response): Promise<any> => {
 /* GET specific challenge */
 router.post("/", function (req: Request, res: Response) {
   let habitIdentifier = req.body.habitIdentifier;
-  console.log("identifier", habitIdentifier);
 
   let query = habitIdentifier ? { habitIdentifier: habitIdentifier } : {};
 
@@ -46,7 +44,6 @@ router.post("/", function (req: Request, res: Response) {
     .collection("Challenge")
     .findOne(query)
     .then((results: IChallenge) => {
-      console.log("results", results);
       res.json(results);
     });
 });

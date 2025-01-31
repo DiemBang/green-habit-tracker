@@ -7,7 +7,6 @@ const router = Router();
 /* GET habitTypes */
 router.get("/", function (req: Request, res: Response) {
   let category = req.query.category;
-  console.log("category", category);
 
   let query = category ? { category: category } : {};
 
@@ -16,7 +15,6 @@ router.get("/", function (req: Request, res: Response) {
     .find(query)
     .toArray()
     .then((results: Array<IHabit>) => {
-      console.log("results", results);
       res.json(results);
     });
 });
@@ -24,7 +22,6 @@ router.get("/", function (req: Request, res: Response) {
 /* GET specific habitType */
 router.post("/", function (req: Request, res: Response) {
   let identifier = req.body.identifier;
-  console.log("identifier", identifier);
 
   let query = identifier ? { identifier: identifier } : {};
 
@@ -32,7 +29,6 @@ router.post("/", function (req: Request, res: Response) {
     .collection("Habit")
     .findOne(query)
     .then((results: IHabit) => {
-      console.log("results", results);
       res.json(results);
     });
 });

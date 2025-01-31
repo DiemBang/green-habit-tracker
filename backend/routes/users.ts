@@ -23,7 +23,6 @@ router.get("/", (req: Request, res: Response) => {
     .find()
     .toArray()
     .then((results: Array<IUser>) => {
-      console.log("results", results);
       res.json(results);
     });
 });
@@ -44,7 +43,6 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
         // Handle case where no user is found
         return res.status(404).json({ error: "User not found." });
       }
-      console.log("results", results);
       res.json(results);
     })
     .catch((dbError: unknown) => {
@@ -58,12 +56,10 @@ router.post("/", async (req: Request, res: Response): Promise<any> => {
 
 /* Create new user */
 router.post("/add", async (req: Request, res: Response) => {
-  console.log("Incoming request body:", req.body);
   try {
     // Encrypt Password
     const userPw: string = req.body.password;
-    console.log("User Password:", userPw);
-    console.log("User Password:", saltRounds);
+
     const hashedPW = await bcrypt.hash(userPw, saltRounds);
 
     const isProduction = process.env.NODE_ENV === "production";
@@ -79,7 +75,7 @@ router.post("/add", async (req: Request, res: Response) => {
     const result = await req.app.locals.db
       .collection("User")
       .insertOne(newUser);
-    console.log("Insert Result:", result);
+
     let userToken = await setUserToken(req, result.insertedId);
 
     res.cookie("authToken", userToken, {
@@ -132,7 +128,6 @@ async function setUserToken(req: Request, userId: string): Promise<string> {
 router.post("/login", async (req, res): Promise<any> => {
   let checkEmail = req.body.email;
   let checkPassword = req.body.password;
-  console.log("Incoming request body:", req.body);
 
   const isProduction = process.env.NODE_ENV === "production";
 
