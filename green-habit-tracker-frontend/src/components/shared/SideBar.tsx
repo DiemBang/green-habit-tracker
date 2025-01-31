@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import avatar from "../../assets/rabbit.svg";
 import { PointsBadge } from "../PointsBadge";
 import { IUser } from "../../models/IUser";
@@ -15,6 +15,7 @@ import { useProfileImage } from "../../contexts/ProfileImageContext";
 
 export const SideBar = ({ user }: { user: IUser }) => {
   const { image, setImage } = useProfileImage();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Retrieve the stored image when the component loads
@@ -23,6 +24,13 @@ export const SideBar = ({ user }: { user: IUser }) => {
       setImage(storedImage);
     }
   }, []);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("userID");
+    localStorage.removeItem("userToken");
+
+    navigate("/login");
+  };
 
   return (
     <aside className="hidden lg:flex bg-cloudWhite-100 w-40 p-4 pt-10 h-[calc(100vh-4rem)] top-16 flex-col fixed left-0 shadow-lg">
@@ -139,12 +147,12 @@ export const SideBar = ({ user }: { user: IUser }) => {
               className="w-6 h-6"
               aria-hidden="true"
             />
-            <Link
-              to="/login"
+            <div
+              onClick={handleSignOut}
               className="text-red-600 hover:text-red-800 font-medium"
             >
               Sign out
-            </Link>
+            </div>
           </li>
         </ul>
       </nav>

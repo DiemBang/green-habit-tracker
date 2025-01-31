@@ -8,13 +8,10 @@ export const Settings = () => {
   const user = useLoaderData() as IUser;
   const navigate = useNavigate();
 
-  // Sign Out Function
   const handleSignOut = () => {
-    // Clear user session (e.g., token from localStorage)
     localStorage.removeItem("userID");
     localStorage.removeItem("userToken");
 
-    // Redirect to login or landing page
     navigate("/login");
   };
 
