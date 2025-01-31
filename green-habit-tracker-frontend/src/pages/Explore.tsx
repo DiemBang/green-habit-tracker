@@ -5,6 +5,18 @@ import noMorePlasticBagsIcon from "../assets/challenge-icons/no-plasticbags.png"
 import paperSaverIcon from "../assets/challenge-icons/paper-saver.png";
 import clothChampionIcon from "../assets/challenge-icons/cloth-champion.png";
 import eWasteHeroIcon from "../assets/challenge-icons/ewaste-hero.png";
+import showerSaverIcon from "../assets/challenge-icons/shower-saver.png";
+import compostStarterIcon from "../assets/challenge-icons/compost-starter.png";
+import meatfreeWeekIcon from "../assets/challenge-icons/meatfree-week.png";
+import coffeeRecyclerIcon from "../assets/challenge-icons/coffee-recycler.png";
+import dairyfreeWeekIcon from "../assets/challenge-icons/dairyfree-week.png";
+import teabagBanIcon from "../assets/challenge-icons/teabag-ban.png";
+import farmToTableIcon from "../assets/challenge-icons/farm-to-table-champion.png";
+import ecoChefIcon from "../assets/challenge-icons/eco-chef.png";
+import powerDownProIcon from "../assets/challenge-icons/powerdown-pro.png";
+import lightsoffHourIcon from "../assets/challenge-icons/lightsoff-hour.png";
+import pedalPowerIcon from "../assets/challenge-icons/pedal-power.png";
+import streamingCutbackIcon from "../assets/challenge-icons/streaming-cutback.png";
 import { IChallenge } from "../models/IChallenge";
 import { CardSection } from "../components/CardSection";
 import ecoIcon from "/src/assets/ecotip-icon.svg";
@@ -19,6 +31,18 @@ export const Explore = () => {
     "Paper Saver": paperSaverIcon,
     "Cloth Champion": clothChampionIcon,
     "E-Waste Hero": eWasteHeroIcon,
+    "Shower Saver": showerSaverIcon,
+    "Compost Starter": compostStarterIcon,
+    "Meat-Free Week": meatfreeWeekIcon,
+    "Coffee Recycler": coffeeRecyclerIcon,
+    "Dairy-Free Week": dairyfreeWeekIcon,
+    "Tea Bag Ban": teabagBanIcon,
+    "Farm-to-Table Champion": farmToTableIcon,
+    "Eco Chef": ecoChefIcon,
+    "Power Down Pro": powerDownProIcon,
+    "Lights Off Hour": lightsoffHourIcon,
+    "Pedal Power": pedalPowerIcon,
+    "Streaming Cutback": streamingCutbackIcon,
   };
 
   const { challenges, ecotip } = useLoaderData();

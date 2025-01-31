@@ -2,11 +2,14 @@ import { Link, useLoaderData } from "react-router-dom";
 import avatar from "../assets/rabbit.svg";
 import { CardSection } from "../components/CardSection";
 import { PointsBadge } from "../components/PointsBadge";
-import utensilHeroBadge from "../assets/badges/utensil-hero.svg";
-import noMorePlasticBagsBadge from "../assets/badges/no-more-plastic-bags.svg";
-import paperSaverBadge from "../assets/badges/paper-saver.svg";
-import clothChampionBadge from "../assets/badges/cloth-champion.svg";
+import utensilHeroBadge from "../assets/badges/utensil-hero.png";
+import noMorePlasticBagsBadge from "../assets/badges/no-more-plasticbags.png";
+import paperSaverBadge from "../assets/badges/paper-saver.png";
+import clothChampionBadge from "../assets/badges/cloth-champion.png";
 import eWasteHeroBadge from "../assets/badges/ewaste-hero.png";
+import plantSipperBadge from "../assets/badges/plant-sipper.png";
+import compostStarterBadge from "../assets/badges/compost-starter.png";
+import showerSaverBadge from "../assets/badges/shower-saver.png";
 import { IUserChallengeCompleted } from "../models/IUserChallengeCompleted";
 import progressIcon from "../assets/progress-icon.svg";
 import { useState, useEffect } from "react";
@@ -31,6 +34,9 @@ export const Profile = () => {
     "Paper Saver": paperSaverBadge,
     "Cloth Champion": clothChampionBadge,
     "E-Waste Hero": eWasteHeroBadge,
+    "Plant Sipper": plantSipperBadge,
+    "Compost Starter": compostStarterBadge,
+    "Shower Saver": showerSaverBadge,
   };
 
   return (
