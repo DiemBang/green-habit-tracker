@@ -4,6 +4,7 @@ import utensilHero from "../assets/challenge-icons/utensil-hero.png";
 import noMorePlasticBagsIcon from "../assets/challenge-icons/no-plasticbags.png";
 import paperSaverIcon from "../assets/challenge-icons/paper-saver.png";
 import clothChampionIcon from "../assets/challenge-icons/cloth-champion.png";
+import plantSipperIcon from "../assets/challenge-icons/plant-sipper.png";
 import eWasteHeroIcon from "../assets/challenge-icons/ewaste-hero.png";
 import showerSaverIcon from "../assets/challenge-icons/shower-saver.png";
 import compostStarterIcon from "../assets/challenge-icons/compost-starter.png";
@@ -43,6 +44,7 @@ export const Explore = () => {
     "Lights Off Hour": lightsoffHourIcon,
     "Pedal Power": pedalPowerIcon,
     "Streaming Cutback": streamingCutbackIcon,
+    "Plant Sipper": plantSipperIcon,
   };
 
   const { challenges, ecotip } = useLoaderData();
