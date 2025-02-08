@@ -98,17 +98,6 @@ export const HabitPage = () => {
               <option value="monthly">Monthly</option>
             </select>
           </div>
-
-          {/* Reminder Time Section */}
-          <div>
-            <h4>Set Reminder Time</h4>
-            <input
-              type="time"
-              className="w-full h-[2.875rem] px-4 py-3 border rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-green-500"
-              value={reminderTime}
-              onChange={(e) => setReminderTime(e.target.value)}
-            />
-          </div>
         </div>
 
         {/* Add/Remove Button */}
