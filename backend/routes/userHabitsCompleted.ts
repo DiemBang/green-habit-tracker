@@ -153,7 +153,10 @@ const checkAndUpdateChallengeStatusForUser = async (
     if (isPast(challengeEndDate)) {
       await req.app.locals.db
         .collection("UserChallenge")
-        .updateOne({ _id: challengeID }, { dateEnded: challengeEndDate });
+        .updateOne(
+          { _id: challengeID },
+          { $set: { dateEnded: challengeEndDate } }
+        );
 
       // Count `UserHabitCompleted` for the habitIdentifier within the date range
       const completedActions = await req.app.locals.db
