@@ -7,6 +7,7 @@ import { updateNotificationSetting } from "../services/notificationSettingsServi
 export const NotificationSettings = () => {
   const { settings } = useLoaderData<{ settings: ISetting }>();
   const [toggles, setToggles] = useState(settings);
+  const [reminderTime, setReminderTime] = useState<string>("09:00");
 
   const handleToggle = async (key: keyof ISetting) => {
     const newValue = !toggles[key];
@@ -35,6 +36,15 @@ export const NotificationSettings = () => {
       >
         <h4 className="text-sm mt-2 mb-2">Daily habit reminder</h4>
       </SettingButton>
+      <button className="lg:w-[50%] flex items-center justify-between mb-2 border rounded-lg shadow-sm bg-cardWhite pl-4 pr-2 h-10 border-gray-300 hover:bg-headerAndFooterColor">
+        <h4 className="text-sm mt-2 mb-2">Set daily reminder time</h4>
+        <input
+          type="time"
+          value={reminderTime} // Assuming `reminderTime` is the state for the reminder time
+          onChange={(e) => setReminderTime(e.target.value)} // Handle time change
+          className="text-sm hover:bg-headerAndFooterColor"
+        />
+      </button>
       <SettingButton
         icon={toggles.reward ? "toggle_on" : "toggle_off"}
         iconSize="text-4xl"

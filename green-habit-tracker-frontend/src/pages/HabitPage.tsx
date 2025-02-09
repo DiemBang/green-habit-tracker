@@ -8,7 +8,6 @@ import { PointsBadge } from "../components/PointsBadge";
 export const HabitPage = () => {
   const { habit, isAlreadyAdded } = useLoaderData();
   const [frequency, setFrequency] = useState<string>("daily");
-  const [reminderTime, setReminderTime] = useState<string>("");
   const [isAdded, setIsAdded] = useState<boolean>(isAlreadyAdded);
 
   const handleAdd = async () => {
@@ -18,7 +17,6 @@ export const HabitPage = () => {
       const userHabit = {
         userID: userID,
         habitIdentifier: habit.identifier,
-        reminderTime: reminderTime,
         frequency: frequency,
       };
 

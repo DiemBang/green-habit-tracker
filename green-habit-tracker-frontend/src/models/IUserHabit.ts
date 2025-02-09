@@ -3,7 +3,6 @@ export interface IUserHabit {
   dateStarted: string;
   frequency: string;
   habitIdentifier: string;
-  reminderTime: string;
   userID: string;
   name: string;
   completedToday: boolean;
