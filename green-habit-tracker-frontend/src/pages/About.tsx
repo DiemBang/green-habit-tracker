@@ -3,7 +3,7 @@ import { CardSection } from "../components/CardSection";
 export const About = () => {
   return (
     <>
-      <h1>About GreenHabits</h1>
+      <h2>About GreenHabits</h2>
       <CardSection className="mb-20">
         <p className="mb-5">
           GreenHabits is a passion project born from my final-year degree work,

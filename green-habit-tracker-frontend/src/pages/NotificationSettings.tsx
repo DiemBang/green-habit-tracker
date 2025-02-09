@@ -36,7 +36,7 @@ export const NotificationSettings = () => {
       >
         <h4 className="text-sm mt-2 mb-2">Daily habit reminder</h4>
       </SettingButton>
-      <button className="lg:w-[50%] flex items-center justify-between mb-2 border rounded-lg shadow-sm bg-cardWhite pl-4 pr-2 h-10 border-gray-300 hover:bg-headerAndFooterColor">
+      <button className="w-[100%] lg:w-[50%] flex items-center justify-between mb-2 border rounded-lg shadow-sm bg-cardWhite pl-4 pr-2 h-10 border-gray-300 hover:bg-headerAndFooterColor">
         <h4 className="text-sm mt-2 mb-2">Set daily reminder time</h4>
         <input
           type="time"

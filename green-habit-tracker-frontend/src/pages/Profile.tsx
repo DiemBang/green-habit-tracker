@@ -41,8 +41,8 @@ export const Profile = () => {
 
   return (
     <>
-      <h1>Profile</h1>
-      <section className="flex items-center gap-6 my-6">
+      <h2>Profile</h2>
+      <section className="flex items-center gap-6">
         {image ? (
           <img
             src={image}
@@ -94,7 +94,7 @@ export const Profile = () => {
       </section>
       <section>
         <h3>Achievements</h3>
-        <p className="my-4">
+        <p>
           Every badge tells a story of your dedication to living sustainably.
           From reducing waste to saving resources, these rewards celebrate the
           challenges you’ve completed and the positive impact you’ve made. Keep
