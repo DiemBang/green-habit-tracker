@@ -40,7 +40,7 @@ export const LoginPage: React.FC = () => {
         <SplashScreen onComplete={handleSplashComplete} />
       ) : (
         <div className="flex flex-wrap content-center flex-col basis-full">
-          <span>
+          <span className="flex justify-center">
             <img
               src={logotype}
               alt="App logo depicting a smiling Earth with leaves as hands."
