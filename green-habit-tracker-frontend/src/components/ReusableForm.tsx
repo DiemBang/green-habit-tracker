@@ -53,7 +53,7 @@ export const ReusableForm: React.FC<ReusableFormProps> = ({
 
   return (
     <>
-      <div className="w-full max-w-xs md:max-w-md p-6 sm:p-8 space-y-8 bg-cardWhite rounded-lg shadow-sm">
+      <div className="w-full max-w-xs md:max-w-md p-6 sm:p-8 space-y-8 bg-cardWhite rounded-lg shadow-sm md:shadow-none">
         {/* Title */}
         <div className="text-center">
           <p>{title}</p>
