@@ -39,32 +39,37 @@ export const LoginPage: React.FC = () => {
       {showSplash ? (
         <SplashScreen onComplete={handleSplashComplete} />
       ) : (
-        <div className="flex flex-wrap content-center flex-col basis-full">
-          <span className="flex justify-center">
-            <img
-              src={logotype}
-              alt="App logo depicting a smiling Earth with leaves as hands."
-              width="48"
-              height="48"
-            />
-          </span>
-          {/* Title and tagline - Full width but centered text */}
-          <div className="text-center mb-6 basis-full">
-            <h1 className="font-custom text-2xl text-customGreen">
-              GreenHabits
-            </h1>
-            <h2 className="m-0 font-josefin text-sm text-customGreen">
-              Every step counts for the planet
-            </h2>
+        <div className="flex flex-col md:flex-row md:w-[100%] md:h-[100%]">
+          {/* Left column: Logo, title, tagline */}
+          <div className="flex flex-wrap content-center flex-col md:flex-row md:justify-center md:w-[50%]">
+            <span className="flex justify-center">
+              <img
+                src={logotype}
+                alt="App logo depicting a smiling Earth with leaves as hands."
+                className="w-12 h-12 md:w-32 md:h-32"
+              />
+            </span>
+            {/* Title and tagline */}
+            <div className="text-center mb-6 md:self-center md:ml-4">
+              <h1 className="font-custom text-2xl text-customGreen">
+                GreenHabits
+              </h1>
+              <h2 className="m-0 font-josefin text-sm text-customGreen">
+                Every step counts for the planet
+              </h2>
+            </div>
           </div>
-          <ReusableForm
-            title="Log in to your account"
-            buttonText="Log in"
-            onSubmit={handleLogin}
-            linkText="Sign up"
-            linkHref="/signup"
-            linkDescription="Don't have an account?"
-          />
+          {/* Right column: Form */}
+          <div className="md:w-[50%] flex items-center justify-center md:bg-cardWhite">
+            <ReusableForm
+              title="Log in to your account"
+              buttonText="Log in"
+              onSubmit={handleLogin}
+              linkText="Sign up"
+              linkHref="/signup"
+              linkDescription="Don't have an account?"
+            />
+          </div>
         </div>
       )}
     </>

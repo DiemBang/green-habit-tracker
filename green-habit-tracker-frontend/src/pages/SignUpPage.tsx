@@ -47,7 +47,7 @@ export const SignUpPage: React.FC = () => {
             />
           </span>
           {/* Title and tagline */}
-          <div className="text-center mb-6">
+          <div className="text-center mb-6 md:self-center md:ml-4">
             <h1 className="font-custom text-2xl text-customGreen">
               GreenHabits
             </h1>
