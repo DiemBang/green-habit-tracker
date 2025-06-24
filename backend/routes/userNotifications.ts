@@ -51,7 +51,7 @@ router.patch(
       const result = await req.app.locals.db
         .collection("UserNotification")
         .updateMany(
-          { userID: userID, read: false }, // Update only unread notifications for the user
+          { userID: userID }, // Update only unread notifications for the user
           { $set: { read: true } } // Set the read status to true
         );
 
