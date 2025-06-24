@@ -16,8 +16,18 @@ import farmToTableIcon from "../assets/challenge-icons/farm-to-table-champion.pn
 import ecoChefIcon from "../assets/challenge-icons/eco-chef.png";
 import powerDownProIcon from "../assets/challenge-icons/powerdown-pro.png";
 import lightsoffHourIcon from "../assets/challenge-icons/lightsoff-hour.png";
+import lightsSaverIcon from "../assets/challenge-icons/lights-saver.png";
 import pedalPowerIcon from "../assets/challenge-icons/pedal-power.png";
 import streamingCutbackIcon from "../assets/challenge-icons/streaming-cutback.png";
+import errandRunChampionIcon from "../assets/challenge-icons/errand-run-champion.png";
+import noCarChallengeIcon from "../assets/challenge-icons/no-car.png";
+import transitSwapIcon from "../assets/challenge-icons/transit-swap.png";
+import furnitureRefreshIcon from "../assets/challenge-icons/furniture-refresh.png";
+import applianceRecyclerIcon from "../assets/challenge-icons/appliance-recycler.png";
+import emailEfficiencyIcon from "../assets/challenge-icons/email-efficiency.png";
+import declutterDriveIcon from "../assets/challenge-icons/declutter-drive.png";
+import laundryWaterSaverIcon from "../assets/challenge-icons/laundry-water-saver.png";
+import bookGiverIcon from "../assets/challenge-icons/book-giver.png";
 import { IChallenge } from "../models/IChallenge";
 import { CardSection } from "../components/CardSection";
 import ecoIcon from "/src/assets/ecotip-icon.svg";
@@ -42,9 +52,19 @@ export const Explore = () => {
     "Eco Chef": ecoChefIcon,
     "Power Down Pro": powerDownProIcon,
     "Lights Off Hour": lightsoffHourIcon,
+    "Light Saver": lightsSaverIcon,
     "Pedal Power": pedalPowerIcon,
     "Streaming Cutback": streamingCutbackIcon,
     "Plant Sipper": plantSipperIcon,
+    "Errand Run Champion": errandRunChampionIcon,
+    "No-Car Challenge": noCarChallengeIcon,
+    "Transit Swap": transitSwapIcon,
+    "Furniture Refresh": furnitureRefreshIcon,
+    "Appliance Recycler": applianceRecyclerIcon,
+    "Email Efficiency": emailEfficiencyIcon,
+    "Declutter Drive": declutterDriveIcon,
+    "Laundry Water Saver": laundryWaterSaverIcon,
+    "Book Giver": bookGiverIcon,
   };
 
   const { challenges, ecotip } = useLoaderData();

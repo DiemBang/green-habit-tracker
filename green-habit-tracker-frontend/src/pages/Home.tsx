@@ -104,7 +104,7 @@ export const Home = () => {
           </Link>
         </div>
         <div className="lg:w-[60%]">
-          <h3>Habits to complete</h3>
+          <h3>Habits To Complete</h3>
           <CardSection className="mb-20">
             <ul>
               {habits.map((habit: IUserHabit) => (
