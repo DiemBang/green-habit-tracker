@@ -125,6 +125,7 @@ const checkAndUpdateChallengeStatusForUser = async (
     .collection("UserChallenge")
     .find({ dateEnded: { $exists: false }, userID: userID })
     .toArray();
+  console.log("userChallenges", userChallenges);
   for (const userChallenge of userChallenges) {
     const { challengeID, dateJoined, userID } = userChallenge;
 
@@ -148,13 +149,15 @@ const checkAndUpdateChallengeStatusForUser = async (
       new Date(dateJoined),
       lengthOfChallengeInDays
     );
+    console.log("challenge", "challengeEndDate", challengeEndDate);
 
     // Check if the challenge end date is in the past
     if (isPast(challengeEndDate)) {
+      console.log("Setting dateEnded for challenge:", challengeID);
       await req.app.locals.db
         .collection("UserChallenge")
         .updateOne(
-          { _id: challengeID },
+          { challengeID: challengeID },
           { $set: { dateEnded: challengeEndDate } }
         );
 
