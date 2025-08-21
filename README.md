@@ -34,7 +34,7 @@ GreenHabits is a habit-tracking application designed to encourage eco-friendly c
 
 GreenHabits is deployed on Vercel for seamless hosting and continuous integration. Every push to the main branch triggers a deployment.
 
-https://green-habit-tracker-frontend.vercel.app/
+https://green-habit-tracker.vercel.app/login
 
 
 ## Usage
